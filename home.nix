@@ -80,14 +80,6 @@
 			window-decoration = false;
 		};
 	};
-	programs.opencode = {
-		enable = true;
-		settings = {
-			theme = "catppuccin";
-			autoupdate = true;
-		};
-	};
-
 	xdg.mimeApps = {
 		enable = true;
 		defaultApplications = {
