@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
 	home.username = "shane";
 	home.homeDirectory = "/home/shane";
 	home.stateVersion = "25.11";
@@ -7,6 +7,7 @@
 		pkgs.rofi
 		pkgs.discord
 		pkgs.librewolf
+		inputs.opencode-flake.packages.${pkgs.system}.default
 	];
 	wayland.windowManager.sway = {
 		enable = true;
