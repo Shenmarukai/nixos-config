@@ -4,6 +4,8 @@
 	home.stateVersion = "25.11";
 	home.packages = [
 		pkgs.ghostty
+		pkgs.rofi-wayland
+		pkgs.discord
 	];
 	wayland.windowManager.sway = {
 		enable = true;
@@ -22,6 +24,7 @@
 			];
 			keybindings = {
 				"Mod4+Return" = "exec ghostty";
+				"Mod4+d" = "exec rofi -show drun";
 				"Mod4+Shift+q" = "kill";
 				"Mod4+Shift+c" = "reload";
 			};

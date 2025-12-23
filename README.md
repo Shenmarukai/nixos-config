@@ -15,7 +15,7 @@ This repo tracks a NixOS 25.11 configuration built around:
 - `flake.nix` – Entrypoint for NixOS + home-manager.
 - `configuration.nix` – System configuration (boot, NVIDIA, greetd, Steam, etc.).
 - `hardware-configuration.nix` – Auto-generated hardware config.
-- `home.nix` – Home-manager config for user `shane` (swayfx, waybar, mako, ghostty, etc.).
+- `home.nix` – Home-manager config for user `shane` (swayfx, waybar, mako, ghostty, rofi, Discord, etc.).
 
 ## Prerequisites
 
@@ -61,10 +61,16 @@ Configured in `home.nix` (`wayland.windowManager.sway`). Highlights:
 | Shortcut | Action |
 | --- | --- |
 | `Mod+Return` | Launch `ghostty` terminal |
+| `Mod+D` | Open rofi (`rofi -show drun`) |
 | `Mod+Shift+Q` | Close focused window |
 | `Mod+Shift+C` | Reload sway config |
 
-Startup commands (`waybar`, `mako`) are declared under `config.startup`, so they launch automatically. Add more keybindings or startup entries in `home.nix` as needed (e.g. app launchers, screenshots, audio controls).
+Startup commands (`waybar`, `mako`) are declared under `config.startup`, so they launch automatically. Add more keybindings or startup entries in `home.nix` as needed (e.g. other launchers, screenshots, audio controls).
+
+### Launchers & Apps
+
+- **Rofi (Wayland build)** – Installed via `home.packages`; open it with `Mod+D` and choose `drun` entries for any desktop app.
+- **Discord** – Also installed in `home.packages`. Launch it through rofi (`Mod+D` → type "Discord") or via the terminal (`discord`).
 
 ### Waybar & Mako
 
@@ -80,7 +86,11 @@ Set in `configuration.nix`:
 ```nix
 nixpkgs.config.allowUnfree = true;
 services.xserver.videoDrivers = [ "nvidia" ];
-hardware.opengl.enable = true;
+
+hardware.graphics = {
+  enable = true;
+  enable32Bit = true;
+};
 
 hardware.nvidia = {
   modesetting.enable = true;
