@@ -7,7 +7,7 @@
 		pkgs.rofi
 		pkgs.discord
 		pkgs.librewolf
-		inputs.opencode-flake.packages.${pkgs.system}.default
+		inputs.opencode.packages.${pkgs.system}.default
 	];
 	wayland.windowManager.sway = {
 		enable = true;

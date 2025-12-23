@@ -7,8 +7,8 @@
 			url = "github:nix-community/home-manager/release-25.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		opencode-flake = {
-			url = "github:AodhanHayter/opencode-flake";
+		opencode = {
+			url = "github:sst/opencode";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
