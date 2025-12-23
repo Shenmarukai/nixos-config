@@ -9,15 +9,30 @@
 		enable = true;
 		package = pkgs.swayfx;
 		checkConfig = false;
+
+		extraSessionCommands = ''
+			export WLR_NO_HARDWARE_CURSORS=1
+		'';
+
 		config = {
 			terminal = "ghostty";
+			startup = [
+				{ command = "waybar"; }
+				{ command = "mako"; }
+			];
+			keybindings = {
+				"Mod4+Return" = "exec ghostty";
+				"Mod4+Shift+q" = "kill";
+				"Mod4+Shift+c" = "reload";
+			};
 		};
-		extraConfig = "
+
+		extraConfig = ''
 			blur enable
 			blur_radius 7
 			corner_radius 10
 			shadows enable
-		";
+		'';
 	};
 	programs.bash = {
 		enable = true;
@@ -36,6 +51,22 @@
 	programs.neovim = {
 		enable = true;
 	};
+
+	programs.waybar = {
+		enable = true;
+		settings = {
+			mainBar = {
+				layer = "top";
+				position = "top";
+				modules-left = [ "sway/workspaces" ];
+				modules-center = [ "clock" ];
+				modules-right = [ "pulseaudio" "battery" "tray" ];
+			};
+		};
+	};
+
+	services.mako.enable = true;
+
 	programs.ghostty = {
 		enable = true;
 		enableBashIntegration = true;
