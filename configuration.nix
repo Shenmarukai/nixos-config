@@ -33,7 +33,6 @@
 		swaybg
 	];
 
-	sound.enable = true;
 	hardware.pulseaudio.enable = false;
 
 	services.pipewire = {
@@ -43,11 +42,7 @@
 		pulse.enable = true;
 	};
 
-	hardware.opengl = {
-		enable = true;
-		driSupport = true;
-		driSupport32Bit = true;
-	};
+	hardware.opengl.enable = true;
 
 	services.xserver.videoDrivers = [ "nvidia" ];
 
