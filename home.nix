@@ -37,6 +37,7 @@
 			shadows enable
 		'';
 	};
+	services.mako.enable = true;
 	programs.bash = {
 		enable = true;
 	};
@@ -67,9 +68,6 @@
 			};
 		};
 	};
-
-	services.mako.enable = true;
-
 	programs.ghostty = {
 		enable = true;
 		enableBashIntegration = true;
@@ -77,6 +75,13 @@
 			theme = "Catppuccin Mocha";
 			font-size = 12;
 			window-decoration = false;
+		};
+	};
+	programs.opencode = {
+		enable = true;
+		settings = {
+			theme = "catppuccin";
+			autoupdate = true;
 		};
 	};
 }
