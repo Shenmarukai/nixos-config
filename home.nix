@@ -6,6 +6,7 @@
 		pkgs.ghostty
 		pkgs.rofi
 		pkgs.discord
+		pkgs.librewolf
 	];
 	wayland.windowManager.sway = {
 		enable = true;
@@ -25,6 +26,7 @@
 			keybindings = {
 				"Mod4+Return" = "exec ghostty";
 				"Mod4+d" = "exec rofi -show drun";
+				"Mod4+b" = "exec librewolf";
 				"Mod4+Shift+q" = "kill";
 				"Mod4+Shift+c" = "reload";
 			};
@@ -82,6 +84,15 @@
 		settings = {
 			theme = "catppuccin";
 			autoupdate = true;
+		};
+	};
+
+	xdg.mimeApps = {
+		enable = true;
+		defaultApplications = {
+			"text/html" = [ "librewolf.desktop" ];
+			"x-scheme-handler/http" = [ "librewolf.desktop" ];
+			"x-scheme-handler/https" = [ "librewolf.desktop" ];
 		};
 	};
 }
