@@ -4,7 +4,7 @@
 	home.stateVersion = "25.11";
 	home.packages = [
 		pkgs.ghostty
-		pkgs.rofi-wayland
+		pkgs.rofi
 		pkgs.discord
 	];
 	wayland.windowManager.sway = {
