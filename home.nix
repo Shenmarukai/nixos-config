@@ -12,14 +12,32 @@
 
 		pkgs.bitwarden-desktop
 		pkgs.bitwarden-cli
+		pkgs.jq
+
+		(pkgs.writeShellScriptBin "vrr-status" ''
+			state=$(
+				swaymsg -r -t get_outputs |
+				jq -r '.[] | select(.name=="DP-3") | .adaptive_sync_status'
+			)
+
+			if [ "$state" = "enabled" ]; then
+				alt="on"
+			else
+				alt="off"
+			fi
+
+			printf '{"text":"%s","alt":"%s"}\n' "$alt" "$alt"
+		'')
 	];
+
 	wayland.windowManager.sway = {
 		enable = true;
-		package = pkgs.swayfx;
+		package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.swayfx;
 		checkConfig = false;
 
 		extraSessionCommands = ''
 			export WLR_NO_HARDWARE_CURSORS=1
+			export WLR_RENDERER=vulkan
 		'';
 
 		config = {
@@ -34,6 +52,7 @@
 				"Mod4+b" = "exec librewolf";
 				"Mod4+Shift+q" = "kill";
 				"Mod4+Shift+c" = "reload";
+				"Mod4+Shift+v" = "output DP-3 adaptive_sync toggle";
 			};
 		};
 
@@ -87,7 +106,19 @@
 				position = "top";
 				modules-left = [ "sway/workspaces" ];
 				modules-center = [ "clock" ];
-				modules-right = [ "pulseaudio" "battery" "tray" ];
+				modules-right = [ "custom/vrr" "pulseaudio" "battery" "tray" ];
+
+				"custom/vrr" = {
+					exec = "vrr-status";
+					interval = 2;
+					return-type = "json";
+					format = "VRR {icon}  ";
+					format-icons = {
+						on = "●";
+						off = "○";
+					};
+					on-click = "swaymsg 'output DP-3 adaptive_sync toggle'";
+				};
 			};
 		};
 	};
