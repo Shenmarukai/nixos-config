@@ -10,7 +10,7 @@
 		pkgs.pulseaudio
 		inputs.opencode.packages.${pkgs.system}.default
 
-		pkgs.bitwarden
+		pkgs.bitwarden-desktop
 		pkgs.bitwarden-cli
 	];
 	wayland.windowManager.sway = {
