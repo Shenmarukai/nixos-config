@@ -40,6 +40,26 @@
 		alsa.enable = true;
 		alsa.support32Bit = true;
 		pulse.enable = true;
+
+		wireplumber.extraConfig = {
+			"force-line1-default-source" = {
+				"monitor.alsa.rules" = [
+					{
+						matches = [
+							{
+								"node.name" = "alsa_input.usb-Generic_USB_Audio-00.HiFi__Line1__source";
+							}
+						];
+						actions = {
+							update-props = {
+								"priority.session" = 2050;
+								"node.nick" = "USB Line-In";
+							};
+						};
+					}
+				];
+			};
+		};
 	};
 
 	hardware.graphics = {

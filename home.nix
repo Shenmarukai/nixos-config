@@ -106,19 +106,4 @@
 		};
 	};
 
-	systemd.user.services.set-default-audio-source = {
-		Unit = {
-			Description = "Set default audio input source";
-			After = [ "pipewire.service" "pipewire-pulse.service" ];
-		};
-		Service = {
-			Type = "oneshot";
-			ExecStart = ''
-				${pkgs.pulseaudio}/bin/pactl set-default-source alsa_input.usb-Logitech_Webcam-00.analog-mono
-			'';
-		};
-		Install = {
-			WantedBy = [ "default.target" ];
-		};
-	};
 }
