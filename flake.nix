@@ -19,14 +19,14 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        ./hosts/desktop-odyssey/default.nix
+        ./hosts/shane-desktop/default.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
-            users.shane = import ./home/shane/desktop-odyssey.nix;
+            users.shane = import ./home/shane/shane-desktop.nix;
             backupFileExtension = "backup";
           };
         }

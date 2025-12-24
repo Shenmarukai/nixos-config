@@ -1,6 +1,6 @@
 { config, pkgs, inputs, ... }: {
   imports = [
-    ../../hardware/desktop-odyssey-hardware.nix
+    ../../hardware/shane-desktop-hardware.nix
     ../../modules/system/base.nix
     ../../modules/system/networking.nix
     ../../modules/system/audio.nix
