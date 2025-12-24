@@ -7,6 +7,7 @@
 		pkgs.rofi
 		pkgs.discord
 		pkgs.librewolf
+		pkgs.pulseaudio
 		inputs.opencode.packages.${pkgs.system}.default
 	];
 	wayland.windowManager.sway = {
@@ -102,6 +103,22 @@
 			"text/html" = [ "librewolf.desktop" ];
 			"x-scheme-handler/http" = [ "librewolf.desktop" ];
 			"x-scheme-handler/https" = [ "librewolf.desktop" ];
+		};
+	};
+
+	systemd.user.services.set-default-audio-source = {
+		Unit = {
+			Description = "Set default audio input source";
+			After = [ "pipewire.service" "pipewire-pulse.service" ];
+		};
+		Service = {
+			Type = "oneshot";
+			ExecStart = ''
+				${pkgs.pulseaudio}/bin/pactl set-default-source alsa_input.usb-Logitech_Webcam-00.analog-mono
+			'';
+		};
+		Install = {
+			WantedBy = [ "default.target" ];
 		};
 	};
 }
