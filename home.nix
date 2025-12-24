@@ -9,6 +9,9 @@
 		pkgs.librewolf
 		pkgs.pulseaudio
 		inputs.opencode.packages.${pkgs.system}.default
+
+		pkgs.bitwarden
+		pkgs.bitwarden-cli
 	];
 	wayland.windowManager.sway = {
 		enable = true;
