@@ -79,6 +79,58 @@ let
     };
   };
 
+  masonPackages = [
+    {
+      masonName = "lua-language-server";
+      command = "${pkgs.lua-language-server}/bin/lua-language-server";
+    }
+    {
+      masonName = "rust-analyzer";
+      command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+    }
+    {
+      masonName = "gopls";
+      command = "${pkgs.gopls}/bin/gopls";
+    }
+    {
+      masonName = "typescript-language-server";
+      command = "${pkgs.nodePackages_latest.typescript-language-server}/bin/typescript-language-server";
+    }
+    {
+      masonName = "biome";
+      command = "${pkgs.biome}/bin/biome";
+    }
+    {
+      masonName = "csharp-language-server";
+      command = "${pkgs.csharp-ls}/bin/csharp-ls";
+    }
+    {
+      masonName = "delve";
+      command = "${pkgs.delve}/bin/dlv";
+    }
+  ];
+
+  masonDataFiles =
+    builtins.listToAttrs (map (pkg: {
+      name = "nvim/mason/bin/" + pkg.masonName;
+      value = {
+        executable = true;
+        force = true;
+        text = ''
+          #!/usr/bin/env bash
+          exec ${pkg.command} "$@"
+        '';
+      };
+    }) masonPackages)
+    //
+    builtins.listToAttrs (map (pkg: {
+      name = "nvim/mason/packages/" + pkg.masonName + "/.nix-managed";
+      value = {
+        force = true;
+        text = "";
+      };
+    }) masonPackages);
+
   luaConfig = ''
     -- Helper utilities and autocommands migrated from the legacy Lua config
     local augroup = vim.api.nvim_create_augroup
@@ -676,33 +728,48 @@ let
       end
     
       require('mason-nvim-dap').setup({
-        ensure_installed = { 'delve' },
-        automatic_installation = true,
-        handlers = {
-          function(config)
-            require('mason-nvim-dap').default_setup(config)
-          end,
-          delve = function(config)
-            table.insert(config.configurations, 1, {
-              args = function() return vim.split(vim.fn.input('args> '), ' ') end,
-              type = 'delve',
-              name = 'file',
-              request = 'launch',
-              program = '$' .. '{file}',
-              outputMode = 'remote',
-            })
-            table.insert(config.configurations, 1, {
-              args = function() return vim.split(vim.fn.input('args> '), ' ') end,
-              type = 'delve',
-              name = 'file args',
-              request = 'launch',
-              program = '$' .. '{file}',
-              outputMode = 'remote',
-            })
-            require('mason-nvim-dap').default_setup(config)
-          end,
-        },
+        ensure_installed = {},
+        automatic_installation = false,
       })
+
+      dap.adapters.go = {
+        type = 'server',
+        host = '127.0.0.1',
+        port = 38697,
+        executable = {
+          command = 'dlv',
+          args = { 'dap', '-l', '127.0.0.1:38697' },
+        },
+      }
+
+      local function go_args()
+        local input = vim.fn.input('args> ')
+        if input == "" then
+          return {}
+        end
+        return vim.split(input, ' ')
+      end
+
+      local function dap_program_file()
+        return '$' .. '{' .. 'file' .. '}'
+      end
+
+      dap.configurations.go = {
+        {
+          type = 'go',
+          name = 'file',
+          request = 'launch',
+          program = dap_program_file(),
+          args = go_args,
+        },
+        {
+          type = 'go',
+          name = 'file args',
+          request = 'launch',
+          program = dap_program_file(),
+          args = go_args,
+        },
+      }
     end)
     
     -- Mason / LSP / Conform / CMP setup
@@ -747,24 +814,27 @@ let
           },
         },
       })
-      require('mason').setup()
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          'lua_ls',
-          'rust_analyzer',
-          'gopls',
-          'ts_ls',
-          'biome',
-          'csharp_ls',
-        },
-        handlers = {
-          function(server_name)
-            require('lspconfig')[server_name].setup({
-              capabilities = capabilities,
-            })
-          end,
-        },
+      require('mason').setup({
+        PATH = 'skip',
       })
+      require('mason-lspconfig').setup({
+        ensure_installed = {},
+        automatic_installation = false,
+      })
+      local lspconfig = require('lspconfig')
+      local servers = {
+        'lua_ls',
+        'rust_analyzer',
+        'gopls',
+        'ts_ls',
+        'biome',
+        'csharp_ls',
+      }
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          capabilities = capabilities,
+        })
+      end
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
       cmp.setup({
         snippet = {
@@ -1320,4 +1390,6 @@ in
 
     extraConfigLuaPost = luaConfig;
   };
+
+  xdg.dataFile = masonDataFiles;
 }
