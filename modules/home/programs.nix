@@ -5,16 +5,16 @@
 
   programs.git = {
     enable = true;
-    userName = "Shenmarukai";
-    userEmail = "shanemulc@comcast.net";
+    settings.user = {
+      name = "Shenmarukai";
+      email = "shanemulc@comcast.net";
+    };
   };
 
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
   };
-
-  programs.neovim.enable = true;
 
   programs.ghostty = {
     enable = true;
