@@ -11,5 +11,7 @@
     ../../modules/home/sway.nix
     ../../modules/home/waybar.nix
     ../../modules/home/nixvim.nix
+
+    ../../modules/home/sway-desktop-outputs.nix
   ];
 }
