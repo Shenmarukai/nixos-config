@@ -40,5 +40,23 @@
         }
       ];
     };
+
+    nixosConfigurations."shane-laptop" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/shane-laptop/default.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
+            users.shane = import ./home/shane/shane-laptop.nix;
+            backupFileExtension = "backup";
+          };
+        }
+      ];
+    };
   };
 }
