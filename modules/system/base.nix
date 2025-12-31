@@ -16,7 +16,16 @@
     git
     tuigreet
     swaybg
+
+    grim
+    slurp
+    pipewire
+    swaylock-effects
   ];
+
+  services.gnome.gnome-keyring.enable = true;
+
+  security.polkit.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
