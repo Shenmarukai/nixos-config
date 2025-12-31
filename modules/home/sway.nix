@@ -3,6 +3,7 @@
     enable = true;
     package = pkgs.swayfx;
     checkConfig = false;
+    wrapperFeatures.gtk = true;
 
     extraSessionCommands = ''
       export WLR_NO_HARDWARE_CURSORS=1
