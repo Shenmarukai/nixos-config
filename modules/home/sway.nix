@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }: {
   wayland.windowManager.sway = {
     enable = true;
-    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.swayfx;
+    package = pkgs.swayfx;
     checkConfig = false;
 
     extraSessionCommands = ''
