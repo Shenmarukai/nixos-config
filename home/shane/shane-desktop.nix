@@ -6,12 +6,14 @@
   imports = [
     inputs.nixvim.homeModules.nixvim
 
-    ../../modules/home/packages.nix
-    ../../modules/home/programs.nix
-    ../../modules/home/sway.nix
-    ../../modules/home/waybar.nix
-    ../../modules/home/nixvim.nix
+    ./common/core/programs.nix
+    ./common/core/packages.nix
 
-    ../../modules/home/sway-desktop-outputs.nix
+    ./common/optional/wm-sway.nix
+    ./common/optional/ui-waybar.nix
+    ./common/optional/editor-nixvim.nix
+    ./common/optional/dev-tools.nix
+
+    ./hosts/shane-desktop/outputs.nix
   ];
 }
