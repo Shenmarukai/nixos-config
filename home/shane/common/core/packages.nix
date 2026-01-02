@@ -4,6 +4,7 @@
     pkgs.rofi
     pkgs.discord
     pkgs.librewolf
+    pkgs.lmstudio
     pkgs.nodejs_22
     pkgs.pulseaudio
     inputs.opencode.packages.${pkgs.system}.default

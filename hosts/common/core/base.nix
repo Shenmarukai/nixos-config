@@ -21,6 +21,7 @@
     slurp
     pipewire
     swaylock-effects
+    lmstudio
   ];
 
   services.gnome.gnome-keyring.enable = true;
