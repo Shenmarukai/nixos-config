@@ -24,6 +24,7 @@
     ../../modules/home/apps/bitwarden-desktop.nix
     ../../modules/home/apps/bitwarden-cli.nix
     ../../modules/home/apps/jq.nix
+    ../../modules/home/apps/yazi.nix
     ../../modules/home/apps/steam.nix
 
     ../../modules/home/dev/rust-analyzer.nix
