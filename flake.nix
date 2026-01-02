@@ -22,99 +22,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, neovim-config, ... }@inputs:
+  outputs = inputs:
     let
-      inherit (nixpkgs) lib;
-
-      systems = [ "x86_64-linux" ];
-      forEachSystem = lib.genAttrs systems;
-
-      overlayDefault = import ./overlays/default.nix;
-      overlayList = [ overlayDefault ];
-
-      pkgsFor = system:
-        import nixpkgs {
-          inherit system;
-          overlays = overlayList;
-        };
+      outputsModule = import ./flake/outputs/lib.nix;
+      mkOutputs = import ./flake/outputs/default.nix;
+      shared = outputsModule inputs;
+      args = inputs // shared // { inherit inputs; };
     in
-    {
-      nixosConfigurations.shane-desktop = lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            nixpkgs.overlays = overlayList;
-          }
-          ./hosts/shane-desktop.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.shane = import ./home/shane/shane-desktop.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
-
-      nixosConfigurations.shane-laptop = lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            nixpkgs.overlays = overlayList;
-          }
-          ./hosts/shane-laptop.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.shane = import ./home/shane/shane-laptop.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
-
-      homeConfigurations = {
-        "shane@shane-desktop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor "x86_64-linux";
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home/shane/shane-desktop.nix ];
-        };
-        "shane@shane-laptop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor "x86_64-linux";
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home/shane/shane-laptop.nix ];
-        };
-      };
-
-      overlays.default = overlayDefault;
-
-      packages = forEachSystem (system:
-        let pkgs = pkgsFor system;
-        in import ./pkgs { inherit pkgs inputs; });
-
-      formatter = forEachSystem (system:
-        let pkgs = pkgsFor system;
-        in pkgs.nixfmt-rfc-style);
-
-      devShells = forEachSystem (system:
-        let pkgs = pkgsFor system;
-        in {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              git
-              home-manager
-              nixd
-              nixfmt-rfc-style
-            ];
-          };
-        });
-    };
+    mkOutputs args;
 }
