@@ -15,16 +15,14 @@ This repo tracks a NixOS 25.11 configuration built around:
 - `flake.nix` – Entrypoint that wires inputs, overlays, NixOS + home-manager modules, host/home outputs, formatter, packages, and the development shell.
 - `hardware/` – Auto-generated hardware configuration per host (e.g. `hardware/shane-desktop-hardware.nix`).
 - `hosts/`
-  - `common/core` – Machine settings that must exist on *all* hosts (bootloader, timezone, base packages, NetworkManager, etc.).
-  - `common/optional` – Shared-but-optional host modules (audio, graphics, gaming, display manager, etc.).
-  - `common/users` – Host-level user definitions plus hooks into per-user home configs.
-  - `<hostname>.nix` – Host-specific entrypoints that pull in hardware, core modules, optional modules, and the needed users.
+  - `<hostname>.nix` – Host-specific entrypoints that pull in matching hardware plus the desired micro-modules under `modules/system`.
+- `modules/system/` – Host-level micro-modules (bootloader, nix settings, networking, audio, graphics, greetd, packages, users, etc.). Enable/disable behavior per device by choosing which of these files to import.
 - `home/shane/`
-  - `common/core` – User preferences that apply everywhere (shell programs, base packages, etc.).
-  - `common/optional` – Optional user modules grouped by concern (dev tooling, sway, waybar, nixvim, etc.).
+  - `common/optional` – Larger app modules that are still shared (sway, waybar, nixvim, etc.).
   - `hosts/<hostname>` – Home-manager fragments that only apply on specific machines (e.g. sway output layouts).
-  - `<hostname>.nix` – Home-manager entrypoints that compose the common modules plus host-specific pieces.
-- `modules/nixos`, `modules/home-manager` – Reserved for reusable modules (currently empty scaffolding, matching the “anatomy” structure).
+  - `<hostname>.nix` – Home-manager entrypoints that compose the shared optional modules plus the micro-modules under `modules/home`.
+- `modules/home/` – User-level micro-modules (shell programs, desktop apps, dev tooling, helper scripts, Steam client, etc.).
+- `modules/nixos`, `modules/home-manager` – Reserved for other reusable modules (currently unused scaffolding).
 - `pkgs/` – Placeholder for custom packages exposed through `packages.${system}`.
 - `overlays/` – Placeholder for site-specific package overlays.
 - `scripts/` – Ad-hoc helper scripts that haven’t been nixified yet.
@@ -42,7 +40,7 @@ Run GPU/display changes with `sudo nixos-rebuild switch` and reboot.
 
 ## Login Flow (greetd → swayfx)
 
-1. `greetd` + `tuigreet` are configured in `hosts/common/optional/display-manager.nix`.
+1. `greetd` + `tuigreet` are configured in `modules/system/services/greetd-tuigreet.nix`.
 2. `tuigreet` logs in as `shane` and starts sway (swayfx package).
 3. sway loads the home-manager config from `home/shane/common/optional/wm-sway.nix`; Xwayland is available for legacy apps/Steam.
 
@@ -78,21 +76,21 @@ Startup commands (`waybar`, `mako`) are declared under `config.startup`, so they
 
 ### Launchers & Apps
 
-- **Rofi (Wayland build)** – Installed via `home/shane/common/core/packages.nix`; launch with `Mod+D` and use `drun` entries.
-- **Discord** – Also provided by `home/shane/common/core/packages.nix`. Launch via rofi or `ghostty` (`discord`).
+- **Rofi (Wayland build)** – Installed via `modules/home/apps/rofi.nix`; launch with `Mod+D` and use `drun` entries.
+- **Discord** – Also provided by `modules/home/apps/discord.nix`. Launch via rofi or `ghostty` (`discord`).
 
 ### Waybar & Mako
 
 Managed via home-manager:
 
 - `programs.waybar` – Configured in `home/shane/common/optional/ui-waybar.nix`. Simple bar with workspaces / clock / VRR indicator / audio / battery / tray.
-- `services.mako.enable = true;` – Defined in `home/shane/common/core/programs.nix`.
+- `services.mako.enable = true;` – Defined in `modules/home/apps/mako.nix`.
 
 ## NVIDIA + Wayland
 
-Defined in `hosts/common/optional/graphics.nix`:
+Defined via `modules/system/graphics/core.nix` and `modules/system/graphics/nvidia.nix`:
 
-```nix
+```
 nixpkgs.config.allowUnfree = true;
 services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -112,13 +110,14 @@ hardware.nvidia = {
 boot.kernelParams = [ "nvidia_drm.modeset=1" ];
 ```
 
+
 This uses NVIDIA’s proprietary userspace with open kernel modules, working well on Wayland/GBM for both RTX 3090 and future RTX 5090 cards.
 
 ## Steam + SteamVR
 
-Enabled in `hosts/common/optional/gaming.nix`:
+Enabled by importing `modules/home/apps/steam.nix` (client), `modules/system/apps/steam-hardware.nix` (udev rules), and `modules/system/apps/steam-remote-play.nix` (firewall tweaks):
 
-```nix
+```
 programs.steam = {
   enable = true;
   remotePlay.openFirewall = true;
@@ -127,13 +126,14 @@ programs.steam = {
 hardware.steam-hardware.enable = true;
 ```
 
+
 Usage:
 
 1. Log into swayfx.
 2. Launch `steam` from Ghostty (or add a launcher binding).
 3. Install games and SteamVR normally.
 
-If a specific title or headset needs a newer driver, update the `nixpkgs` input or temporarily pin a newer driver in `hosts/common/optional/graphics.nix` (`hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;`).
+If a specific title or headset needs a newer driver, update the `nixpkgs` input or temporarily pin a newer driver directly in `modules/system/graphics/nvidia.nix` (`hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;`).
 
 ## Upgrading to RTX 5090
 
@@ -146,7 +146,7 @@ When the new GPU arrives:
 
 ## Troubleshooting
 
-- sway fails to start? Recheck `nvidia_drm.modeset=1`, `hardware.nvidia.open = true`, and the greetd command in `hosts/common/optional/display-manager.nix`.
+- sway fails to start? Recheck `nvidia_drm.modeset=1`, `hardware.nvidia.open = true`, and the greetd command in `modules/system/services/greetd-tuigreet.nix`.
 - Cursor glitches? Leave `WLR_NO_HARDWARE_CURSORS=1` enabled, or only remove it after confirming stability.
 - Audio issues? Confirm PipeWire is running (`systemctl --user status pipewire.service`).
 - Always rebuild (`nixos-rebuild` + `home-manager switch`) and reboot after GPU/driver tweaks.
