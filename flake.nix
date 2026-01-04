@@ -20,9 +20,13 @@
       url = "path:../neovim-config";
       flake = false;
     };
+    swayfx = {
+      url = "github:WillPower3309/swayfx";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, neovim-config, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixvim, neovim-config, swayfx, ... }@inputs: {
     nixosConfigurations."shane-desktop" = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
