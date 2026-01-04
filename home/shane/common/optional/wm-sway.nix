@@ -97,10 +97,8 @@
           position = "bottom";
 
           statusCommand = "${pkgs.i3status}/bin/i3status";
-          swaybarCommand = "${pkgs.swayfx}/bin/swaybar";
 
           workspaceButtons = true;
-          stripWorkspaceNumbers = false;
           trayOutput = "primary";
 
           colors = {
@@ -155,11 +153,20 @@
         };
       };
 
-      workspaceOutputAssign = {
-        "1" = "DP-3";
-        "2" = "HDMI-A-1";
-        "3" = "DP-1";
-      };
+      workspaceOutputAssign = [
+        {
+          workspace = "1";
+          output = "DP-3";
+        }
+        {
+          workspace = "2";
+          output = "HDMI-A-1";
+        }
+        {
+          workspace = "3";
+          output = "DP-1";
+        }
+      ];
     };
 
     extraConfig = ''
