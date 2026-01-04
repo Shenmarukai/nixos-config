@@ -64,14 +64,14 @@
       colors = {
         focused = {
           border = "#89b4fa";
-          background = "#1e1e2e";
+          background = "#313244";
           text = "#cdd6f4";
           indicator = "#89b4fa";
           childBorder = "#89b4fa";
         };
         unfocused = {
           border = "#6c7086";
-          background = "#11111b";
+          background = "#1e1e2e";
           text = "#a6adc8";
           indicator = "#45475a";
           childBorder = "#45475a";
@@ -182,12 +182,12 @@
       workspace_layout default
       workspace_auto_back_and_forth no
 
-      client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
-      client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
-      client.unfocused #333333 #222222 #888888 #292d2e #222222
-      client.urgent #2f343a #900000 #ffffff #900000 #900000
+      client.focused #89b4fa #313244 #cdd6f4 #89b4fa #313244
+      client.focused_inactive #6c7086 #1e1e2e #a6adc8 #45475a #1e1e2e
+      client.unfocused #6c7086 #11111b #a6adc8 #313244 #11111b
+      client.urgent #f38ba8 #1e1e2e #cdd6f4 #f38ba8 #1e1e2e
       client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
-      client.background #ffffff
+      client.background #1e1e2e
 
       blur enable
       blur_radius 7
@@ -213,6 +213,8 @@
         shadows enable;
         corner_radius 10;
       }
+
+      output * bg #1e1e2e solid_color
     '';
   };
 }
