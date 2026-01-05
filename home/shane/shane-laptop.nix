@@ -28,6 +28,7 @@
     ../../modules/home/apps/steam.nix
 
     ../../modules/home/dev/rust-analyzer.nix
+    ../../modules/home/dev/rust-toolchain.nix
     ../../modules/home/dev/gopls.nix
     ../../modules/home/dev/lua-language-server.nix
     ../../modules/home/dev/typescript-language-server.nix

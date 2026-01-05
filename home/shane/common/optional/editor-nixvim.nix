@@ -141,6 +141,8 @@ let
     local ShenmarukaiGroup = augroup('Shenmarukai', {})
     local yank_group = augroup('HighlightYank', {})
     local autocmd = vim.api.nvim_create_autocmd
+
+    vim.cmd('syntax on')
     
     function R(name)
       require('plenary.reload').reload_module(name)
@@ -835,10 +837,15 @@ let
         'csharp_ls',
         'nixd',
       }
+      local server_configs = {
+        rust_analyzer = {
+          cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' },
+        },
+      }
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-          capabilities = capabilities,
-        })
+        local server_config = server_configs[server] or {}
+        server_config.capabilities = capabilities
+        lspconfig[server].setup(server_config)
       end
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
       cmp.setup({
@@ -1280,17 +1287,26 @@ in
 
     plugins.treesitter = {
       enable = true;
-      grammarPackages = [
-        (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-          p.vimdoc
-          p.javascript
-          p.typescript
-          p.c
-          p.lua
-          p.rust
-          p.jsdoc
-          p.bash
-        ]))
+      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        bash
+        c
+        html
+        javascript
+        jsdoc
+        json
+        lua
+        make
+        markdown
+        markdown_inline
+        nix
+        regex
+        rust
+        toml
+        typescript
+        vim
+        vimdoc
+        xml
+        yaml
       ];
     };
 
