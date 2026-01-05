@@ -1,0 +1,26 @@
+local M = {}
+
+function M.setup()
+  pcall(require('rainbow-delimiters.setup').setup, {
+    strategy = {
+      [""] = 'rainbow-delimiters.strategy.global',
+      vim = 'rainbow-delimiters.strategy.local',
+    },
+    query = {
+      [""] = 'rainbow-delimiters',
+      lua = 'rainbow-blocks',
+      python = 'rainbow-blocks',
+    },
+    highlight = {
+      'RainbowDelimiterRed',
+      'RainbowDelimiterYellow',
+      'RainbowDelimiterBlue',
+      'RainbowDelimiterOrange',
+      'RainbowDelimiterGreen',
+      'RainbowDelimiterViolet',
+      'RainbowDelimiterCyan',
+    },
+  })
+end
+
+return M
