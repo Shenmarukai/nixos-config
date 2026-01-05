@@ -97,6 +97,10 @@ let
       command = "${pkgs.nodePackages_latest.typescript-language-server}/bin/typescript-language-server";
     }
     {
+      masonName = "nixd";
+      command = "${pkgs.nixd}/bin/nixd";
+    }
+    {
       masonName = "biome";
       command = "${pkgs.biome}/bin/biome";
     }
@@ -829,6 +833,7 @@ let
         'ts_ls',
         'biome',
         'csharp_ls',
+        'nixd',
       }
       for _, server in ipairs(servers) do
         lspconfig[server].setup({

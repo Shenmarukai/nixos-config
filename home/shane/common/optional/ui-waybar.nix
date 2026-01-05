@@ -32,7 +32,8 @@
       window#waybar {
         background: #1e1e2e;
         color: #cdd6f4;
-        border-bottom: 1px solid #89b4fa;
+        border: 1px solid #89b4fa;
+        border-radius: 10px;
         padding: 4px 8px;
       }
 

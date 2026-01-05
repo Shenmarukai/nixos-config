@@ -61,30 +61,6 @@
         outer = 4;
       };
 
-      colors = {
-        focused = {
-          border = "#89b4fa";
-          background = "#313244";
-          text = "#cdd6f4";
-          indicator = "#89b4fa";
-          childBorder = "#89b4fa";
-        };
-        unfocused = {
-          border = "#6c7086";
-          background = "#1e1e2e";
-          text = "#a6adc8";
-          indicator = "#45475a";
-          childBorder = "#45475a";
-        };
-        urgent = {
-          border = "#f38ba8";
-          background = "#1e1e2e";
-          text = "#cdd6f4";
-          indicator = "#f38ba8";
-          childBorder = "#f38ba8";
-        };
-      };
-
       bars = [
         {
           fonts = {
@@ -99,7 +75,7 @@
           statusCommand = "${pkgs.i3status}/bin/i3status";
 
           workspaceButtons = true;
-          trayOutput = "primary";
+          trayOutput = "DP-3";
 
           colors = {
             background = "#000000";
@@ -172,8 +148,6 @@
     extraConfig = ''
       font pango:monospace 8.000000
       floating_modifier Mod1
-      default_border normal 2
-      default_floating_border normal 2
       hide_edge_borders none
       focus_wrapping no
       focus_follows_mouse yes
@@ -193,8 +167,8 @@
       blur_radius 7
       blur_passes 3
       corner_radius 10
-      default_border pixel 2
-      default_floating_border normal
+      default_border pixel 3
+      default_floating_border normal 3
       shadows enable
       shadow_blur_radius 20
       shadow_offset 0 5
@@ -214,7 +188,7 @@
         corner_radius 10;
       }
 
-      output * bg #1e1e2e solid_color
+      output * bg #11111b solid_color
     '';
   };
 }

@@ -31,17 +31,11 @@
     ../../modules/home/dev/gopls.nix
     ../../modules/home/dev/lua-language-server.nix
     ../../modules/home/dev/typescript-language-server.nix
-    ../../modules/home/dev/biome.nix
+    ../../modules/home/dev/nixd.nix
     ../../modules/home/dev/csharp-ls.nix
-    ../../modules/home/dev/clang-tools.nix
-    ../../modules/home/dev/cpplint.nix
-    ../../modules/home/dev/cppcheck.nix
-    ../../modules/home/dev/checkmake.nix
-    ../../modules/home/dev/delve.nix
-    ../../modules/home/dev/rustc.nix
-    ../../modules/home/dev/cargo.nix
 
     ../../modules/home/ui/vrr-status.nix
+    ../../modules/home/ui/dark-theme.nix
 
     ./common/optional/wm-sway.nix
     ./common/optional/ui-waybar.nix

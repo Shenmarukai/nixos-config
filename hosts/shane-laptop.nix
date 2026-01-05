@@ -19,6 +19,7 @@
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/apps/lmstudio.nix
 
+    ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix
     ../modules/system/services/polkit.nix
     ../modules/system/services/greetd-tuigreet.nix
