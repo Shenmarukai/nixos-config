@@ -1,7 +1,3 @@
-require('shenmarukai.set')
-require('shenmarukai.remap')
-require('shenmarukai.autocmds')
-
 local plugins = {
   'colors',
   'cloak',
@@ -44,3 +40,7 @@ for _, name in ipairs(plugins) do
     mod.setup()
   end
 end
+
+require('shenmarukai.set')
+require('shenmarukai.remap')
+require('shenmarukai.autocmds')

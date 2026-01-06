@@ -146,7 +146,9 @@ autocmd({ 'ModeChanged', 'BufEnter' }, {
   callback = function()
     local mode = vim.fn.mode(1)
     local filetype = vim.bo.filetype
-    if filetype ~= 'NvimTree' then
+    local buftype = vim.bo.buftype
+
+    if buftype == '' then
       if mode == 'i' or mode == 'v' or mode == 'V' or mode == '\x16' then
         vim.opt_local.list = true
         vim.opt_local.listchars = {
@@ -171,17 +173,20 @@ autocmd({ 'ModeChanged', 'BufEnter' }, {
           precedes = '«',
           conceal = '*',
         }
+      else
+        vim.opt_local.list = false
       end
-    else
-      if mode == 'i' or mode == 'n' or mode == 'v' or mode == 'V' or mode == '\x16' then
-        vim.opt.list = true
-        vim.opt.listchars = {
-          tab = '│ ',
-          leadmultispace = '│ ',
-          extends = '»',
-          precedes = '«',
-          conceal = '*',
-        }
+    elseif buftype == 'nofile' then
+      if filetype == 'NvimTree' then
+        vim.opt_local.list = false
+      else
+        vim.opt_local.list = false
+      end
+    elseif buftype == 'terminal' then
+      if filetype == 'opencode_terminal' then
+        vim.opt_local.list = false
+      else
+        vim.opt_local.list = false
       end
     end
   end,
