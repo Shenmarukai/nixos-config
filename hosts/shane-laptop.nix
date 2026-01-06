@@ -23,6 +23,7 @@
     ../modules/system/services/gnome-keyring.nix
     ../modules/system/services/polkit.nix
     ../modules/system/services/greetd-tuigreet.nix
+    ../modules/system/services/avahi.nix
 
     ../modules/system/apps/steam-hardware.nix
     ../modules/system/apps/steam-remote-play.nix

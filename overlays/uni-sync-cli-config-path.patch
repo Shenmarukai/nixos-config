@@ -1,0 +1,34 @@
+diff --git a/src/main.rs b/src/main.rs
+index 5a1307b..c49706e 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -21,16 +21,15 @@ fn main() -> Result<(), std::io::Error> {
+ 
+     #[cfg(target_os = "linux")]
+     {
+-        config_path.clear();
+-        config_path.push("/etc/uni-sync/uni-sync.json");
+-    }
+-
+-    #[cfg(target_os = "linux")]
+-    {
+-        let dir = std::path::Path::new("/etc/uni-sync");
+-        if !dir.exists() {
+-            if let Err(e) = std::fs::create_dir(dir) {
+-                eprintln!("Failed to create directory: {}, error: {}", dir.to_string_lossy(), e);
+-            }
+-        }
++        if args.len() != 2 {
++            config_path.clear();
++            config_path.push("/etc/uni-sync/uni-sync.json");
++
++            let dir = std::path::Path::new("/etc/uni-sync");
++            if !dir.exists() {
++                if let Err(e) = std::fs::create_dir(dir) {
++                    eprintln!("Failed to create directory: {}, error: {}", dir.to_string_lossy(), e);
++                }
++            }
++        }
+     }
+     
+     if !config_path.exists() {

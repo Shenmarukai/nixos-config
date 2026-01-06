@@ -24,12 +24,30 @@
     ../modules/system/services/gnome-keyring.nix
     ../modules/system/services/polkit.nix
     ../modules/system/services/greetd-tuigreet.nix
+    ../modules/system/services/uni-sync.nix
+    ../modules/system/services/avahi.nix
 
     ../modules/system/apps/steam-hardware.nix
     ../modules/system/apps/steam-remote-play.nix
 
     ../modules/system/users/shane.nix
   ];
+
+  services.uniSync = {
+    enable = true;
+    configs = [
+      {
+        deviceId = "VID:3314/PID:41218/SN:6243168001/PATH:5-10:1.1";
+        syncRgb = true;
+        channels = [
+          { mode = "PWM"; speed = 50; }
+          { mode = "PWM"; speed = 50; }
+          { mode = "PWM"; speed = 50; }
+          { mode = "PWM"; speed = 50; }
+        ];
+      }
+    ];
+  };
 
   networking.hostName = "shane-desktop";
 
