@@ -77,6 +77,15 @@ let
       ];
       doCheck = false;
     };
+
+    vim-with-me = buildPlugin {
+      pname = "vim-with-me";
+      owner = "ThePrimeagen";
+      repo = "vim-with-me";
+      rev = "ed0c65594a6a0f5f98f8fbb69c5c44633846ec70";
+      sha256 = "1i05ivdfhm01j9mc634gfjnmmvivx5g3a2vpig2yp7vbvkh72jx3";
+      doCheck = false;
+    };
   };
 
   masonPackages = [
@@ -297,13 +306,15 @@ in
         zen-mode-nvim
         luasnip
       ]) ++ [
-        customPlugins.gp-nvim
-        customPlugins.reticle-nvim
-        customPlugins.php-nvim
-        customPlugins.idascope
-        customPlugins.jai-vim
-        customPlugins.mason-nvim-lint
-      ];
+    customPlugins.gp-nvim
+    customPlugins.reticle-nvim
+    customPlugins.php-nvim
+    customPlugins.idascope
+    customPlugins.jai-vim
+    customPlugins.mason-nvim-lint
+    customPlugins.vim-with-me
+  ];
+
 
     extraConfigLuaPost = luaConfig;
   };
