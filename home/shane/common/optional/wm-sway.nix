@@ -1,4 +1,58 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+let
+  lockScript = pkgs.writeShellScriptBin "lock-screen" ''
+    exec ${pkgs.swaylock-effects}/bin/swaylock \
+      --screenshots \
+      --clock \
+      --indicator \
+      --indicator-radius 110 \
+      --indicator-thickness 8 \
+      --effect-blur 7x5 \
+      --effect-vignette 0.5:0.5 \
+      --fade-in 0.2 \
+      --font "JetBrainsMono Nerd Font" \
+      --font-size 18 \
+      --color 11111bff \
+      --ring-color 89b4fa \
+      --ring-ver-color 89b4fa \
+      --ring-clear-color 6c7086 \
+      --ring-wrong-color f38ba8 \
+      --inside-color 11111bcc \
+      --inside-ver-color 11111bcc \
+      --inside-wrong-color 11111bcc \
+      --line-color 00000000 \
+      --separator-color 00000000 \
+      --text-color cdd6f4 \
+      --text-ver-color cdd6f4 \
+      --text-wrong-color f38ba8 \
+      --key-hl-color b4befe \
+      --bs-hl-color f38ba8
+  '';
+  lockCommand = "${lockScript}/bin/lock-screen";
+in {
+  home.packages = with pkgs; [ swaylock-effects swayidle ];
+
+  services.swayidle = {
+    enable = true;
+    extraArgs = [ "-w" ];
+    events = [
+      {
+        event = "lock";
+        command = lockCommand;
+      }
+      {
+        event = "before-sleep";
+        command = lockCommand;
+      }
+    ];
+    timeouts = [
+      {
+        timeout = 600;
+        command = lockCommand;
+      }
+    ];
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     package = pkgs.swayfx;
@@ -31,7 +85,7 @@
         "${modifier}+Shift+q" = "kill";
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+v" = "output DP-3 adaptive_sync toggle";
-        "${modifier}+l" = "exec swaylock-effects -f";
+        "${modifier}+l" = "exec ${lockCommand}";
 
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";

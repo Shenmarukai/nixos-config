@@ -4,5 +4,7 @@
     git
     vim
     neovim
+    zip
+    unzip
   ];
 }

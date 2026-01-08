@@ -7,7 +7,12 @@ let
   forEachSystem = lib.genAttrs systems;
 
   overlayDefault = import (self + "/overlays/default.nix");
-  overlayList = [ overlayDefault ];
+  overlayIdaProSetup = import (self + "/overlays/ida-pro-setup-overlay.nix");
+  overlayList = [
+    inputs.ida-pro-overlay.overlays.default
+    overlayIdaProSetup
+    overlayDefault
+  ];
 
   pkgsFor = system:
     import inputs.nixpkgs {
@@ -16,5 +21,5 @@ let
     };
 in
 {
-  inherit lib systems forEachSystem pkgsFor overlayDefault overlayList;
+  inherit lib systems forEachSystem pkgsFor overlayDefault overlayIdaProSetup overlayList;
 }

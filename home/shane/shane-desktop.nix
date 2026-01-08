@@ -27,6 +27,8 @@
     ../../modules/home/apps/yazi.nix
     ../../modules/home/apps/steam.nix
     ../../modules/home/apps/github-desktop.nix
+    ../../modules/home/apps/ida-pro.nix
+    ../../modules/home/apps/imhex.nix
 
     ../../modules/home/dev/rust-analyzer.nix
     ../../modules/home/dev/rust-toolchain.nix

@@ -16,6 +16,10 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ida-pro-overlay = {
+      url = "github:msanft/ida-pro-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim-config = {
       url = "path:../neovim-config";
       flake = false;

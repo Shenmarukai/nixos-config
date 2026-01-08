@@ -2,6 +2,8 @@
   imports = [
     ../hardware/shane-desktop-hardware.nix
 
+    ../modules/system/hardware/bluetooth.nix
+
     ../modules/system/core/nix-core.nix
     ../modules/system/core/boot-efi.nix
     ../modules/system/core/time-nyc.nix
@@ -17,12 +19,14 @@
 
     ../modules/system/packages/cli-tools.nix
     ../modules/system/packages/wayland-desktop.nix
+    ../modules/system/apps/appimage.nix
     ../modules/system/apps/lmstudio.nix
     ../modules/system/apps/openrgb.nix
 
     ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix
     ../modules/system/services/polkit.nix
+    ../modules/system/security/pam-swaylock.nix
     ../modules/system/services/greetd-tuigreet.nix
     ../modules/system/services/uni-sync.nix
     ../modules/system/services/avahi.nix
@@ -50,6 +54,8 @@
   };
 
   networking.hostName = "shane-desktop";
+
+  hardware.bluetooth.powerOnBoot = true;
 
   system.stateVersion = "25.11";
 }
