@@ -7,6 +7,6 @@ in {
   xdg.configFile."opencode/opencode.jsonc".source =
     ../../../home/shane/opencode/opencode.jsonc;
 
-  xdg.configFile."opencode/orchestration.md".source =
-    ../../../home/shane/opencode/orchestration.md;
+  xdg.configFile."opencode/AGENTS.md".source =
+    ../../../home/shane/opencode/AGENTS.md;
 }

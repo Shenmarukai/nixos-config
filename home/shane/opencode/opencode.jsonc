@@ -16,9 +16,9 @@
     "opencode-sessions"
   ],
 
-  "instructions": [
-    "{file:{env:HOME}/.config/opencode/orchestration.md}"
-  ],
+  //"instructions": [
+  //  "{file:{env:HOME}/.config/opencode/orchestration.md}"
+  //],
 
   "default_agent": "orchestrator",
 
