@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:sst/opencode?ref=v1.1.1";
+      url = "github:sst/opencode?ref=v1.1.8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {

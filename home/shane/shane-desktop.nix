@@ -3,6 +3,14 @@
   home.homeDirectory = "/home/shane";
   home.stateVersion = "25.11";
 
+  home.sessionVariables = {
+    OPENCODE_MAIN_MODEL = "gpt-oss-120b";
+    OPENCODE_PLAN_MODEL = "gpt-oss-120b";
+    OPENCODE_SMALL_PLAN_MODEL = "nemotron-3-nano-30b-a3b";
+    OPENCODE_BUILD_MODEL = "gpt-oss-120b";
+    OPENCODE_SMALL_BUILD_MODEL = "nemotron-3-nano-30b-a3b";
+  };
+
   imports = [
     inputs.nixvim.homeModules.nixvim
 
