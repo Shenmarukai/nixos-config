@@ -1,0 +1,56 @@
+{
+  "roles": {
+    "planner": "plan-orchestrator",
+    "builder": "build-orchestrator",
+    "explorer": "code-cartographer",
+    "featureImplementer": "feature-implementer",
+
+    "requirementsAnalyst": "requirements-analyst",
+    "domainResearcher": "domain-researcher",
+    "systemArchitect": "system-architect",
+    "riskAnalyst": "risk-analyst",
+    "testStrategist": "test-strategist",
+    "docPlanner": "doc-planner",
+
+    "bugFixer": "bug-fixer",
+    "refactorer": "refactorer",
+    "testImplementer": "test-implementer",
+    "migrationSpecialist": "migration-specialist",
+    "perfTuner": "perf-tuner",
+    "docWriter": "doc-writer",
+    "releasePrepper": "release-prepper"
+  },
+  "pipeline": {
+    "orchestratorRole": "orchestrator",
+    "plannerRole": "planner",
+    "builderRole": "builder"
+  },
+  "groups": {
+    "planningSpecialists": [
+      "requirementsAnalyst",
+      "domainResearcher",
+      "systemArchitect",
+      "riskAnalyst",
+      "testStrategist",
+      "docPlanner"
+    ],
+    "buildSpecialists": [
+      "featureImplementer",
+      "bugFixer",
+      "refactorer",
+      "testImplementer",
+      "migrationSpecialist",
+      "perfTuner",
+      "docWriter",
+      "releasePrepper"
+    ],
+    "explorers": [
+      "explorer"
+    ],
+    "reviewers": [
+      "riskAnalyst",
+      "testStrategist",
+      "docPlanner"
+    ]
+  }
+}
