@@ -6,9 +6,9 @@
   home.sessionVariables = {
     OPENCODE_MAIN_MODEL = "nemotron-3-nano-30b-a3b";
     OPENCODE_PLAN_MODEL = "nemotron-3-nano-30b-a3b";
-    OPENCODE_SMALL_PLAN_MODEL = "nemotron-3-nano-30b-a3b";
+    OPENCODE_SMALL_PLAN_MODEL = "gpt-oss-20b";
     OPENCODE_BUILD_MODEL = "nemotron-3-nano-30b-a3b";
-    OPENCODE_SMALL_BUILD_MODEL = "nemotron-3-nano-30b-a3b";
+    OPENCODE_SMALL_BUILD_MODEL = "gpt-oss-20b";
   };
 
   imports = [
@@ -37,6 +37,7 @@
     ../../modules/home/apps/github-desktop.nix
     ../../modules/home/apps/ida-pro.nix
     ../../modules/home/apps/imhex.nix
+    ../../modules/home/apps/tmux.nix
 
     ../../modules/home/dev/rust-analyzer.nix
     ../../modules/home/dev/rust-toolchain.nix
@@ -46,6 +47,7 @@
     ../../modules/home/dev/nixd.nix
     ../../modules/home/dev/csharp-ls.nix
 
+    ../../modules/home/ui/fonts-jetbrainsmono.nix
     ../../modules/home/ui/vrr-status.nix
     ../../modules/home/ui/dark-theme.nix
 
