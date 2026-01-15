@@ -19,7 +19,13 @@
 
   "plugin": [
     "opencode-sessions@1.0.0",
-    "@ramarivera/opencode-model-announcer@1.0.2"
+    "@mohak34/opencode-notifier@0.1.13",
+    "@ramarivera/opencode-model-announcer@1.0.2",
+    "@zenobius/opencode-skillful@1.2.3",
+    "@openspoon/subtask2@0.2.9",
+    "@tarquinen/opencode-dcp@1.2.1",
+    "opencode-websearch-cited@1.2.0",
+    "@franlol/opencode-md-table-formatter@0.0.3"
   ],
 
   "provider": {
