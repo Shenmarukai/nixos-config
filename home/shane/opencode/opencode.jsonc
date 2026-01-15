@@ -4,14 +4,11 @@
   "theme": "catppuccin",
   "autoupdate": true,
 
-  "model": "{env:OPENCODE_MAIN_MODEL}",
-  "small_model": "{env:OPENCODE_PLAN_MODEL}",
- 
   "permission": {
     "bash": "ask",
     "edit": "ask"
   },
- 
+
   "mcp": {
     "ida-pro": {
       "type": "remote",
@@ -19,9 +16,8 @@
       "enabled": true
     }
   },
- 
-  "plugin": [
 
+  "plugin": [
     "opencode-sessions@1.0.0",
     "@ramarivera/opencode-model-announcer@1.0.2"
   ],
