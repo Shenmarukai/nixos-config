@@ -1,4 +1,58 @@
-final: prev: {
+final: prev:
+let
+  py311 = prev.python311Packages;
+  idaProMcpRev = "c2472d1c1e676f0198070e0e27f708973c7a4254";
+  idaProMcpHash = "0qbb11iq8hy72q1n8cz7i3pkkvr3dwab8v9dqrbrmck93xzrdrnx";
+  idaproVersion = "0.0.7";
+  idaproHash = "13wq8j8mby3ff7lhx50m2f9m9c11kgrif7wbli741n74355ihbhb";
+
+  idaproPkg = py311.buildPythonPackage {
+    pname = "idapro";
+    version = idaproVersion;
+
+    src = prev.fetchPypi {
+      pname = "idapro";
+      version = idaproVersion;
+      sha256 = idaproHash;
+    };
+
+    format = "pyproject";
+    nativeBuildInputs = [ py311.setuptools ];
+
+    meta = with prev.lib; {
+      description = "Python helpers shared with IDA Pro MCP";
+      homepage = "https://pypi.org/project/idapro/";
+      license = licenses.mit;
+      platforms = platforms.linux;
+    };
+  };
+
+  idaProMcpPkg = py311.buildPythonApplication {
+    pname = "ida-pro-mcp";
+    version = "2.0.0";
+
+    src = prev.fetchFromGitHub {
+      owner = "mrexodia";
+      repo = "ida-pro-mcp";
+      rev = idaProMcpRev;
+      sha256 = idaProMcpHash;
+    };
+
+    format = "pyproject";
+    nativeBuildInputs = [ py311.setuptools ];
+    propagatedBuildInputs = [ idaproPkg py311.tomli-w ];
+
+    meta = with prev.lib; {
+      description = "AI-powered reverse engineering assistant for IDA Pro via MCP";
+      homepage = "https://github.com/mrexodia/ida-pro-mcp";
+      license = licenses.mit;
+      platforms = platforms.linux;
+    };
+  };
+in {
+  idapro = idaproPkg;
+  ida-pro-mcp = idaProMcpPkg;
+
   vrr-status = prev.writeShellScriptBin "vrr-status" ''
     state=$(
       swaymsg -r -t get_outputs |

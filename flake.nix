@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:sst/opencode?ref=v1.1.18";
+      url = "github:sst/opencode?ref=v1.1.20";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -18,6 +18,10 @@
     };
     ida-pro-overlay = {
       url = "github:msanft/ida-pro-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hytale-launcher = {
+      url = "github:JPyke3/hytale-launcher-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-config = {

@@ -3,14 +3,6 @@
   home.homeDirectory = "/home/shane";
   home.stateVersion = "25.11";
 
-  home.sessionVariables = {
-    OPENCODE_MAIN_MODEL = "nemotron-3-nano-30b-a3b";
-    OPENCODE_PLAN_MODEL = "nemotron-3-nano-30b-a3b";
-    OPENCODE_SMALL_PLAN_MODEL = "gpt-oss-20b";
-    OPENCODE_BUILD_MODEL = "nemotron-3-nano-30b-a3b";
-    OPENCODE_SMALL_BUILD_MODEL = "gpt-oss-20b";
-  };
-
   imports = [
     inputs.nixvim.homeModules.nixvim
 
@@ -36,10 +28,14 @@
     ../../modules/home/apps/steam.nix
     ../../modules/home/apps/github-desktop.nix
     ../../modules/home/apps/ida-pro.nix
+    ../../modules/home/apps/ida-pro-mcp.nix
     ../../modules/home/apps/imhex.nix
     ../../modules/home/apps/tmux.nix
+    ../../modules/home/apps/hytale-launcher.nix
+    ../../modules/home/apps/prismlauncher.nix
+ 
+     ../../modules/home/dev/rust-analyzer.nix
 
-    ../../modules/home/dev/rust-analyzer.nix
     ../../modules/home/dev/rust-toolchain.nix
     ../../modules/home/dev/gopls.nix
     ../../modules/home/dev/lua-language-server.nix

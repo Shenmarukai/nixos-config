@@ -22,9 +22,11 @@
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/lmstudio.nix
     ../modules/system/apps/openrgb.nix
+    ../modules/system/apps/coolercontrol.nix
 
     ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix
+    ../modules/system/services/xdg-portal.nix
     ../modules/system/services/polkit.nix
     ../modules/system/security/pam-swaylock.nix
     ../modules/system/services/greetd-tuigreet.nix

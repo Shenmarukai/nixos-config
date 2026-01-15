@@ -6,5 +6,8 @@
     neovim
     zip
     unzip
+
+    lm_sensors
+    liquidctl
   ];
 }

@@ -6,167 +6,25 @@
 
   "model": "{env:OPENCODE_MAIN_MODEL}",
   "small_model": "{env:OPENCODE_PLAN_MODEL}",
-
+ 
   "permission": {
     "bash": "ask",
     "edit": "ask"
   },
-
-  "plugin": [
-    "opencode-sessions"
-  ],
-
-  "instructions": [
-    "{file:{env:HOME}/.config/opencode/orchestration.md}"
-  ],
-
-  "default_agent": "orchestrator",
-
-  "agent": {
-    "orchestrator": {
-      "model": "{env:OPENCODE_MAIN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "plan-orchestrator": {
-      "model": "{env:OPENCODE_PLAN_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "deny"
-      }
-    },
-
-    "build-orchestrator": {
-      "model": "{env:OPENCODE_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "requirements-analyst": {
-      "model": "{env:OPENCODE_SMALL_PLAN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "domain-researcher": {
-      "model": "{env:OPENCODE_PLAN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "code-cartographer": {
-      "model": "{env:OPENCODE_SMALL_PLAN_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "deny"
-      }
-    },
-
-    "system-architect": {
-      "model": "{env:OPENCODE_PLAN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "risk-analyst": {
-      "model": "{env:OPENCODE_SMALL_PLAN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "test-strategist": {
-      "model": "{env:OPENCODE_SMALL_PLAN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "doc-planner": {
-      "model": "{env:OPENCODE_SMALL_PLAN_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
-    },
-
-    "feature-implementer": {
-      "model": "{env:OPENCODE_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "bug-fixer": {
-      "model": "{env:OPENCODE_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "refactorer": {
-      "model": "{env:OPENCODE_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "test-implementer": {
-      "model": "{env:OPENCODE_SMALL_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "migration-specialist": {
-      "model": "{env:OPENCODE_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "perf-tuner": {
-      "model": "{env:OPENCODE_BUILD_MODEL}",
-      "permission": {
-        "bash": "ask",
-        "edit": "ask"
-      }
-    },
-
-    "doc-writer": {
-      "model": "{env:OPENCODE_SMALL_BUILD_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "ask"
-      }
-    },
-
-    "release-prepper": {
-      "model": "{env:OPENCODE_SMALL_BUILD_MODEL}",
-      "permission": {
-        "bash": "deny",
-        "edit": "deny"
-      }
+ 
+  "mcp": {
+    "ida-pro": {
+      "type": "remote",
+      "url": "http://127.0.0.1:13337/mcp",
+      "enabled": true
     }
   },
+ 
+  "plugin": [
+
+    "opencode-sessions@1.0.0",
+    "@ramarivera/opencode-model-announcer@1.0.2"
+  ],
 
   "provider": {
     "lmstudio": {
