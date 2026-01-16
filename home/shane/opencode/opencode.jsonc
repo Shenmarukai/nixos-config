@@ -4,33 +4,79 @@
   "theme": "catppuccin",
   "autoupdate": true,
 
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+
   "permission": {
     "bash": "ask",
-    "edit": "ask"
+    "edit": "ask",
   },
 
   "mcp": {
+    "github-read-only": {
+      // https://github.com/github/github-mcp-server
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "github-mcp-server-gh",
+        "--read-only"
+      ]
+    },
+    "github-read-write": {
+      // https://github.com/github/github-mcp-server
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "github-mcp-server-gh"
+      ]
+    },
+    "math-mcp": {
+      // https://github.com/EthanHenrickson/math-mcp
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "math-mcp"
+      ]
+    },
+    "nixos": {
+      // https://github.com/utensils/mcp-nixos
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "mcp-nixos"
+      ]
+    },
     "ida-pro": {
+      // https://github.com/mrexodia/ida-pro-mcp
       "type": "remote",
       "url": "http://127.0.0.1:13337/mcp",
-      "enabled": true
+      "enabled": false
     }
   },
 
   "plugin": [
-    "opencode-sessions@1.0.0",
-    "@mohak34/opencode-notifier@0.1.13",
-    "@ramarivera/opencode-model-announcer@1.0.2",
-    "@zenobius/opencode-skillful@1.2.3",
-    "@openspoon/subtask2@0.2.9",
-    "@swarmtools/evals@0.2.29",
-    "@tarquinen/opencode-dcp@1.2.1",
-    "opencode-websearch-cited@1.2.0",
-    "@franlol/opencode-md-table-formatter@0.0.3",
-    "opencode-devcontainers@0.2.0",
-    "opencode-pilot@0.13.0",
-    "opencode-mystatus@1.2.2"
+    "opencode-sessions@1.0.0", // https://github.com/malhashemi/opencode-sessions
+    "@mohak34/opencode-notifier@0.1.13", // https://github.com/mohak34/opencode-notifier
+    "@ramarivera/opencode-model-announcer@1.0.2", // https://github.com/ramarivera/opencode-model-announcer
+    "@zenobius/opencode-skillful@1.2.3", // https://github.com/zenobi-us/opencode-skillful
+    "@tarquinen/opencode-dcp@1.2.1", // https://github.com/Opencode-DCP/opencode-dynamic-context-pruning
+    //"@openspoon/subtask2@0.2.9", // https://github.com/spoons-and-mirrors/subtask2
+    //"@swarmtools/evals@0.2.29", // https://github.com/joelhooks/swarm-tools
+    //"opencode-websearch-cited@1.2.0", // https://github.com/ghoulr/opencode-websearch-cited
+    //"@franlol/opencode-md-table-formatter@0.0.3", // https://github.com/franlol/opencode-md-table-formatter
+    //"opencode-devcontainers@0.2.0", // https://github.com/athal7/opencode-devcontainers
+    //"opencode-pilot@0.13.0", // https://github.com/athal7/opencode-pilot
+    //"opencode-mystatus@1.2.2" // https://github.com/vbgate/opencode-mystatus
   ],
+
+  //"command": {
+  //  "mystatus": {
+  //    "description": "Query quota usage for all AI accounts",
+  //    "template": "Use the mystatus tool to query quota usage. Return the result as-is without modification."
+  //  }
+  //},
 
   "provider": {
     "lmstudio": {

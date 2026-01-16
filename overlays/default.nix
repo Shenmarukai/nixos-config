@@ -5,6 +5,37 @@ let
   idaProMcpHash = "0qbb11iq8hy72q1n8cz7i3pkkvr3dwab8v9dqrbrmck93xzrdrnx";
   idaproVersion = "0.0.7";
   idaproHash = "13wq8j8mby3ff7lhx50m2f9m9c11kgrif7wbli741n74355ihbhb";
+  mathMcpVersion = "0.1.1";
+
+  mathMcpPkg = prev.buildNpmPackage {
+    pname = "math-mcp";
+    version = mathMcpVersion;
+
+    src = prev.fetchFromGitHub {
+      owner = "EthanHenrickson";
+      repo = "math-mcp";
+      rev = "6cca48319cfceede5c75e350dda6f0e9994a7b13";
+      hash = "sha256-VuEzFWm3oke10q0kx4Le8FtHqmujgFJ8QuLqOEYjyP4=";
+    };
+
+    npmBuildScript = "build:stdio";
+    npmDepsHash = "sha256-o2qqrxD25dZ74G7mcVLhVjcTQAtP0mKFO9pWAhmJCP4=";
+
+    nativeBuildInputs = [ prev.makeWrapper ];
+
+    postInstall = ''
+      makeWrapper ${prev.nodejs}/bin/node $out/bin/math-mcp \
+        --add-flags $out/lib/node_modules/math-mcp/build/index.js
+    '';
+
+    meta = with prev.lib; {
+      description = "MCP server for math operations";
+      homepage = "https://github.com/EthanHenrickson/math-mcp";
+      license = licenses.mit;
+      platforms = platforms.linux;
+      mainProgram = "math-mcp";
+    };
+  };
 
   idaproPkg = py311.buildPythonPackage {
     pname = "idapro";
@@ -52,6 +83,7 @@ let
 in {
   idapro = idaproPkg;
   ida-pro-mcp = idaProMcpPkg;
+  math-mcp = mathMcpPkg;
 
   vrr-status = prev.writeShellScriptBin "vrr-status" ''
     state=$(

@@ -1,9 +1,31 @@
 { inputs, pkgs, lib, ... }:
 let
   system = pkgs.stdenv.hostPlatform.system;
+  mcp-nixos = inputs.mcp-nixos.lib.mkMcpNixos {
+    inherit pkgs;
+    python3Packages = pkgs.python313Packages;
+  };
+  github-mcp-server-gh = pkgs.writeShellScriptBin "github-mcp-server-gh" ''
+    set -euo pipefail
+
+    token="$(${pkgs.gh}/bin/gh auth token)"
+    if [ -z "$token" ]; then
+      echo "github-mcp-server-gh: gh auth token returned empty" >&2
+      exit 1
+    fi
+
+    export GITHUB_PERSONAL_ACCESS_TOKEN="$token"
+    exec ${pkgs.github-mcp-server}/bin/github-mcp-server stdio "$@"
+  '';
 in {
   home.packages = [
     inputs.opencode.packages.${system}.default
+    mcp-nixos
+    github-mcp-server-gh
+    pkgs.github-mcp-server
+    pkgs.python3
+    pkgs.units
+    pkgs.math-mcp
   ];
 
   xdg.configFile."opencode/opencode.jsonc".source =
@@ -24,7 +46,7 @@ in {
     recursive = true;
   };
 
-  xdg.configFile."opencode/tools" = {
+  xdg.configFile."opencode/tool" = {
     source = ../../../home/shane/opencode/tool;
     recursive = true;
   };
