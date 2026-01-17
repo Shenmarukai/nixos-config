@@ -56,12 +56,30 @@ function M.setup()
       'gopls',
       'ts_ls',
       'biome',
+      'clangd',
       'csharp_ls',
       'nixd',
     }
     local server_configs = {
       rust_analyzer = {
         cmd = { vim.fn.exepath('rust-analyzer') },
+      },
+      clangd = {
+        cmd = (function()
+          local mason_clangd = vim.fn.stdpath('data') .. '/mason/bin/clangd'
+          local clangd_path = mason_clangd
+          if vim.fn.executable(clangd_path) ~= 1 then
+            clangd_path = vim.fn.exepath('clangd')
+          end
+
+          return {
+            clangd_path,
+            '--enable-config',
+            '--background-index',
+            '--clang-tidy',
+            '--query-driver=**/clang++,**/g++,**/gcc,**/i686-w64-mingw32-g++,**/i686-w64-mingw32-gcc',
+          }
+        end)(),
       },
     }
     for _, server in ipairs(servers) do

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.waybar = {
     enable = true;
     settings = {
@@ -7,7 +8,12 @@
         position = "top";
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right = [ "custom/vrr" "pulseaudio" "battery" "tray" ];
+        modules-right = [
+          "custom/vrr"
+          "pulseaudio"
+          "battery"
+          "tray"
+        ];
 
         "custom/vrr" = {
           exec = "vrr-status";

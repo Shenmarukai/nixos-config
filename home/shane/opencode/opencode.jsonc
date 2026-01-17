@@ -32,6 +32,18 @@
         "github-mcp-server-gh"
       ]
     },
+    //"asana": {
+    //  // https://developers.asana.com/docs/using-asanas-mcp-server
+    //  "type": "local",
+    //  "enabled": false,
+    //  "command": [
+    //    "mcp-proxy",
+    //    "https://mcp.asana.com/sse"
+    //  ],
+    //  "environment": {
+    //    "API_ACCESS_TOKEN": "{file:~/.config/opencode/asana-token}"
+    //  }
+    //},
     "math-mcp": {
       // https://github.com/EthanHenrickson/math-mcp
       "type": "local",
@@ -47,6 +59,20 @@
       "command": [
         "mcp-nixos"
       ]
+    },
+    "local-rag": {
+      // https://github.com/shinpr/mcp-local-rag
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "npx",
+        "-y",
+        "mcp-local-rag@0.5.3"
+      ],
+      "environment": {
+        "DB_PATH": "./.rag/lancedb",
+        "CACHE_DIR": "./.rag/models"
+      }
     },
     "ida-pro": {
       // https://github.com/mrexodia/ida-pro-mcp

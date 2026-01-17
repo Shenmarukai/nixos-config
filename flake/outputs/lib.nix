@@ -14,12 +14,21 @@ let
     overlayDefault
   ];
 
-  pkgsFor = system:
+  pkgsFor =
+    system:
     import inputs.nixpkgs {
       inherit system;
       overlays = overlayList;
     };
 in
 {
-  inherit lib systems forEachSystem pkgsFor overlayDefault overlayIdaProSetup overlayList;
+  inherit
+    lib
+    systems
+    forEachSystem
+    pkgsFor
+    overlayDefault
+    overlayIdaProSetup
+    overlayList
+    ;
 }

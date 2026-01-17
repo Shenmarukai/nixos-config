@@ -1,6 +1,16 @@
-args@{ forEachSystem, pkgsFor, inputs, self, ... }:
+args@{
+  forEachSystem,
+  pkgsFor,
+  inputs,
+  self,
+  ...
+}:
 {
-  packages = forEachSystem (system:
-    let pkgs = pkgsFor system;
-    in import (self + "/pkgs") { inherit pkgs inputs; });
+  packages = forEachSystem (
+    system:
+    let
+      pkgs = pkgsFor system;
+    in
+    import (self + "/pkgs") { inherit pkgs inputs; }
+  );
 }

@@ -9,7 +9,8 @@ let
       exec ${upstreamLauncher}/bin/hytale-launcher "$@"
     '';
   };
-in {
+in
+{
   home.packages = [
     hytaleLauncherWrapped
   ];

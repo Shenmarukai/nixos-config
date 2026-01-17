@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     ../hardware/shane-desktop-hardware.nix
 
@@ -46,10 +52,22 @@
         deviceId = "VID:3314/PID:41218/SN:6243168001/PATH:5-10:1.1";
         syncRgb = true;
         channels = [
-          { mode = "PWM"; speed = 50; }
-          { mode = "PWM"; speed = 50; }
-          { mode = "PWM"; speed = 50; }
-          { mode = "PWM"; speed = 50; }
+          {
+            mode = "PWM";
+            speed = 50;
+          }
+          {
+            mode = "PWM";
+            speed = 50;
+          }
+          {
+            mode = "PWM";
+            speed = 50;
+          }
+          {
+            mode = "PWM";
+            speed = 50;
+          }
         ];
       }
     ];

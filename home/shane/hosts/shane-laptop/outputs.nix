@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   wayland.windowManager.sway.extraConfig = ''
     # Internal 4K laptop panel
     output eDP-1 mode 3840x2160@60.000Hz

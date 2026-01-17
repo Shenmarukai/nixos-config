@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.pipewire.wireplumber.extraConfig."force-x2u-default-source" = {
     "monitor.alsa.rules" = [
       {

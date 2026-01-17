@@ -104,11 +104,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768346273,
-        "narHash": "sha256-1q+vzqjnjj6/uZm6RTZnjoOGsiA/OFVMvn9UaIaLeHk=",
+        "lastModified": 1768587205,
+        "narHash": "sha256-v7ah2f3jcQPRRYojiR9doCEySmEVjcxPP0xWqH0r0GM=",
         "owner": "JPyke3",
         "repo": "hytale-launcher-nix",
-        "rev": "226c36b20aa9450193241133735af51b1c43bfad",
+        "rev": "7aed53c28c134a8a8454217cebdb15035533f50d",
         "type": "github"
       },
       "original": {
@@ -230,17 +230,33 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1768305791,
-        "narHash": "sha256-AIdl6WAn9aymeaH/NvBj0H9qM+XuAuYbGMZaP0zcXAQ=",
+        "lastModified": 1768564909,
+        "narHash": "sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1412caf7bf9e660f2f962917c14b1ea1c3bc695e",
+        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
         "ref": "nixos-unstable",
         "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1768395095,
+        "narHash": "sha256-ZhuYJbwbZT32QA95tSkXd9zXHcdZj90EzHpEXBMabaw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "13868c071cc73a5e9f610c47d7bb08e5da64fdd5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixvim": {
@@ -292,21 +308,19 @@
     },
     "opencode": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1768444447,
-        "narHash": "sha256-8ykONBWMiq9EACHOsdx1AFPoj53Tsxi3EbUDVciH5Ok=",
-        "owner": "sst",
+        "lastModified": 1768514474,
+        "narHash": "sha256-cvz4HO5vNwA3zWx7zdVfs59Z7vD/00+MMCDbLU5WKpM=",
+        "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "99a1e73fa1bd5c92c02abd8a20b0e274d5b0d214",
+        "rev": "df8e6e601416363b7b620f953ec9b2f1b59ba11a",
         "type": "github"
       },
       "original": {
-        "owner": "sst",
-        "ref": "v1.1.21",
+        "owner": "anomalyco",
+        "ref": "v1.1.23",
         "repo": "opencode",
         "type": "github"
       }

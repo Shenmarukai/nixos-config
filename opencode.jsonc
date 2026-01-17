@@ -5,6 +5,10 @@
     "nixos": {
       // https://github.com/utensils/mcp-nixos
       "enabled": true
+    },
+    "local-rag": {
+      // https://github.com/shinpr/mcp-local-rag
+      "enabled": true
     }
   }
 }

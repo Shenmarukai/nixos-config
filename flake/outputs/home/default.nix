@@ -1,6 +1,13 @@
-args@{ home-manager, pkgsFor, inputs, self, ... }:
+args@{
+  home-manager,
+  pkgsFor,
+  inputs,
+  self,
+  ...
+}:
 let
-  mkHome = host:
+  mkHome =
+    host:
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsFor "x86_64-linux";
       extraSpecialArgs = { inherit inputs; };

@@ -71,7 +71,10 @@ let
 
     format = "pyproject";
     nativeBuildInputs = [ py311.setuptools ];
-    propagatedBuildInputs = [ idaproPkg py311.tomli-w ];
+    propagatedBuildInputs = [
+      idaproPkg
+      py311.tomli-w
+    ];
 
     meta = with prev.lib; {
       description = "AI-powered reverse engineering assistant for IDA Pro via MCP";
@@ -80,7 +83,8 @@ let
       platforms = platforms.linux;
     };
   };
-in {
+in
+{
   idapro = idaproPkg;
   ida-pro-mcp = idaProMcpPkg;
   math-mcp = mathMcpPkg;
@@ -118,7 +122,10 @@ in {
     ];
 
     nativeBuildInputs = [ prev.pkg-config ];
-    buildInputs = [ prev.hidapi prev.libusb1 ];
+    buildInputs = [
+      prev.hidapi
+      prev.libusb1
+    ];
 
     meta = with prev.lib; {
       description = "Synchronization tool for Lian Li Uni controllers";

@@ -1,8 +1,11 @@
 args@{ forEachSystem, pkgsFor, ... }:
 {
-  devShells = forEachSystem (system:
-    let pkgs = pkgsFor system;
-    in {
+  devShells = forEachSystem (
+    system:
+    let
+      pkgs = pkgsFor system;
+    in
+    {
       default = pkgs.mkShell {
         packages = with pkgs; [
           git
@@ -11,5 +14,6 @@ args@{ forEachSystem, pkgsFor, ... }:
           nixfmt-rfc-style
         ];
       };
-    });
+    }
+  );
 }

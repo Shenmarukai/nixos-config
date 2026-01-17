@@ -2,7 +2,8 @@
 
 let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in {
+in
+{
   home.packages = [
     unstable.imhex
   ];

@@ -9,8 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:sst/opencode?ref=v1.1.21";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:anomalyco/opencode?ref=v1.1.23";
     };
     mcp-nixos = {
       url = "github:utensils/mcp-nixos";
@@ -34,7 +33,8 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     let
       outputsModule = import ./flake/outputs/lib.nix;
       mkOutputs = import ./flake/outputs/default.nix;

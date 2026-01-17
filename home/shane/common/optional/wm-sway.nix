@@ -29,8 +29,12 @@ let
       --bs-hl-color f38ba8
   '';
   lockCommand = "${lockScript}/bin/lock-screen";
-in {
-  home.packages = with pkgs; [ swaylock-effects swayidle ];
+in
+{
+  home.packages = with pkgs; [
+    swaylock-effects
+    swayidle
+  ];
 
   services.swayidle = {
     enable = true;

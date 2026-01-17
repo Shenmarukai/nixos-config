@@ -11,12 +11,15 @@ let
     cd "$IDADIR"
     ${python3}/bin/python ${setupScript} --oneshot --name "shane"
   '';
-in {
+in
+{
   ida-pro = prev.ida-pro.overrideAttrs (old: {
-    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ python3 ];
-    postInstall = lib.concatStringsSep "\n" (lib.filter (s: s != "") [
-      (old.postInstall or "")
-      appendPostInstall
-    ]);
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ python3 ];
+    postInstall = lib.concatStringsSep "\n" (
+      lib.filter (s: s != "") [
+        (old.postInstall or "")
+        appendPostInstall
+      ]
+    );
   });
 }

@@ -1,7 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   users.users.shane = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+    extraGroups = [
+      "wheel"
+      "video"
+    ];
     packages = with pkgs; [ tree ];
   };
 

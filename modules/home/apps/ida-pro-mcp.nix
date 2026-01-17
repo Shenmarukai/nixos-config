@@ -5,7 +5,8 @@ let
   baseDir = "${pkgs.ida-pro-mcp}/${pythonSitePackages}/ida_pro_mcp";
   pluginDir = "${baseDir}/ida_mcp";
   loaderPath = "${baseDir}/ida_mcp.py";
-in {
+in
+{
   home.packages = [
     pkgs.ida-pro-mcp
   ];

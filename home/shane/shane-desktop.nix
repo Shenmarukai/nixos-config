@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   home.username = "shane";
   home.homeDirectory = "/home/shane";
   home.stateVersion = "25.11";
@@ -33,8 +39,8 @@
     ../../modules/home/apps/tmux.nix
     ../../modules/home/apps/hytale-launcher.nix
     ../../modules/home/apps/prismlauncher.nix
- 
-     ../../modules/home/dev/rust-analyzer.nix
+
+    ../../modules/home/dev/rust-analyzer.nix
 
     ../../modules/home/dev/rust-toolchain.nix
     ../../modules/home/dev/gopls.nix

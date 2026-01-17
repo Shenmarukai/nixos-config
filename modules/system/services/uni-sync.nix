@@ -1,41 +1,53 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.services.uniSync;
 
-  channelOptions = { ... }: {
-    options = {
-      mode = lib.mkOption {
-        type = lib.types.enum [ "Manual" "PWM" ];
-        description = "Channel control mode.";
-      };
+  channelOptions =
+    { ... }:
+    {
+      options = {
+        mode = lib.mkOption {
+          type = lib.types.enum [
+            "Manual"
+            "PWM"
+          ];
+          description = "Channel control mode.";
+        };
 
-      speed = lib.mkOption {
-        type = lib.types.int;
-        description = "Fan speed percentage (1-100).";
+        speed = lib.mkOption {
+          type = lib.types.int;
+          description = "Fan speed percentage (1-100).";
+        };
       };
     };
-  };
 
-  deviceOptions = { ... }: {
-    options = {
-      deviceId = lib.mkOption {
-        type = lib.types.str;
-        description = "Identifier emitted by uni-sync for the controller.";
-      };
+  deviceOptions =
+    { ... }:
+    {
+      options = {
+        deviceId = lib.mkOption {
+          type = lib.types.str;
+          description = "Identifier emitted by uni-sync for the controller.";
+        };
 
-      syncRgb = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to mirror motherboard ARGB output.";
-      };
+        syncRgb = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Whether to mirror motherboard ARGB output.";
+        };
 
-      channels = lib.mkOption {
-        type = lib.types.listOf (lib.types.submodule channelOptions);
-        description = "Per-channel fan configuration.";
+        channels = lib.mkOption {
+          type = lib.types.listOf (lib.types.submodule channelOptions);
+          description = "Per-channel fan configuration.";
+        };
       };
     };
-  };
 
   configPayload = {
     configs = map (deviceCfg: {

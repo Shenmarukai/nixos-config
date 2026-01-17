@@ -1,13 +1,26 @@
 { config, pkgs, ... }:
 
 let
-  buildPlugin = { pname, owner, repo, rev, sha256
-                 , dependencies ? [ ], doCheck ? true }:
+  buildPlugin =
+    {
+      pname,
+      owner,
+      repo,
+      rev,
+      sha256,
+      dependencies ? [ ],
+      doCheck ? true,
+    }:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname;
       version = rev;
       src = pkgs.fetchFromGitHub {
-        inherit owner repo rev sha256;
+        inherit
+          owner
+          repo
+          rev
+          sha256
+          ;
       };
       inherit dependencies doCheck;
     };
@@ -114,6 +127,10 @@ let
       command = "${pkgs.biome}/bin/biome";
     }
     {
+      masonName = "clangd";
+      command = "${pkgs.llvmPackages.clang-tools}/bin/clangd";
+    }
+    {
       masonName = "csharp-language-server";
       command = "${pkgs.csharp-ls}/bin/csharp-ls";
     }
@@ -124,25 +141,28 @@ let
   ];
 
   masonDataFiles =
-    builtins.listToAttrs (map (pkg: {
-      name = "nvim/mason/bin/" + pkg.masonName;
-      value = {
-        executable = true;
-        force = true;
-        text = ''
-          #!/usr/bin/env bash
-          exec ${pkg.command} "$@"
-        '';
-      };
-    }) masonPackages)
-    //
-    builtins.listToAttrs (map (pkg: {
-      name = "nvim/mason/packages/" + pkg.masonName + "/.nix-managed";
-      value = {
-        force = true;
-        text = "";
-      };
-    }) masonPackages);
+    builtins.listToAttrs (
+      map (pkg: {
+        name = "nvim/mason/bin/" + pkg.masonName;
+        value = {
+          executable = true;
+          force = true;
+          text = ''
+            #!/usr/bin/env bash
+            exec ${pkg.command} "$@"
+          '';
+        };
+      }) masonPackages
+    )
+    // builtins.listToAttrs (
+      map (pkg: {
+        name = "nvim/mason/packages/" + pkg.masonName + "/.nix-managed";
+        value = {
+          force = true;
+          text = "";
+        };
+      }) masonPackages
+    );
 
   luaConfig = ''
     require('shenmarukai')
@@ -150,6 +170,11 @@ let
 
 in
 {
+
+  home.packages = [
+    pkgs.llvmPackages.clang-unwrapped
+    pkgs.pkgsCross.mingw32.stdenv.cc
+  ];
 
   programs.nixvim = {
     enable = true;
@@ -216,32 +241,144 @@ in
     };
 
     keymaps = [
-      { mode = "n"; key = "<leader>pv"; action = "<cmd>Ex<CR>"; options.silent = true; }
-      { mode = "v"; key = "J"; action = ":m '>+1<CR>gv=gv"; }
-      { mode = "v"; key = "K"; action = ":m '<-2<CR>gv=gv"; }
-      { mode = "n"; key = "J"; action = "mzJ`z"; }
-      { mode = "n"; key = "<C-d>"; action = "<C-d>zz"; }
-      { mode = "n"; key = "<C-u>"; action = "<C-u>zz"; }
-      { mode = "n"; key = "n"; action = "nzzzv"; }
-      { mode = "n"; key = "N"; action = "Nzzzv"; }
-      { mode = "n"; key = "=ap"; action = "ma=ap'a"; }
-      { mode = "n"; key = "<leader>zig"; action = "<cmd>LspRestart<CR>"; }
-      { mode = "x"; key = "<leader>p"; action = ''"_dP''; }
-      { mode = [ "n" "v" ]; key = "<leader>y"; action = ''"+y''; }
-      { mode = "n"; key = "<leader>Y"; action = ''"+Y''; }
-      { mode = [ "n" "v" ]; key = "<leader>d"; action = ''"_d''; }
-      { mode = "i"; key = "<C-c>"; action = "<Esc>"; }
-      { mode = "n"; key = "Q"; action = "<nop>"; }
-      { mode = "n"; key = "<C-f>"; action = "<cmd>silent !tmux neww tmux-sessionizer<CR>"; }
-      { mode = "n"; key = "<leader>f"; action = "<cmd>lua vim.lsp.buf.format()<CR>"; }
-      { mode = "n"; key = "<C-k>"; action = "<cmd>cnext<CR>zz"; }
-      { mode = "n"; key = "<C-j>"; action = "<cmd>cprev<CR>zz"; }
-      { mode = "n"; key = "<leader>k"; action = "<cmd>lnext<CR>zz"; }
-      { mode = "n"; key = "<leader>j"; action = "<cmd>lprev<CR>zz"; }
-      { mode = "n"; key = "<leader>s"; action = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>"; }
-      { mode = "n"; key = "<leader>x"; action = "<cmd>!chmod +x %<CR>"; options.silent = true; }
-      { mode = "n"; key = "<leader><leader>"; action = "<cmd>so<CR>"; }
-      { mode = "n"; key = "<leader>u"; action = "<cmd>UndotreeToggle<CR>"; }
+      {
+        mode = "n";
+        key = "<leader>pv";
+        action = "<cmd>Ex<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "v";
+        key = "J";
+        action = ":m '>+1<CR>gv=gv";
+      }
+      {
+        mode = "v";
+        key = "K";
+        action = ":m '<-2<CR>gv=gv";
+      }
+      {
+        mode = "n";
+        key = "J";
+        action = "mzJ`z";
+      }
+      {
+        mode = "n";
+        key = "<C-d>";
+        action = "<C-d>zz";
+      }
+      {
+        mode = "n";
+        key = "<C-u>";
+        action = "<C-u>zz";
+      }
+      {
+        mode = "n";
+        key = "n";
+        action = "nzzzv";
+      }
+      {
+        mode = "n";
+        key = "N";
+        action = "Nzzzv";
+      }
+      {
+        mode = "n";
+        key = "=ap";
+        action = "ma=ap'a";
+      }
+      {
+        mode = "n";
+        key = "<leader>zig";
+        action = "<cmd>LspRestart<CR>";
+      }
+      {
+        mode = "x";
+        key = "<leader>p";
+        action = ''"_dP'';
+      }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>y";
+        action = ''"+y'';
+      }
+      {
+        mode = "n";
+        key = "<leader>Y";
+        action = ''"+Y'';
+      }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>d";
+        action = ''"_d'';
+      }
+      {
+        mode = "i";
+        key = "<C-c>";
+        action = "<Esc>";
+      }
+      {
+        mode = "n";
+        key = "Q";
+        action = "<nop>";
+      }
+      {
+        mode = "n";
+        key = "<C-f>";
+        action = "<cmd>silent !tmux neww tmux-sessionizer<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>f";
+        action = "<cmd>lua vim.lsp.buf.format()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-k>";
+        action = "<cmd>cnext<CR>zz";
+      }
+      {
+        mode = "n";
+        key = "<C-j>";
+        action = "<cmd>cprev<CR>zz";
+      }
+      {
+        mode = "n";
+        key = "<leader>k";
+        action = "<cmd>lnext<CR>zz";
+      }
+      {
+        mode = "n";
+        key = "<leader>j";
+        action = "<cmd>lprev<CR>zz";
+      }
+      {
+        mode = "n";
+        key = "<leader>s";
+        action = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
+      }
+      {
+        mode = "n";
+        key = "<leader>x";
+        action = "<cmd>!chmod +x %<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "<leader><leader>";
+        action = "<cmd>so<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>u";
+        action = "<cmd>UndotreeToggle<CR>";
+      }
     ];
 
     extraPlugins =
@@ -305,16 +442,16 @@ in
         yazi-nvim
         zen-mode-nvim
         luasnip
-      ]) ++ [
-    customPlugins.gp-nvim
-    customPlugins.reticle-nvim
-    customPlugins.php-nvim
-    customPlugins.idascope
-    customPlugins.jai-vim
-    customPlugins.mason-nvim-lint
-    customPlugins.vim-with-me
-  ];
-
+      ])
+      ++ [
+        customPlugins.gp-nvim
+        customPlugins.reticle-nvim
+        customPlugins.php-nvim
+        customPlugins.idascope
+        customPlugins.jai-vim
+        customPlugins.mason-nvim-lint
+        customPlugins.vim-with-me
+      ];
 
     extraConfigLuaPost = luaConfig;
   };
@@ -327,36 +464,53 @@ in
     "nvim/lua/shenmarukai/plugins/colors.lua".source = ../../neovim/lua/shenmarukai/plugins/colors.lua;
     "nvim/lua/shenmarukai/plugins/cloak.lua".source = ../../neovim/lua/shenmarukai/plugins/cloak.lua;
     "nvim/lua/shenmarukai/plugins/barbar.lua".source = ../../neovim/lua/shenmarukai/plugins/barbar.lua;
-    "nvim/lua/shenmarukai/plugins/copilot.lua".source = ../../neovim/lua/shenmarukai/plugins/copilot.lua;
+    "nvim/lua/shenmarukai/plugins/copilot.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/copilot.lua;
     "nvim/lua/shenmarukai/plugins/crates.lua".source = ../../neovim/lua/shenmarukai/plugins/crates.lua;
     "nvim/lua/shenmarukai/plugins/tree.lua".source = ../../neovim/lua/shenmarukai/plugins/tree.lua;
-    "nvim/lua/shenmarukai/plugins/lualine.lua".source = ../../neovim/lua/shenmarukai/plugins/lualine.lua;
-    "nvim/lua/shenmarukai/plugins/telescope.lua".source = ../../neovim/lua/shenmarukai/plugins/telescope.lua;
-    "nvim/lua/shenmarukai/plugins/harpoon.lua".source = ../../neovim/lua/shenmarukai/plugins/harpoon.lua;
-    "nvim/lua/shenmarukai/plugins/fugitive.lua".source = ../../neovim/lua/shenmarukai/plugins/fugitive.lua;
+    "nvim/lua/shenmarukai/plugins/lualine.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/lualine.lua;
+    "nvim/lua/shenmarukai/plugins/telescope.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/telescope.lua;
+    "nvim/lua/shenmarukai/plugins/harpoon.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/harpoon.lua;
+    "nvim/lua/shenmarukai/plugins/fugitive.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/fugitive.lua;
     "nvim/lua/shenmarukai/plugins/gh.lua".source = ../../neovim/lua/shenmarukai/plugins/gh.lua;
     "nvim/lua/shenmarukai/plugins/gp.lua".source = ../../neovim/lua/shenmarukai/plugins/gp.lua;
-    "nvim/lua/shenmarukai/plugins/idascope.lua".source = ../../neovim/lua/shenmarukai/plugins/idascope.lua;
-    "nvim/lua/shenmarukai/plugins/luasnip.lua".source = ../../neovim/lua/shenmarukai/plugins/luasnip.lua;
+    "nvim/lua/shenmarukai/plugins/idascope.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/idascope.lua;
+    "nvim/lua/shenmarukai/plugins/luasnip.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/luasnip.lua;
     "nvim/lua/shenmarukai/plugins/dap.lua".source = ../../neovim/lua/shenmarukai/plugins/dap.lua;
     "nvim/lua/shenmarukai/plugins/lsp.lua".source = ../../neovim/lua/shenmarukai/plugins/lsp.lua;
     "nvim/lua/shenmarukai/plugins/lint.lua".source = ../../neovim/lua/shenmarukai/plugins/lint.lua;
-    "nvim/lua/shenmarukai/plugins/treesitter.lua".source = ../../neovim/lua/shenmarukai/plugins/treesitter.lua;
-    "nvim/lua/shenmarukai/plugins/rainbow.lua".source = ../../neovim/lua/shenmarukai/plugins/rainbow.lua;
+    "nvim/lua/shenmarukai/plugins/treesitter.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/treesitter.lua;
+    "nvim/lua/shenmarukai/plugins/rainbow.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/rainbow.lua;
     "nvim/lua/shenmarukai/plugins/render.lua".source = ../../neovim/lua/shenmarukai/plugins/render.lua;
-    "nvim/lua/shenmarukai/plugins/reticle.lua".source = ../../neovim/lua/shenmarukai/plugins/reticle.lua;
+    "nvim/lua/shenmarukai/plugins/reticle.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/reticle.lua;
     "nvim/lua/shenmarukai/plugins/peek.lua".source = ../../neovim/lua/shenmarukai/plugins/peek.lua;
     "nvim/lua/shenmarukai/plugins/yazi.lua".source = ../../neovim/lua/shenmarukai/plugins/yazi.lua;
-    "nvim/lua/shenmarukai/plugins/trouble.lua".source = ../../neovim/lua/shenmarukai/plugins/trouble.lua;
-    "nvim/lua/shenmarukai/plugins/twilight.lua".source = ../../neovim/lua/shenmarukai/plugins/twilight.lua;
+    "nvim/lua/shenmarukai/plugins/trouble.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/trouble.lua;
+    "nvim/lua/shenmarukai/plugins/twilight.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/twilight.lua;
     "nvim/lua/shenmarukai/plugins/zen.lua".source = ../../neovim/lua/shenmarukai/plugins/zen.lua;
-    "nvim/lua/shenmarukai/plugins/whichkey.lua".source = ../../neovim/lua/shenmarukai/plugins/whichkey.lua;
+    "nvim/lua/shenmarukai/plugins/whichkey.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/whichkey.lua;
     "nvim/lua/shenmarukai/plugins/neogit.lua".source = ../../neovim/lua/shenmarukai/plugins/neogit.lua;
-    "nvim/lua/shenmarukai/plugins/neoscroll.lua".source = ../../neovim/lua/shenmarukai/plugins/neoscroll.lua;
-    "nvim/lua/shenmarukai/plugins/undotree.lua".source = ../../neovim/lua/shenmarukai/plugins/undotree.lua;
+    "nvim/lua/shenmarukai/plugins/neoscroll.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/neoscroll.lua;
+    "nvim/lua/shenmarukai/plugins/undotree.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/undotree.lua;
     "nvim/lua/shenmarukai/plugins/snacks.lua".source = ../../neovim/lua/shenmarukai/plugins/snacks.lua;
-    "nvim/lua/shenmarukai/plugins/opencode.lua".source = ../../neovim/lua/shenmarukai/plugins/opencode.lua;
-    "nvim/lua/shenmarukai/plugins/neotest.lua".source = ../../neovim/lua/shenmarukai/plugins/neotest.lua;
+    "nvim/lua/shenmarukai/plugins/opencode.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/opencode.lua;
+    "nvim/lua/shenmarukai/plugins/neotest.lua".source =
+      ../../neovim/lua/shenmarukai/plugins/neotest.lua;
   };
 
   xdg.dataFile = masonDataFiles;

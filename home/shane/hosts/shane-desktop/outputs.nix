@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   wayland.windowManager.sway.extraConfig = ''
     # Desktop triple-monitor layout
     output DP-3 mode 7680x2160@119.997Hz

@@ -1,6 +1,14 @@
-args@{ lib, overlayList, home-manager, inputs, self, ... }:
+args@{
+  lib,
+  overlayList,
+  home-manager,
+  inputs,
+  self,
+  ...
+}:
 let
-  mkHost = { host, homeModule }:
+  mkHost =
+    { host, homeModule }:
     lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [

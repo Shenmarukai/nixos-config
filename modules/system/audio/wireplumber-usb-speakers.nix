@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.pipewire.wireplumber.extraConfig."force-usb-speakers-default-sink" = {
     "monitor.alsa.rules" = [
       {
