@@ -174,7 +174,13 @@ in
   home.packages = [
     pkgs.llvmPackages.clang-unwrapped
     pkgs.pkgsCross.mingw32.stdenv.cc
+    pkgs.pkgsCross.mingw32.windows.mcfgthreads.dev
   ];
+
+  home.file.".local/include/mcfgthread" = {
+    source = "${pkgs.pkgsCross.mingw32.windows.mcfgthreads.dev}/include/mcfgthread";
+    recursive = true;
+  };
 
   programs.nixvim = {
     enable = true;

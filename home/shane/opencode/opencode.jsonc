@@ -60,6 +60,20 @@
         "mcp-nixos"
       ]
     },
+    "global-rag": {
+      // https://github.com/shinpr/mcp-local-rag
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "npx",
+        "-y",
+        "mcp-local-rag@0.5.3"
+      ],
+      "environment": {
+        "DB_PATH": "~/.cache/opencode/rag/lancedb",
+        "CACHE_DIR": "~/.cache/opencode/rag/models"
+      }
+    },
     "local-rag": {
       // https://github.com/shinpr/mcp-local-rag
       "type": "local",
