@@ -9,6 +9,10 @@
     "local-rag": {
       // https://github.com/shinpr/mcp-local-rag
       "enabled": true
+    },
+    "github-read-only": {
+      // https://github.com/github/github-mcp-server
+      "enabled": true,
     }
   }
 }

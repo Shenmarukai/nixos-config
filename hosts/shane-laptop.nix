@@ -26,6 +26,7 @@
     ../modules/system/packages/cli-tools.nix
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/apps/appimage.nix
+    ../modules/system/apps/docker-rootless.nix
     ../modules/system/apps/lmstudio.nix
 
     ../modules/system/services/dconf.nix
