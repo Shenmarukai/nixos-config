@@ -51,28 +51,28 @@ in
 
   xdg.configFile."opencode/opencode.jsonc".source = ../../../home/shane/opencode/opencode.jsonc;
 
-  xdg.configFile."opencode/agent" = {
-    source = ../../../home/shane/opencode/agent;
+  xdg.configFile."opencode/agents" = {
+    source = ../../../home/shane/opencode/agents;
     recursive = true;
   };
 
-  xdg.configFile."opencode/prompt" = {
-    source = ../../../home/shane/opencode/prompt;
+  xdg.configFile."opencode/prompts" = {
+    source = ../../../home/shane/opencode/prompts;
     recursive = true;
   };
 
-  xdg.configFile."opencode/command" = {
-    source = ../../../home/shane/opencode/command;
+  xdg.configFile."opencode/commands" = {
+    source = ../../../home/shane/opencode/commands;
     recursive = true;
   };
 
-  xdg.configFile."opencode/tool" = {
-    source = ../../../home/shane/opencode/tool;
+  xdg.configFile."opencode/tools" = {
+    source = ../../../home/shane/opencode/tools;
     recursive = true;
   };
 
-  xdg.configFile."opencode/skill" = {
-    source = ../../../home/shane/opencode/skill;
+  xdg.configFile."opencode/skills" = {
+    source = ../../../home/shane/opencode/skills;
     recursive = true;
   };
 }

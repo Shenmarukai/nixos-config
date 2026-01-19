@@ -12,6 +12,11 @@
   "permission": {
     "bash": "ask",
     "edit": "ask",
+    "skill": "ask",
+    "skill_find": "ask",
+    "skill_use": "ask",
+    "skill_resource": "ask",
+    "task": "ask",
   },
 
   "mcp": {
@@ -126,6 +131,15 @@
         "baseURL": "http://127.0.0.1:1234/v1"
       },
       "models": {
+        "gpt-oss-20b@q4_k_xl": {
+          "name": "GPT OSS 20b (i4)"
+        },
+        "gpt-oss-20b@q8_k_xl": {
+          "name": "GPT OSS 20b (i8)"
+        },
+        "gpt-oss-20b@f16": {
+          "name": "GPT OSS 20b (f16)"
+        },
         "gpt-oss-120b": {
           "name": "GPT OSS 120b"
         },
