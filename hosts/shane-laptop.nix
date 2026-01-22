@@ -28,6 +28,7 @@
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
     ../modules/system/apps/lmstudio.nix
+    ../modules/system/apps/coolercontrol.nix
 
     ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix

@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.1.23";
+      url = "github:anomalyco/opencode?ref=v1.1.31";
     };
     mcp-nixos = {
       url = "github:utensils/mcp-nixos";

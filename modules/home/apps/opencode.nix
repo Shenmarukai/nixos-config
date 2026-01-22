@@ -12,17 +12,14 @@ let
   };
   opencodePkgs = inputs.opencode.inputs.nixpkgs.legacyPackages.${system};
   opencodeSrc = inputs.opencode;
-  opencodeNodeModules = opencodePkgs.callPackage (opencodeSrc + "/nix/node-modules.nix") {
-    hash = "sha256-Fl1BdjNSg19LJVSgDMiBX8JuTaGlL2I5T+rqLfjSeO4=";
+  opencodeNodeModules = opencodePkgs.callPackage (opencodeSrc + "/nix/node_modules.nix") {
+    rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.rev or "unknown";
+    hash = "sha256-sH6zUk9G4vC6btPZIR9aiSHX0F4aGyUZB7fKbpDUcpE=";
     bunCpu = "x64";
     bunOs = "linux";
   };
-  opencodePackage = opencodePkgs.callPackage (opencodeSrc + "/nix/opencode.nix") { } {
-    version = "1.1.23";
-    src = opencodeSrc;
-    mkNodeModules = opencodeNodeModules;
-    scripts = opencodeSrc + "/nix/scripts";
-    modelsDev = "${opencodePkgs.models-dev}/dist/_api.json";
+  opencodePackage = opencodePkgs.callPackage (opencodeSrc + "/nix/opencode.nix") {
+    node_modules = opencodeNodeModules;
   };
   github-mcp-server-gh = pkgs.writeShellScriptBin "github-mcp-server-gh" ''
     set -euo pipefail
