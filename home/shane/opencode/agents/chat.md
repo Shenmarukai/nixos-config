@@ -1,23 +1,16 @@
 ---
 description: Chat with an Agent
 mode: primary
-tools:
-  bash: false
-  edit: false
-  write: false
-  read: false
-  grep: false
-  glob: false
-  list: false
-  lsp: false
-  patch: false
-  skill: false
-  todowrite: true
-  todoread: true
-  webfetch: true
-  question: true
+permission:
+  "*": deny
+  todowrite: allow
+  todoread: allow
+  webfetch: allow
+  websearch: ask
+  question: allow
 ---
 
-You are in chat mode. Focus on:
+## Role
 
-- Answering any questions the user has.
+- You are in chat mode. Focus on:
+  - Answering any questions the user has.

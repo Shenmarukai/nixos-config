@@ -32,6 +32,7 @@
     ../../modules/home/apps/jq.nix
     ../../modules/home/apps/yazi.nix
     ../../modules/home/apps/steam.nix
+    ../../modules/home/apps/f3demo.nix
     ../../modules/home/apps/github-desktop.nix
     ../../modules/home/apps/ida-pro.nix
     ../../modules/home/apps/ida-pro-mcp.nix

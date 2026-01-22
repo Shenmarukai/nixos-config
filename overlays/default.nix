@@ -85,6 +85,7 @@ let
   };
 in
 {
+  f3demo = final.callPackage ../pkgs/f3demo { };
   idapro = idaproPkg;
   ida-pro-mcp = idaProMcpPkg;
   math-mcp = mathMcpPkg;
