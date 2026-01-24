@@ -1,6 +1,9 @@
 { ... }:
 {
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "nvidia"
+  ];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -10,13 +13,13 @@
     powerManagement.enable = true;
     powerManagement.finegrained = false;
 
-    # GPU modes: keep this module for NVIDIA-only (prime.sync), swap to
-    # prime.offload.{enable,enableOffloadCmd} for Intel primary + NVIDIA offload,
-    # or drop this module + set services.xserver.videoDrivers = [ "intel" ] for Intel-only.
     prime = {
-      sync.enable = true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
+      offload.enable = true;
+      #sync.enable = true;
+
+      intelBusId = "PCI:0@0:2:0";
+      nvidiaBusId = "PCI:1@0:0:0";
+      # amdgpuBusId = "PCI:5@0:0:0"; # If you have an AMD iGPU
     };
   };
 

@@ -132,8 +132,17 @@
         "qwen3-14b": {
           "name": "Qwen3 14b"
         },
-        "qwen3-4b-instruct-2507": {
-          "name": "Qwen3 4b Instruct"
+        "qwen3-4b-instruct-2507@q4_k_xl": {
+          "name": "Qwen3 4b Instruct (i4)"
+        },
+        "qwen3-4b-thinking-2507@q4_k_xl": {
+          "name": "Qwen3 4b Thinking (i4)"
+        },
+        "qwen3-4b-instruct-2507@q8_k_xl": {
+          "name": "Qwen3 4b Instruct (i8)"
+        },
+        "qwen3-4b-thinking-2507@q8_k_xl": {
+          "name": "Qwen3 4b Thinking (i8)"
         },
         "qwen3-30b-a3b-instruct-2507": {
           "name": "Qwen3 30b A3b Instruct"
