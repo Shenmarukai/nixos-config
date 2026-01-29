@@ -4,6 +4,14 @@
   "theme": "catppuccin",
   "autoupdate": false,
 
+  "tui": {
+    "scroll_speed": 3,
+    "scroll_acceleration": {
+      "enabled": false
+    },
+    "diff_style": "auto"
+  },
+
   "compaction": {
     "auto": true,
     "prune": true
@@ -15,6 +23,8 @@
     "skill": "ask",
     "task": "ask"
   },
+
+  "default_agent": "plan",
 
   "mcp": {
     "github-read-only": {
@@ -101,25 +111,14 @@
   },
 
   "plugin": [
-    "opencode-sessions@1.0.0", // https://github.com/malhashemi/opencode-sessions
-    "@mohak34/opencode-notifier@0.1.13", // https://github.com/mohak34/opencode-notifier
+    "opencode-sessions@1.0.0",                    // https://github.com/malhashemi/opencode-sessions
+    "@mohak34/opencode-notifier@0.1.15",          // https://github.com/mohak34/opencode-notifier
     "@ramarivera/opencode-model-announcer@1.0.2", // https://github.com/ramarivera/opencode-model-announcer
-    "@tarquinen/opencode-dcp@1.2.1", // https://github.com/Opencode-DCP/opencode-dynamic-context-pruning
-    //"@openspoon/subtask2@0.2.9", // https://github.com/spoons-and-mirrors/subtask2
-    //"@swarmtools/evals@0.2.29", // https://github.com/joelhooks/swarm-tools
-    //"opencode-websearch-cited@1.2.0", // https://github.com/ghoulr/opencode-websearch-cited
-    //"@franlol/opencode-md-table-formatter@0.0.3", // https://github.com/franlol/opencode-md-table-formatter
-    //"opencode-devcontainers@0.2.0", // https://github.com/athal7/opencode-devcontainers
-    //"opencode-pilot@0.13.0", // https://github.com/athal7/opencode-pilot
-    //"opencode-mystatus@1.2.2" // https://github.com/vbgate/opencode-mystatus
+    "@tarquinen/opencode-dcp@1.2.7",              // https://github.com/Opencode-DCP/opencode-dynamic-context-pruning
+    "@openspoon/subtask2@0.2.10",                 // https://github.com/spoons-and-mirrors/subtask2
+    //"opencode-swarm-plugin@0.60.0",             // https://github.com/joelhooks/swarm-tools
+    "opencode-websearch-cited@1.2.0"              // https://github.com/ghoulr/opencode-websearch-cited
   ],
-
-  //"command": {
-  //  "mystatus": {
-  //    "description": "Query quota usage for all AI accounts",
-  //    "template": "Use the mystatus tool to query quota usage. Return the result as-is without modification."
-  //  }
-  //},
 
   "provider": {
     "lmstudio": {
@@ -129,47 +128,35 @@
         "baseURL": "http://127.0.0.1:1234/v1"
       },
       "models": {
-        "qwen3-14b": {
-          "name": "Qwen3 14b"
+        "qwen3-4b-instruct-2507": {
+          "name": "Qwen3 4b Instruct (q4_k_xl)"
         },
-        "qwen3-4b-instruct-2507@q4_k_xl": {
-          "name": "Qwen3 4b Instruct (i4)"
-        },
-        "qwen3-4b-thinking-2507@q4_k_xl": {
-          "name": "Qwen3 4b Thinking (i4)"
-        },
-        "qwen3-4b-instruct-2507@q8_k_xl": {
-          "name": "Qwen3 4b Instruct (i8)"
-        },
-        "qwen3-4b-thinking-2507@q8_k_xl": {
-          "name": "Qwen3 4b Thinking (i8)"
+        "qwen3-4b-thinking-2507": {
+          "name": "Qwen3 4b Thinking (q4_k_xl)"
         },
         "qwen3-30b-a3b-instruct-2507": {
-          "name": "Qwen3 30b A3b Instruct"
+          "name": "Qwen3 30b A3b Instruct (q4_k_xl)"
         },
         "qwen3-30b-a3b-thinking-2507": {
-          "name": "Qwen3 30b A3b Thinking"
+          "name": "Qwen3 30b A3b Thinking (q4_k_xl)"
         },
         "qwen3-coder-30b-a3b-instruct": {
-          "name": "Qwen3 Coder 30b A3b Instruct"
+          "name": "Qwen3 Coder 30b A3b Instruct (q4_k_xl)"
         },
         "qwen3-coder-30b-a3b-instruct-1m": {
-          "name": "Qwen3 Coder 30b A3b Instruct 1m"
+          "name": "Qwen3 Coder 30b A3b Instruct 1m (q4_k_xl)"
         },
-        "gpt-oss-20b@q4_k_xl": {
-          "name": "GPT OSS 20b (i4)"
+        "glm-4.7-flash": {
+          "name": "GLM 4.7 Flash (q4_k_xl)"
         },
-        "gpt-oss-20b@q8_k_xl": {
-          "name": "GPT OSS 20b (i8)"
-        },
-        "gpt-oss-20b@f16": {
-          "name": "GPT OSS 20b (f16)"
-        },
-        "gpt-oss-120b": {
-          "name": "GPT OSS 120b"
+        "glm-4.7-flash-reap-23b-a3b": {
+          "name": "GLM 4.7 Flash REAP 23b A3b (q4_k_xl)"
         },
         "nemotron-3-nano-30b-a3b": {
-          "name": "Nemotron 3 Nano 30b a3b"
+          "name": "Nemotron 3 Nano 30b A3b (q4_k_xl)"
+        },
+        "gpt-oss-20b": {
+          "name": "GPT OSS 20b (f16)"
         }
       }
     }

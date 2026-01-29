@@ -1,8 +1,12 @@
 ---
-description: Query Nix and NixOS information.
+description: Nix focused Agent.
 mode: primary
+model: lmstudio/qwen3-30b-a3b-instruct-2507
+disable: true
 permission:
   "*": deny
+  task:
+    "nix-*": allow
   bash:
     "nix*": ask
   read:
@@ -24,6 +28,8 @@ permission:
   question: allow
   skill:
     nix: allow
+  discard: ask
+  extract: ask
   "nixos_nix*": allow
   "github-read-only*": ask
 ---

@@ -5,6 +5,7 @@
     extraGroups = [
       "wheel"
       "video"
+      "corectrl"
     ];
     subUidRanges = [
       {
@@ -22,4 +23,8 @@
   };
 
   programs.light.enable = true;
+
+  environment.variables = {
+    IDADIR = "${pkgs.ida-pro}/opt";
+  };
 }

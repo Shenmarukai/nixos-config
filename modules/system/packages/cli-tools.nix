@@ -10,5 +10,7 @@
 
     lm_sensors
     liquidctl
+
+    git-filter-repo
   ];
 }

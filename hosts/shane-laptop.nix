@@ -29,7 +29,9 @@
     ../modules/system/apps/docker-rootless.nix
     ../modules/system/apps/lmstudio.nix
     ../modules/system/apps/coolercontrol.nix
+    ../modules/system/apps/corectrl.nix
 
+    ../modules/system/services/dbus.nix
     ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix
     ../modules/system/services/polkit.nix

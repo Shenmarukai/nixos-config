@@ -1,6 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
 
+  "agent": {
+    "nix": {
+      "disable": false
+    }
+  },
+
   "mcp": {
     "nixos": {
       // https://github.com/utensils/mcp-nixos
@@ -13,6 +19,16 @@
     "github-read-only": {
       // https://github.com/github/github-mcp-server
       "enabled": true,
+    }
+  },
+
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
     }
   }
 }

@@ -1,7 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = [
+    pkgs.openrgb
+  ];
+
   services.hardware.openrgb = {
     enable = true;
-    startupProfile = "default.orp";
+    motherboard = "amd";
+    startupProfile = "catppuccin-blue.orp";
   };
 }

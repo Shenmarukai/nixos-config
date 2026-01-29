@@ -14,7 +14,7 @@ let
   opencodeSrc = inputs.opencode;
   opencodeNodeModules = opencodePkgs.callPackage (opencodeSrc + "/nix/node_modules.nix") {
     rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.rev or "unknown";
-    hash = "sha256-sH6zUk9G4vC6btPZIR9aiSHX0F4aGyUZB7fKbpDUcpE=";
+    hash = "sha256-9oI1gekRbjY6L8VwlkLdPty/9rCxC20EJlESkazEX8Y=";
     bunCpu = "x64";
     bunOs = "linux";
   };
@@ -46,30 +46,8 @@ in
     pkgs.mcp-proxy
   ];
 
-  xdg.configFile."opencode/opencode.jsonc".source = ../../../home/shane/opencode/opencode.jsonc;
-
-  xdg.configFile."opencode/agents" = {
-    source = ../../../home/shane/opencode/agents;
-    recursive = true;
-  };
-
-  xdg.configFile."opencode/prompts" = {
-    source = ../../../home/shane/opencode/prompts;
-    recursive = true;
-  };
-
-  xdg.configFile."opencode/commands" = {
-    source = ../../../home/shane/opencode/commands;
-    recursive = true;
-  };
-
-  xdg.configFile."opencode/tools" = {
-    source = ../../../home/shane/opencode/tools;
-    recursive = true;
-  };
-
-  xdg.configFile."opencode/skills" = {
-    source = ../../../home/shane/opencode/skills;
+  xdg.configFile."opencode" = {
+    source = ../../../home/shane/opencode;
     recursive = true;
   };
 }

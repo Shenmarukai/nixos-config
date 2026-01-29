@@ -1,6 +1,7 @@
 ---
 description: Chat with an Agent
 mode: primary
+model: lmstudio/gpt-oss-20b
 permission:
   "*": deny
   todowrite: allow
@@ -8,6 +9,8 @@ permission:
   webfetch: allow
   websearch: ask
   question: allow
+  discard: ask
+  extract: ask
 ---
 
 ## Role

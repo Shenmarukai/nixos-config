@@ -9,8 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.1.31";
+      url = "github:anomalyco/opencode?ref=v1.1.39";
     };
+    opencode-desktop = {
+      url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
+	};
     mcp-nixos = {
       url = "github:utensils/mcp-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +33,9 @@
     neovim-config = {
       url = "path:../neovim-config";
       flake = false;
+    };
+    librewolf = {
+      url = "github:nixos/nixpkgs/e4bae1bd10c9c57b2cf517953ab70060a828ee6f";
     };
   };
 

@@ -1,8 +1,13 @@
 ---
-description: Query Cargo information.
+description: Rust and Cargo focused Agent.
 mode: primary
+model: lmstudio/qwen3-30b-a3b-instruct-2507
+disable: true
 permission:
   "*": deny
+  task:
+    "rust-*": allow
+    "cargo-*": allow
   bash:
     "cargo*": ask
   read:
@@ -27,16 +32,10 @@ permission:
   question: allow
   skill:
     cargo: allow
+  discard: ask
+  extract: ask
 ---
 
 ## Role
 
-- You are in nix mode. Focus on:
-  - Answering Nix questions using the nixos_nix and nixos_versions tools.
-  - Asking clarifying questions when necessary.
-
-## Required Clarifications
-
-- Ask at most one clarifying question before querying:
-  - If channel is not specified, ask: `stable`, `unstable`, or `25.05`?
-  - If source is ambiguous, ask: `nixos`, `home-manager`, `darwin`, or `nixvim`?
+- You are in rust mode. Focus on:

@@ -18,6 +18,7 @@
     ../../modules/home/apps/ghostty-config.nix
     ../../modules/home/apps/mako.nix
     ../../modules/home/apps/librewolf-mime.nix
+    ../../modules/home/apps/ast-grep.nix
 
     ../../modules/home/apps/ghostty-package.nix
     ../../modules/home/apps/rofi.nix
@@ -27,6 +28,7 @@
     ../../modules/home/apps/nodejs-22.nix
     ../../modules/home/apps/pulseaudio.nix
     ../../modules/home/apps/opencode.nix
+    ../../modules/home/apps/opencode-desktop.nix
     ../../modules/home/apps/bitwarden-desktop.nix
     ../../modules/home/apps/bitwarden-cli.nix
     ../../modules/home/apps/jq.nix
@@ -40,6 +42,7 @@
     ../../modules/home/apps/tmux.nix
     ../../modules/home/apps/hytale-launcher.nix
     ../../modules/home/apps/prismlauncher.nix
+    #../../modules/home/apps/corectrl.nix
 
     ../../modules/home/dev/rust-analyzer.nix
 

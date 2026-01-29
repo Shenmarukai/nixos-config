@@ -27,4 +27,6 @@ in
     pkgs.discord
     krisp-patcher
   ];
+
+  programs.discord.settings.SKIP_HOST_UPDATE = true;
 }
