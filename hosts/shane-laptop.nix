@@ -23,6 +23,8 @@
     ../modules/system/graphics/core.nix
     ../modules/system/graphics/nvidia.nix
 
+    ../modules/system/apps/home-manager.nix
+
     ../modules/system/packages/cli-tools.nix
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/apps/appimage.nix

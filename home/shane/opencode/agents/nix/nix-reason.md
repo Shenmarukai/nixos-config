@@ -30,5 +30,4 @@ permission:
   discard: ask
   extract: ask
   "nixos_nix*": allow
-  "github-read-only*": ask
 ---
