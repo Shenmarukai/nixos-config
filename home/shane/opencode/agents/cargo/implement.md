@@ -1,7 +1,6 @@
 ---
-description: Plan Cargo code.
+description: Implement Cargo code.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
 hidden: true
 permission:
   "*": deny

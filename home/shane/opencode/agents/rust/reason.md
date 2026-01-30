@@ -1,19 +1,19 @@
 ---
-description: Check Nix code.
+description: Reason about Rust information.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
+reasoningEffort: high
+textVerbosity: low
+reasoningSummary: auto
 hidden: true
 permission:
   "*": deny
   bash:
-    "nix-instantiate*": ask
+    "cargo*": ask
   read:
-    "*.nix": allow
-  edit:
-    "*.nix": ask
+    "*.rs": allow
   grep: allow
   glob:
-    "*.nix": allow
+    "*.rs": allow
   list: allow
   lsp: allow
   todowrite: allow
@@ -24,8 +24,6 @@ permission:
   external_directory: ask
   doom_loop: ask
   question: allow
-  skill:
-    nix: allow
   discard: ask
   extract: ask
 ---

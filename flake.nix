@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.1.39";
+      url = "github:anomalyco/opencode?ref=v1.1.42";
     };
     opencode-desktop = {
       url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
@@ -36,6 +36,9 @@
     };
     librewolf = {
       url = "github:nixos/nixpkgs/e4bae1bd10c9c57b2cf517953ab70060a828ee6f";
+    };
+    llama-cpp = {
+      url = "github:ggml-org/llama.cpp?ref=b7875";
     };
   };
 

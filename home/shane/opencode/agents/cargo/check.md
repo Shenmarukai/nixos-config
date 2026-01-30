@@ -1,20 +1,19 @@
 ---
-description: Reason about Rust information.
+description: Check Cargo code.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-thinking-2507
-reasoningEffort: high
-textVerbosity: low
-reasoningSummary: auto
 hidden: true
 permission:
   "*": deny
   bash:
-    "cargo*": ask
+    "cargo check*": ask
   read:
-    "*.rs": allow
+    "Cargo.toml": allow
+    "Cargo.lock": allow
+  edit:
+    "Cargo.toml": ask
   grep: allow
   glob:
-    "*.rs": allow
+    "Cargo.toml": allow
   list: allow
   lsp: allow
   todowrite: allow
@@ -25,6 +24,8 @@ permission:
   external_directory: ask
   doom_loop: ask
   question: allow
+  skill:
+    nix: allow
   discard: ask
   extract: ask
 ---

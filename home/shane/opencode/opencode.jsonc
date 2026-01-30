@@ -111,6 +111,7 @@
   },
 
   "plugin": [
+    "opencode-lmstudio@0.3.0",                    // https://github.com/agustif/opencode-lmstudio
     "opencode-sessions@1.0.0",                    // https://github.com/malhashemi/opencode-sessions
     "@mohak34/opencode-notifier@0.1.15",          // https://github.com/mohak34/opencode-notifier
     "@ramarivera/opencode-model-announcer@1.0.2", // https://github.com/ramarivera/opencode-model-announcer
@@ -126,39 +127,39 @@
       "name": "LM Studio",
       "options": {
         "baseURL": "http://127.0.0.1:1234/v1"
-      },
-      "models": {
-        "qwen3-4b-instruct-2507": {
-          "name": "Qwen3 4b Instruct (q4_k_xl)"
-        },
-        "qwen3-4b-thinking-2507": {
-          "name": "Qwen3 4b Thinking (q4_k_xl)"
-        },
-        "qwen3-30b-a3b-instruct-2507": {
-          "name": "Qwen3 30b A3b Instruct (q4_k_xl)"
-        },
-        "qwen3-30b-a3b-thinking-2507": {
-          "name": "Qwen3 30b A3b Thinking (q4_k_xl)"
-        },
-        "qwen3-coder-30b-a3b-instruct": {
-          "name": "Qwen3 Coder 30b A3b Instruct (q4_k_xl)"
-        },
-        "qwen3-coder-30b-a3b-instruct-1m": {
-          "name": "Qwen3 Coder 30b A3b Instruct 1m (q4_k_xl)"
-        },
-        "glm-4.7-flash": {
-          "name": "GLM 4.7 Flash (q4_k_xl)"
-        },
-        "glm-4.7-flash-reap-23b-a3b": {
-          "name": "GLM 4.7 Flash REAP 23b A3b (q4_k_xl)"
-        },
-        "nemotron-3-nano-30b-a3b": {
-          "name": "Nemotron 3 Nano 30b A3b (q4_k_xl)"
-        },
-        "gpt-oss-20b": {
-          "name": "GPT OSS 20b (f16)"
-        }
       }
+      //"models": {
+      //  "qwen3-4b-instruct-2507": {
+      //    "name": "Qwen3 4b Instruct (q4_k_xl)"
+      //  },
+      //  "qwen3-4b-thinking-2507": {
+      //    "name": "Qwen3 4b Thinking (q4_k_xl)"
+      //  },
+      //  "qwen3-30b-a3b-instruct-2507": {
+      //    "name": "Qwen3 30b A3b Instruct (q4_k_xl)"
+      //  },
+      //  "qwen3-30b-a3b-thinking-2507": {
+      //    "name": "Qwen3 30b A3b Thinking (q4_k_xl)"
+      //  },
+      //  "qwen3-coder-30b-a3b-instruct": {
+      //    "name": "Qwen3 Coder 30b A3b Instruct (q4_k_xl)"
+      //  },
+      //  "qwen3-coder-30b-a3b-instruct-1m": {
+      //    "name": "Qwen3 Coder 30b A3b Instruct 1m (q4_k_xl)"
+      //  },
+      //  "glm-4.7-flash": {
+      //    "name": "GLM 4.7 Flash (q4_k_xl)"
+      //  },
+      //  "glm-4.7-flash-reap-23b-a3b": {
+      //    "name": "GLM 4.7 Flash REAP 23b A3b (q4_k_xl)"
+      //  },
+      //  "nemotron-3-nano-30b-a3b": {
+      //    "name": "Nemotron 3 Nano 30b A3b (q4_k_xl)"
+      //  },
+      //  "gpt-oss-20b": {
+      //    "name": "GPT OSS 20b (f16)"
+      //  }
+      //}
     }
   }
 }

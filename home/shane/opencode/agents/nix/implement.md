@@ -1,19 +1,18 @@
 ---
-description: Implement Rust code.
+description: Implement Nix code.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
 hidden: true
 permission:
   "*": deny
   bash:
-    "cargo*": ask
+    "nix*": ask
   read:
-    "*.rs": allow
+    "*.nix": allow
   edit:
-    "*.rs": ask
+    "*.nix": ask
   grep: allow
   glob:
-    "*.rs": allow
+    "*.nix": allow
   list: allow
   lsp: allow
   todowrite: allow
@@ -24,6 +23,8 @@ permission:
   external_directory: ask
   doom_loop: ask
   question: allow
+  skill:
+    nix: allow
   discard: ask
   extract: ask
 ---

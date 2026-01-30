@@ -1,20 +1,19 @@
 ---
-description: Check Cargo code.
+description: Reason about Nix information.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
+reasoningEffort: high
+textVerbosity: low
+reasoningSummary: auto
 hidden: true
 permission:
   "*": deny
   bash:
-    "cargo check*": ask
+    "nix*": ask
   read:
-    "Cargo.toml": allow
-    "Cargo.lock": allow
-  edit:
-    "Cargo.toml": ask
+    "*.nix": allow
   grep: allow
   glob:
-    "Cargo.toml": allow
+    "*.nix": allow
   list: allow
   lsp: allow
   todowrite: allow
@@ -29,4 +28,5 @@ permission:
     nix: allow
   discard: ask
   extract: ask
+  "nixos_nix*": allow
 ---

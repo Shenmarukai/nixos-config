@@ -1,14 +1,15 @@
 ---
-description: Research Rust information.
+description: Check Rust code.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
 hidden: true
 permission:
   "*": deny
   bash:
-    "cargo*": ask
+    "cargo check*": ask
   read:
     "*.rs": allow
+  edit:
+    "*.rs": ask
   grep: allow
   glob:
     "*.rs": allow

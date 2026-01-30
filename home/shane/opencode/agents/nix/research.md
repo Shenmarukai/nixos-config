@@ -1,7 +1,6 @@
 ---
-description: Plan Nix code.
+description: Research Nix information.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
 hidden: true
 permission:
   "*": deny
@@ -9,8 +8,6 @@ permission:
     "nix*": ask
   read:
     "*.nix": allow
-  edit:
-    "*.nix": ask
   grep: allow
   glob:
     "*.nix": allow
@@ -28,4 +25,5 @@ permission:
     nix: allow
   discard: ask
   extract: ask
+  "nixos_nix*": allow
 ---

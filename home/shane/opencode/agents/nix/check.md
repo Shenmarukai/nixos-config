@@ -1,17 +1,15 @@
 ---
-description: Reason about Nix information.
+description: Check Nix code.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-thinking-2507
-reasoningEffort: high
-textVerbosity: low
-reasoningSummary: auto
 hidden: true
 permission:
   "*": deny
   bash:
-    "nix*": ask
+    "nix-instantiate*": ask
   read:
     "*.nix": allow
+  edit:
+    "*.nix": ask
   grep: allow
   glob:
     "*.nix": allow
@@ -29,5 +27,4 @@ permission:
     nix: allow
   discard: ask
   extract: ask
-  "nixos_nix*": allow
 ---

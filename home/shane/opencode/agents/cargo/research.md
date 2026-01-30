@@ -1,10 +1,6 @@
 ---
-description: Reason about Cargo information.
+description: Research Cargo information.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-thinking-2507
-reasoningEffort: high
-textVerbosity: low
-reasoningSummary: auto
 hidden: true
 permission:
   "*": deny

@@ -1,17 +1,20 @@
 ---
-description: Research Nix information.
+description: Reason about Cargo information.
 mode: subagent
-model: lmstudio/qwen3-30b-a3b-instruct-2507
+reasoningEffort: high
+textVerbosity: low
+reasoningSummary: auto
 hidden: true
 permission:
   "*": deny
   bash:
-    "nix*": ask
+    "cargo*": ask
   read:
-    "*.nix": allow
+    "Cargo.toml": allow
+    "Cargo.lock": allow
   grep: allow
   glob:
-    "*.nix": allow
+    "Cargo.toml": allow
   list: allow
   lsp: allow
   todowrite: allow
@@ -27,4 +30,5 @@ permission:
   discard: ask
   extract: ask
   "nixos_nix*": allow
+  "github-read-only*": ask
 ---
