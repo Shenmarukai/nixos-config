@@ -25,6 +25,6 @@
   programs.light.enable = true;
 
   environment.variables = {
-    IDADIR = "${pkgs.ida-pro}/opt";
+    NIX_IDADIR = "${pkgs.ida-pro}/opt";
   };
 }
