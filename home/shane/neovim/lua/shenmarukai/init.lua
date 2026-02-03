@@ -1,4 +1,5 @@
 local plugins = {
+  '99',
   'colors',
   'cloak',
   'barbar',

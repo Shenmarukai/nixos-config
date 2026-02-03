@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.1.47";
+      url = "github:anomalyco/opencode?ref=v1.1.48";
     };
     opencode-desktop = {
       url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
