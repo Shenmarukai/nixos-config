@@ -9,6 +9,7 @@
     ../hardware/shane-desktop-hardware.nix
 
     ../modules/system/hardware/bluetooth.nix
+    ../modules/system/hardware/usb.nix
 
     ../modules/system/core/nix-core.nix
     ../modules/system/core/boot-efi.nix
@@ -34,7 +35,9 @@
     ../modules/system/apps/openrgb.nix
     ../modules/system/apps/coolercontrol.nix
     ../modules/system/apps/corectrl.nix
+    ../modules/system/apps/parted.nix
 
+    ../modules/system/services/udev.nix
     ../modules/system/services/dbus.nix
     ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix
