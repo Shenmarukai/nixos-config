@@ -28,7 +28,7 @@
     ../../modules/home/apps/nodejs-22.nix
     ../../modules/home/apps/pulseaudio.nix
     ../../modules/home/apps/opencode.nix
-    ../../modules/home/apps/opencode-desktop.nix
+    #../../modules/home/apps/opencode-desktop.nix
     ../../modules/home/apps/bitwarden-desktop.nix
     ../../modules/home/apps/bitwarden-cli.nix
     ../../modules/home/apps/jq.nix
@@ -42,7 +42,8 @@
     ../../modules/home/apps/tmux.nix
     ../../modules/home/apps/hytale-launcher.nix
     ../../modules/home/apps/prismlauncher.nix
-    #../../modules/home/apps/corectrl.nix
+    ../../modules/home/apps/coolercontrol.nix
+    ../../modules/home/apps/corectrl.nix
 
     ../../modules/home/dev/rust-analyzer.nix
 
@@ -50,6 +51,7 @@
     ../../modules/home/dev/gopls.nix
     ../../modules/home/dev/lua-language-server.nix
     ../../modules/home/dev/typescript-language-server.nix
+    ../../modules/home/dev/nil.nix
     ../../modules/home/dev/nixd.nix
     ../../modules/home/dev/csharp-ls.nix
 

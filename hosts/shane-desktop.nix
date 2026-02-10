@@ -33,8 +33,6 @@
     #../modules/system/apps/llama-cpp.nix
     ../modules/system/apps/lmstudio.nix
     ../modules/system/apps/openrgb.nix
-    ../modules/system/apps/coolercontrol.nix
-    ../modules/system/apps/corectrl.nix
     ../modules/system/apps/parted.nix
 
     ../modules/system/services/udev.nix
@@ -47,6 +45,7 @@
     ../modules/system/services/greetd-tuigreet.nix
     ../modules/system/services/uni-sync.nix
     ../modules/system/services/avahi.nix
+    ../modules/system/services/coolercontrol.nix
 
     ../modules/system/apps/steam-hardware.nix
     ../modules/system/apps/steam-remote-play.nix

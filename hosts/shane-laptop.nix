@@ -18,8 +18,8 @@
     ../modules/system/network/networkmanager.nix
 
     ../modules/system/audio/pipewire-core.nix
-    ../modules/system/audio/wireplumber-x2u.nix
-    ../modules/system/audio/wireplumber-usb-speakers.nix
+    ../modules/system/audio/microsoft-usb-link-microphone.nix
+    ../modules/system/audio/microsoft-usb-link-speakers.nix
 
     ../modules/system/graphics/core.nix
     ../modules/system/graphics/nvidia.nix
@@ -32,8 +32,6 @@
     ../modules/system/apps/docker-rootless.nix
     #../modules/system/apps/llama-cpp.nix
     ../modules/system/apps/lmstudio.nix
-    ../modules/system/apps/coolercontrol.nix
-    ../modules/system/apps/corectrl.nix
     ../modules/system/apps/parted.nix
 
     ../modules/system/services/dbus.nix
@@ -43,6 +41,7 @@
     ../modules/system/security/pam-swaylock.nix
     ../modules/system/services/greetd-tuigreet.nix
     ../modules/system/services/avahi.nix
+    ../modules/system/services/coolercontrol.nix
 
     ../modules/system/apps/steam-hardware.nix
     ../modules/system/apps/steam-remote-play.nix

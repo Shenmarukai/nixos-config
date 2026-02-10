@@ -123,6 +123,10 @@ let
       command = "${pkgs.nixd}/bin/nixd";
     }
     {
+      masonName = "nil_ls";
+      command = "${pkgs.nixd}/bin/nil";
+    }
+    {
       masonName = "biome";
       command = "${pkgs.biome}/bin/biome";
     }
