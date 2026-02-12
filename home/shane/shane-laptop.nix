@@ -20,10 +20,12 @@
     ../../modules/home/apps/librewolf-mime.nix
     ../../modules/home/apps/ast-grep.nix
 
+    ../../modules/home/apps/anki.nix
     ../../modules/home/apps/ghostty-package.nix
     ../../modules/home/apps/rofi.nix
     ../../modules/home/apps/discord.nix
     ../../modules/home/apps/librewolf.nix
+    ../../modules/home/apps/ungoogled-chromium.nix
     ../../modules/home/apps/lmstudio.nix
     ../../modules/home/apps/nodejs-22.nix
     ../../modules/home/apps/pulseaudio.nix
@@ -44,6 +46,7 @@
     ../../modules/home/apps/prismlauncher.nix
     ../../modules/home/apps/coolercontrol.nix
     ../../modules/home/apps/corectrl.nix
+    #../../modules/home/apps/baballonia.nix
 
     ../../modules/home/dev/rust-analyzer.nix
 

@@ -26,12 +26,21 @@
 
   "default_agent": "plan",
 
+  "agent": {
+    "plan": {
+      "temperature": 0.3,
+    },
+    "build": {
+      "temperature": 0.3
+    },
+  },
+
   "plugin": [
     "opencode-lmstudio@0.3.0",                    // https://github.com/agustif/opencode-lmstudio
     "opencode-sessions@1.0.0",                    // https://github.com/malhashemi/opencode-sessions
     "@mohak34/opencode-notifier@0.1.15",          // https://github.com/mohak34/opencode-notifier
-    "@tarquinen/opencode-dcp@1.2.7",              // https://github.com/Opencode-DCP/opencode-dynamic-context-pruning
     "@openspoon/subtask2@0.2.10"                  // https://github.com/spoons-and-mirrors/subtask2
+    //"@tarquinen/opencode-dcp@1.2.7",            // https://github.com/Opencode-DCP/opencode-dynamic-context-pruning
     //"@ramarivera/opencode-model-announcer@1.0.2",// https://github.com/ramarivera/opencode-model-announcer
     //"opencode-swarm-plugin@0.60.0",             // https://github.com/joelhooks/swarm-tools
     //"opencode-websearch-cited@1.2.0"            // https://github.com/ghoulr/opencode-websearch-cited
