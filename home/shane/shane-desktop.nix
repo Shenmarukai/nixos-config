@@ -10,6 +10,7 @@
   home.stateVersion = "25.11";
 
   imports = [
+    inputs.catppuccin.homeModules.catppuccin
     inputs.nixvim.homeModules.nixvim
 
     ../../modules/home/apps/bash.nix
@@ -46,6 +47,8 @@
     ../../modules/home/apps/prismlauncher.nix
     ../../modules/home/apps/coolercontrol.nix
     ../../modules/home/apps/corectrl.nix
+    ../../modules/home/apps/obsidian.nix
+    ../../modules/home/apps/spotify.nix # Need to find an alternative because I don't like spotify.
     #../../modules/home/apps/baballonia.nix
 
     ../../modules/home/dev/rust-analyzer.nix
@@ -60,7 +63,8 @@
 
     ../../modules/home/ui/fonts-jetbrainsmono.nix
     ../../modules/home/ui/vrr-status.nix
-    ../../modules/home/ui/dark-theme.nix
+    #../../modules/home/ui/dark-theme.nix
+    ../../modules/home/ui/catppuccin-theme.nix
 
     ./common/optional/wm-sway.nix
     ./common/optional/ui-waybar.nix
