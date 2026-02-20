@@ -26,4 +26,8 @@
   boot.kernelParams = [
     "nvidia_drm.modeset=1"
   ];
+
+  services.xserver.deviceSection = ''
+    Option "Coolbits" "12"
+  '';
 }

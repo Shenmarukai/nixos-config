@@ -1,5 +1,4 @@
 { pkgs, ... }:
 {
-  #home.packages = [ pkgs.pkgs.coolercontrol.coolercontrol-gui ];
-  #programs.coolercontrol.enable = true;
+  home.packages = [ pkgs.coolercontrol.coolercontrol-gui ];
 }

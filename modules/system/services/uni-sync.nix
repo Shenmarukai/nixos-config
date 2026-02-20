@@ -87,6 +87,7 @@ in
       systemd.services.uni-sync = {
         description = "Uni-Sync service";
         wantedBy = [ "multi-user.target" ];
+        before = [ "coolercontrold.service" ];
         after = [ "multi-user.target" ];
         preStart = ''
           install -Dm644 ${configSource} ${runtimeConfigPath}
