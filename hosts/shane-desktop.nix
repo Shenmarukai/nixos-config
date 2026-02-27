@@ -38,6 +38,8 @@
     ../modules/system/apps/corectrl.nix
     ../modules/system/apps/cpupower.nix
     ../modules/system/apps/liquidctl.nix
+    #../modules/system/apps/ssh.nix
+    ../modules/system/apps/sops.nix
 
     ../modules/system/services/udev.nix
     ../modules/system/services/dbus.nix
@@ -49,8 +51,10 @@
     ../modules/system/services/greetd-tuigreet.nix
     ../modules/system/services/uni-sync.nix
     ../modules/system/services/avahi.nix
+    ../modules/system/services/resolved.nix
     ../modules/system/services/coolercontrol.nix
     ../modules/system/services/lact.nix
+    ../modules/system/services/openssh.nix
 
     ../modules/system/apps/steam-hardware.nix
     ../modules/system/apps/steam-remote-play.nix
@@ -85,6 +89,8 @@
       }
     ];
   };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "shane-desktop";
 

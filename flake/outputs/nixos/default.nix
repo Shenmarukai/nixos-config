@@ -2,6 +2,7 @@ args@{
   lib,
   overlayList,
   home-manager,
+  sops-nix,
   inputs,
   self,
   ...
@@ -18,6 +19,7 @@ let
         }
         (self + "/hosts/${host}.nix")
         home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         {
           home-manager = {
             useGlobalPkgs = true;
