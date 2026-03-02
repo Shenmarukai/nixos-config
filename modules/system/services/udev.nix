@@ -1,6 +1,9 @@
 { ... }:
 {
   services.udev.extraRules = ''
+    # Lian Li SL-Infinity Hub
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0cf2", ATTR{idProduct}=="a102", MODE="0666", GROUP="wheel"
+
     # --- Bigscreen Beyond: Main Headset & Control ---
     # Standard HID access for headset tracking and configuration
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0101", MODE="0660", GROUP="wheel"

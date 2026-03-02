@@ -1,0 +1,8 @@
+# .sops.yaml
+keys:
+  - &shane-desktop age1hvlj697lv72dfn9uvmh2zxjmtfdfu7whk7dnr3urmf9wctvc8ulsrwqyns
+
+creation_rules:
+  - path_regex: .secrets/secrets.yaml$
+    key_groups:
+      - age: [ *shane-desktop ]

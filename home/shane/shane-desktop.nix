@@ -49,6 +49,8 @@
     ../../modules/home/apps/corectrl.nix
     ../../modules/home/apps/obsidian.nix
     ../../modules/home/apps/spotify.nix # Need to find an alternative because I don't like spotify.
+    ../../modules/home/apps/lact.nix
+    ../../modules/home/apps/k3s.nix
     #../../modules/home/apps/baballonia.nix
 
     ../../modules/home/dev/rust-analyzer.nix
@@ -65,6 +67,8 @@
     ../../modules/home/ui/vrr-status.nix
     #../../modules/home/ui/dark-theme.nix
     ../../modules/home/ui/catppuccin-theme.nix
+
+    ../../modules/home/services/polkit-agent.nix
 
     ./common/optional/wm-sway.nix
     ./common/optional/ui-waybar.nix

@@ -24,7 +24,10 @@
     "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "msr"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {

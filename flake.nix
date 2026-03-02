@@ -8,11 +8,12 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
     catppuccin = {
       url = "github:catppuccin/nix";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.1.59";
+      url = "github:anomalyco/opencode?ref=v1.2.14";
     };
     #opencode-desktop = {
     #  url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
