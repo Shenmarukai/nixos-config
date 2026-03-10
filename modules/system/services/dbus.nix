@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-  services.dbus.packages = [
-    pkgs.dconf
-    pkgs.corectrl
+  services.dbus.packages = with pkgs; [
+    dconf
+    corectrl
   ];
 
   services.dbus.enable = true;

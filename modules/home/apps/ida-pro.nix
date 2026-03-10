@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.ida-pro
+  home.packages = with pkgs; [
+    ida-pro
   ];
 }

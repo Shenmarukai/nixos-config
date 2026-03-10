@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.pulseaudio ];
+  home.packages = with pkgs; [
+    pulseaudio
+  ];
 }

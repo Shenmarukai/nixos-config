@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.rust-analyzer ];
+  home.packages = with pkgs; [
+    rust-analyzer
+  ];
 }

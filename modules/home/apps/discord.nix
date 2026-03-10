@@ -23,8 +23,9 @@ let
       );
 in
 {
-  home.packages = [
-    pkgs.discord
+  home.packages = (with pkgs; [
+    discord
+  ]) ++ [
     krisp-patcher
   ];
 

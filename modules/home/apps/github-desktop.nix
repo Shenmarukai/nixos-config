@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.github-desktop ];
+  home.packages = with pkgs; [
+    github-desktop
+  ];
 }

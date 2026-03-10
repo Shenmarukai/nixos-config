@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.csharp-ls ];
+  home.packages = with pkgs; [
+    csharp-ls
+  ];
 }

@@ -19,8 +19,12 @@
         count = 65536;
       }
     ];
-    packages = with pkgs; [ tree ];
+    packages = with pkgs; [
+      tree
+    ];
   };
+
+  nix.settings.trusted-users = [ "root" "shane" ];
 
   programs.light.enable = true;
 

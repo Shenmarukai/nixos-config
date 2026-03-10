@@ -39,12 +39,13 @@ in
     opencodePackage
     mcp-nixos
     github-mcp-server-gh
-    pkgs.github-mcp-server
-    pkgs.python3
-    pkgs.units
-    pkgs.math-mcp
-    pkgs.mcp-proxy
-  ];
+  ] ++ (with pkgs; [
+    github-mcp-server
+    python3
+    units
+    math-mcp
+    mcp-proxy
+  ]);
 
   xdg.configFile."opencode" = {
     source = ../../../home/shane/opencode;

@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.lua-language-server ];
+  home.packages = with pkgs; [
+    lua-language-server
+  ];
 }

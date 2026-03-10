@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.lmstudio ];
+  home.packages = with pkgs; [
+    lmstudio
+  ];
 }

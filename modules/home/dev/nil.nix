@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.nil ];
+  home.packages = with pkgs; [
+    nil
+  ];
 }

@@ -4,8 +4,8 @@
 
   services.blueman.enable = true;
 
-  environment.systemPackages = [
-    pkgs.bluez
-    pkgs.bluez-tools
+  environment.systemPackages = with pkgs; [
+    bluez
+    bluez-tools
   ];
 }

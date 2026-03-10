@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.yazi ];
+  home.packages = with pkgs; [
+    yazi
+  ];
 }

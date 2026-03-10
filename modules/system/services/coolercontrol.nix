@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [
-    pkgs.coolercontrol.coolercontrold
+  environment.systemPackages = with pkgs; [
+    coolercontrol.coolercontrold
   ];
 }

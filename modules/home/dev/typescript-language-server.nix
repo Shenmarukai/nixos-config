@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.nodePackages_latest.typescript-language-server ];
+  home.packages = with pkgs; [
+    nodePackages_latest.typescript-language-server
+  ];
 }

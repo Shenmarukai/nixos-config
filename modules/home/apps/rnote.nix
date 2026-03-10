@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    coolercontrol.coolercontrol-gui
+    rnote
   ];
 }

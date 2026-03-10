@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [
-    pkgs.polkit
-    pkgs.kdePackages.polkit-kde-agent-1
-    pkgs.kdePackages.polkit-qt-1
+  environment.systemPackages = with pkgs; [
+    polkit
+    kdePackages.polkit-kde-agent-1
+    kdePackages.polkit-qt-1
   ];
 
   security.polkit.enable = true;

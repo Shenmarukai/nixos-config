@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.liquidctl ];
+  environment.systemPackages = with pkgs; [
+    liquidctl
+  ];
 }

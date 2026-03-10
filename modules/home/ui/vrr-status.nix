@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.vrr-status
+  home.packages = with pkgs; [
+    vrr-status
   ];
 }

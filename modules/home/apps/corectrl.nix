@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.corectrl ];
+  home.packages = with pkgs; [
+    corectrl
+  ];
 }

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [
-    pkgs.usbutils
+  environment.systemPackages = with pkgs; [
+    usbutils
   ];
 }

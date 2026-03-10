@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.kubectl
-    pkgs.kubernetes-helm
-    pkgs.kubectx
-    pkgs.k9s
+  home.packages = with pkgs; [
+    kubectl
+    kubernetes-helm
+    kubectx
+    k9s
   ];
 }

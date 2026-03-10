@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.nodejs_22 ];
+  home.packages = with pkgs; [
+    nodejs_22
+  ];
 }

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [
-    pkgs.openrgb
+  environment.systemPackages = with pkgs; [
+    openrgb
   ];
 
   services.hardware.openrgb = {

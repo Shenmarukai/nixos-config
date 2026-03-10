@@ -28,6 +28,8 @@
 
     ../modules/system/packages/cli-tools.nix
     ../modules/system/packages/wayland-desktop.nix
+    ../modules/system/packages/direnv.nix
+    ../modules/system/packages/devenv.nix
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
     ../modules/system/apps/llama-cpp.nix

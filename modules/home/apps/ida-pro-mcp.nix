@@ -7,8 +7,8 @@ let
   loaderPath = "${baseDir}/ida_mcp.py";
 in
 {
-  home.packages = [
-    pkgs.ida-pro-mcp
+  home.packages = with pkgs; [
+    ida-pro-mcp
   ];
 
   home.file.".idapro/plugins/ida_mcp".source = pluginDir;

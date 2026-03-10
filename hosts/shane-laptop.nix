@@ -18,10 +18,10 @@
     ../modules/system/network/networkmanager.nix
 
     ../modules/system/audio/pipewire-core.nix
-    #../modules/system/audio/microsoft-usb-link-microphone.nix
-    ../modules/system/audio/built-in-analog-stereo-speakers.nix
-    #../modules/system/audio/microsoft-usb-link-speakers.nix
-    ../modules/system/audio/built-in-analog-stereo-microphone.nix
+    ../modules/system/audio/microsoft-usb-link-microphone.nix
+    #../modules/system/audio/built-in-analog-stereo-speakers.nix
+    ../modules/system/audio/microsoft-usb-link-speakers.nix
+    #../modules/system/audio/built-in-analog-stereo-microphone.nix
 
     ../modules/system/graphics/core.nix
     ../modules/system/graphics/nvidia.nix
@@ -30,6 +30,8 @@
 
     ../modules/system/packages/cli-tools.nix
     ../modules/system/packages/wayland-desktop.nix
+    ../modules/system/packages/direnv.nix
+    ../modules/system/packages/devenv.nix
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
     ../modules/system/apps/llama-cpp.nix

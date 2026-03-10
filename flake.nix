@@ -47,6 +47,9 @@
     #baballonia = {
     #  url = "github:Project-Babble/Baballonia?ref=v1.1.0.9HF5";
     #};
+    devenv = {
+      url = "github:domenkozar/nixpkgs?ref=devenv-2.0.3";
+    };
   };
 
   outputs =

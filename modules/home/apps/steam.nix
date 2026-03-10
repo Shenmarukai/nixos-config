@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.steam
+  home.packages = with pkgs; [
+    steam
   ];
 }

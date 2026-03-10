@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.baballonia ];
+  home.packages = with pkgs; [
+    baballonia
+  ];
 
   xdg.desktopEntries.baballonia = {
     name = "Baballonia";
