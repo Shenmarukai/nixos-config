@@ -21,6 +21,7 @@
     ../../modules/home/apps/librewolf-mime.nix
     ../../modules/home/apps/ast-grep.nix
 
+    ../../modules/home/apps/zsh.nix
     ../../modules/home/apps/anki.nix
     ../../modules/home/apps/ghostty-package.nix
     ../../modules/home/apps/rofi.nix

@@ -13,7 +13,7 @@
       url = "github:catppuccin/nix";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.2.14";
+      url = "github:anomalyco/opencode?ref=v1.2.24";
     };
     #opencode-desktop = {
     #  url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
@@ -48,7 +48,8 @@
     #  url = "github:Project-Babble/Baballonia?ref=v1.1.0.9HF5";
     #};
     devenv = {
-      url = "github:domenkozar/nixpkgs?ref=devenv-2.0.3";
+      url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
+      #url = "github:domenkozar/nixpkgs?ref=devenv-2.0.3";
     };
   };
 

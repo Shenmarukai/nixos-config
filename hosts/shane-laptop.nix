@@ -32,10 +32,11 @@
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/packages/direnv.nix
     ../modules/system/packages/devenv.nix
+    ../modules/system/apps/zsh.nix
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
     ../modules/system/apps/llama-cpp.nix
-    ../modules/system/apps/lmstudio.nix
+    #../modules/system/apps/lmstudio.nix
     ../modules/system/apps/parted.nix
     ../modules/system/apps/coolercontrol.nix
     ../modules/system/apps/corectrl.nix
@@ -59,6 +60,7 @@
     ../modules/system/apps/steam-hardware.nix
     ../modules/system/apps/steam-remote-play.nix
 
+    ../modules/system/users/users.nix
     ../modules/system/users/shane.nix
   ];
 

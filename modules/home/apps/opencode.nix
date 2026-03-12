@@ -14,7 +14,7 @@ let
   opencodeSrc = inputs.opencode;
   opencodeNodeModules = opencodePkgs.callPackage (opencodeSrc + "/nix/node_modules.nix") {
     rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.rev or "unknown";
-    hash = "sha256-3hfy6nfEnGq4J6inH0pXANw05oas+81iuayn7J0pj9c=";
+    hash = "sha256-4kjoJ06VNvHltPHfzQRBG0bC6R39jao10ffGzrNZ230=";
     #bunCpu = "x64";
     #bunOs = "linux";
   };

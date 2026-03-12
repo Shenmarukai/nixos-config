@@ -22,6 +22,7 @@
     packages = with pkgs; [
       tree
     ];
+    shell = pkgs.zsh;
   };
 
   nix.settings.trusted-users = [ "root" "shane" ];
