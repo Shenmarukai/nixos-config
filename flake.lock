@@ -36,11 +36,11 @@
     },
     "devenv": {
       "locked": {
-        "lastModified": 1773335833,
-        "narHash": "sha256-2kzOKHiiVmdBg7mpUzU+GIund0WKosxqYRtRV992N2s=",
-        "owner": "Shenmarukai",
+        "lastModified": 1773706125,
+        "narHash": "sha256-WCSNXrp3pFc1O1eNs8ZIJet1zQ+NUOhwiYfGleg7ep0=",
+        "owner": "domenkozar",
         "repo": "nixpkgs",
-        "rev": "2c328e3a1064c9519ddc1d6098604e5dfbec6e35",
+        "rev": "eceb958e81e7219514c19a908e3c05f21d4c77a2",
         "type": "github"
       },
       "original": {
