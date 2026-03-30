@@ -52,7 +52,8 @@
     ../../modules/home/apps/spotify.nix # Need to find an alternative because I don't like spotify.
     ../../modules/home/apps/lact.nix
     ../../modules/home/apps/rnote.nix
-    #../../modules/home/apps/baballonia.nix
+    ../../modules/home/apps/baballonia.nix
+    ../../modules/home/apps/blender.nix
 
     ../../modules/home/dev/rust-analyzer.nix
 

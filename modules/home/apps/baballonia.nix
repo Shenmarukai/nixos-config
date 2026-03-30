@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    baballonia
+  home.packages = [
+    pkgs.baballonia
+    pkgs.v4l-utils
+    pkgs.psmisc
   ];
 
   xdg.desktopEntries.baballonia = {

@@ -5,6 +5,7 @@
       mode = "7680x2160@119.997Hz";
       position = "0 0";
       scale = "1";
+      render_bit_depth = "10";
     };
     "HDMI-A-1" = {
       mode = "1920x1080@60.000Hz";

@@ -1,7 +1,11 @@
-{ pkgs, inputs, ... }:
+{ ... }:
 {
-  #home.packages = with pkgs; [
-  #  librewolf
-  #];
-  home.packages = [ inputs.librewolf.legacyPackages.${pkgs.system}.librewolf ];
+  programs.librewolf = {
+    enable = true;
+    settings = {
+      "media.gmp-widevinecdm.enabled" = true;
+      "media.gmp-provider.enabled" = true;
+      "privacy.resistFingerprinting" = false;
+    };
+  };
 }

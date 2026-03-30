@@ -60,6 +60,7 @@ in
   wayland.windowManager.sway = {
     enable = true;
     package = pkgs.swayfx;
+    #package = pkgs.sway;
     checkConfig = false;
     wrapperFeatures.gtk = true;
 

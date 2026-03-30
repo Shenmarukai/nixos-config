@@ -13,7 +13,7 @@
       url = "github:catppuccin/nix";
     };
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.2.24";
+      url = "github:anomalyco/opencode?ref=v1.3.6";
     };
     #opencode-desktop = {
     #  url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
@@ -44,12 +44,15 @@
     llama-cpp = {
       url = "github:ggml-org/llama.cpp?ref=b7875";
     };
-    #baballonia = {
-    #  url = "github:Project-Babble/Baballonia?ref=v1.1.0.9HF5";
-    #};
+    baballonia = {
+      url = "github:ZenIsBestWolf/nixpkgs?ref=pkgs/baballonia";
+    };
     devenv = {
       url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
       #url = "github:domenkozar/nixpkgs?ref=devenv-2.0.3";
+    };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
     };
   };
 

@@ -3,9 +3,8 @@ local M = {}
 function M.setup()
   pcall(function()
     vim.g.opencode_opts = {
-      port = 4001,
       provider = {
-        cmd = 'opencode --port 4001',
+        cmd = 'opencode',
         enabled = 'snacks',
       },
     }

@@ -86,6 +86,7 @@ let
 in
 {
   f3demo = final.callPackage ../pkgs/f3demo { };
+  baballonia = final.callPackage ../pkgs/baballonia { };
   idapro = idaproPkg;
   ida-pro-mcp = idaProMcpPkg;
   math-mcp = mathMcpPkg;

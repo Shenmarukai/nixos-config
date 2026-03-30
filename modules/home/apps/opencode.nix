@@ -14,7 +14,7 @@ let
   opencodeSrc = inputs.opencode;
   opencodeNodeModules = opencodePkgs.callPackage (opencodeSrc + "/nix/node_modules.nix") {
     rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.rev or "unknown";
-    hash = "sha256-4kjoJ06VNvHltPHfzQRBG0bC6R39jao10ffGzrNZ230=";
+    hash = "sha256-ppK5TVMsmy/7uP1kc6hw3gHMxokD/hBZYt5IGHR3/ok=";
     #bunCpu = "x64";
     #bunOs = "linux";
   };
@@ -47,8 +47,8 @@ in
     mcp-proxy
   ]);
 
-  xdg.configFile."opencode" = {
-    source = ../../../home/shane/opencode;
-    recursive = true;
-  };
+  #xdg.configFile."opencode" = {
+  #source = ../../../home/shane/opencode;
+  #recursive = true;
+  #};
 }
