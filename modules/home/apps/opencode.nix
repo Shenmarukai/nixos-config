@@ -21,6 +21,49 @@ let
   opencodePackage = opencodePkgs.callPackage (opencodeSrc + "/nix/opencode.nix") {
     node_modules = opencodeNodeModules;
   };
+  #opencodeNodeModules =
+  #  (opencodePkgs.callPackage (opencodeSrc + "/nix/node_modules.nix") {
+  #    rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.rev or "unknown";
+  #    hash = "sha256-0VwVhbOtK1r16cVSZcHaI/8fUPc6aYQiUnh7Q3bSHqs=";
+  #    #bunCpu = "x64";
+  #    #bunOs = "linux";
+  #  }).overrideAttrs (old: {
+  #    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.nodejs ];
+  #    postFixup = (old.postFixup or "") + ''
+  #      if [ -d "$out/node_modules/.bin" ]; then
+  #        patchShebangs "$out/node_modules/.bin"
+  #      fi
+
+  #      find "$out" -path '*/node_modules/.bin/*' | while read -r f; do
+  #        target="$(readlink -f "$f" || true)"
+  #        if [ -n "$target" ] && [ -f "$target" ]; then
+  #          patchShebangs "$target" || true
+  #        fi
+  #      done
+  #    '';
+  #  });
+  #opencodePackage =
+  #  (opencodePkgs.callPackage (opencodeSrc + "/nix/opencode.nix") {
+  #    node_modules = opencodeNodeModules;
+  #  }).overrideAttrs (old: {
+  #    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.nodejs pkgs.jq ];
+
+  #    buildPhase = ''
+  #      runHook preBuild
+  #      cd ./packages/opencode
+
+  #      echo "Rewriting app build script to bypass node_modules/.bin/vite..."
+  #      tmp="$(mktemp)"
+  #      ${pkgs.jq}/bin/jq \
+  #        '.scripts.build = "${pkgs.nodejs}/bin/node ./node_modules/vite/bin/vite.js build"' \
+  #        ../app/package.json > "$tmp"
+  #      mv "$tmp" ../app/package.json
+
+  #      bun --bun ./script/build.ts --single --skip-install
+  #      bun --bun ./script/schema.ts schema.json
+  #      runHook postBuild
+  #    '';
+  #  });
   github-mcp-server-gh = pkgs.writeShellScriptBin "github-mcp-server-gh" ''
     set -euo pipefail
 
@@ -47,8 +90,12 @@ in
     mcp-proxy
   ]);
 
+  xdg.configFile."opencode/opencode.jsonc" = {
+    source = ../../../home/shane/opencode/opencode.jsonc;
+  };
+
   #xdg.configFile."opencode" = {
-  #source = ../../../home/shane/opencode;
-  #recursive = true;
+  #  source = ../../../home/shane/opencode;
+  #  recursive = true;
   #};
 }

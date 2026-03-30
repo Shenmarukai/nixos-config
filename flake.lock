@@ -44,8 +44,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "Shenmarukai",
-        "ref": "feat/devenv-opencode",
+        "owner": "domenkozar",
+        "ref": "devenv-2.0.5",
         "repo": "nixpkgs",
         "type": "github"
       }

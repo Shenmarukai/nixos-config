@@ -48,8 +48,8 @@
       url = "github:ZenIsBestWolf/nixpkgs?ref=pkgs/baballonia";
     };
     devenv = {
-      url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
-      #url = "github:domenkozar/nixpkgs?ref=devenv-2.0.3";
+      #url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
+      url = "github:domenkozar/nixpkgs?ref=devenv-2.0.5";
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";

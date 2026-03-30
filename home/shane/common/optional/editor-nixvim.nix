@@ -168,7 +168,7 @@ let
       }) masonPackages
     );
 
-  luaConfig = ''
+  luaConfig = /* lua */ ''
     require('shenmarukai')
   '';
 
