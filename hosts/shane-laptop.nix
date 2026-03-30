@@ -18,10 +18,10 @@
     ../modules/system/network/networkmanager.nix
 
     ../modules/system/audio/pipewire-core.nix
-    #../modules/system/audio/microsoft-usb-link-microphone.nix
-    ../modules/system/audio/built-in-analog-stereo-speakers.nix
-    #../modules/system/audio/microsoft-usb-link-speakers.nix
-    ../modules/system/audio/built-in-analog-stereo-microphone.nix
+    ../modules/system/audio/microsoft-usb-link-microphone.nix
+    #../modules/system/audio/built-in-analog-stereo-speakers.nix
+    ../modules/system/audio/microsoft-usb-link-speakers.nix
+    #../modules/system/audio/built-in-analog-stereo-microphone.nix
 
     ../modules/system/graphics/core.nix
     ../modules/system/graphics/nvidia.nix

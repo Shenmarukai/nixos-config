@@ -24,6 +24,11 @@
         "opencode-lmstudio@0.3.0"
         "@tarquinen/opencode-dcp@3.1.5"
       ];
+
+      agent = {
+        plan.disable  = true;
+        build.disable = true;
+      };
     };
   };
 }
