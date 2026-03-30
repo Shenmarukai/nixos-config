@@ -14,7 +14,7 @@ in {
     env = sharedEnv;
   };
 
-  opencode.mcpServers.devenv = {
+  opencode.mcp.devenv = {
     type = "local";
     command = [ "devenv" "mcp" ];
     environment = sharedEnv;

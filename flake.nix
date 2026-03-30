@@ -49,7 +49,7 @@
     };
     devenv = {
       #url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
-      url = "github:domenkozar/nixpkgs?ref=devenv-2.0.5";
+      url = "github:domenkozar/nixpkgs?ref=devenv-2.0.6";
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
