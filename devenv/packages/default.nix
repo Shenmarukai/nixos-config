@@ -1,3 +1,7 @@
 # ./modules/packages/default.nix
 
-{ pkgs, ... }: {}
+{ ... }: {
+  imports = [
+    ./mcp-nixos.nix
+  ];
+}

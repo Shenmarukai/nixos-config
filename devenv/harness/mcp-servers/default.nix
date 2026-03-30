@@ -3,5 +3,7 @@
 { ... }: {
   imports = [
     ./devenv.nix
+    ./nixos.nix
+    ./rag.nix
   ];
 }
