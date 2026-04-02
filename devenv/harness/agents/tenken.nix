@@ -75,6 +75,8 @@ in {
       task:
         "*":    deny
         sensei: allow
+      "nixos*":  allow
+      "devenv*": allow
     ---
     ${sharedPrompt}
   '';

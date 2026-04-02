@@ -77,7 +77,6 @@ in {
         sensei: allow
       "nixos*":  allow
       "devenv*": allow
-      "rag*":    allow
     ---
     ${sharedPrompt}
   '';
