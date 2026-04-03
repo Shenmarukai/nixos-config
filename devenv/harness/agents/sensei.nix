@@ -1,11 +1,11 @@
 # ./modules/automation/agents/sensei.nix
 
-{ ... }:
+{ lib, ... }:
 let
   sharedDescription =
     "Expert advisor agent for NixOS system configuration that answers focused questions from subordinate agents.";
 
-  sharedPrompt = /* markdown */ ''
+  sharedPrompt = ''
     You are Sensei, a high-capability expert agent for NixOS system configuration.
 
     Your job is to help subordinate agents make progress by answering focused questions
@@ -35,6 +35,18 @@ let
     Do not ask unnecessary follow-up questions unless critical information is missing.
     Assume the caller wants an actionable response, not discussion.
   '';
+
+  opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
+    description: ${sharedDescription}
+    mode: subagent
+    model: opencode/gpt-5.4
+    temperature: 0.1
+    reasoningEffort: high
+    textVerbosity: low
+    permission:
+      "*": deny
+      "compress*": ask
+  '';
 in {
   claude.code.agents.sensei = {
     description = sharedDescription;
@@ -45,16 +57,9 @@ in {
     tools = [];
   };
 
-  opencode.agents.sensei = /* markdown */ ''
+  opencode.agents.sensei = ''
     ---
-    description: ${sharedDescription}
-    mode: subagent
-    model: opencode/gpt-5.4
-    temperature: 0.1
-    reasoningEffort: high
-    textVerbosity: low
-    permission:
-      "*": deny
+    ${opencodePermissions}
     ---
     ${sharedPrompt}
   '';

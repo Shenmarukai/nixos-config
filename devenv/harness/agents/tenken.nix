@@ -1,11 +1,11 @@
 # ./modules/automation/agents/tenken.nix
 
-{ ... }:
+{ lib, ... }:
 let
   sharedDescription =
     "Verification agent for a NixOS configuration repository that checks correctness, evaluation, behavior, and regression risk.";
 
-  sharedPrompt = /* markdown */ ''
+  sharedPrompt = ''
     You are Tenken, a verification subagent for a NixOS configuration repository.
 
     Your job is to confirm whether proposed or completed changes actually work.
@@ -31,18 +31,8 @@ let
     3. Likely issue if failing
     4. Concrete next step
   '';
-in {
-  claude.code.agents.tenken = {
-    description = sharedDescription;
-    prompt = sharedPrompt;
-    proactive = false;
-    permissionMode = "default";
-    model = "sonnet";
-    tools = [ "Read" "Glob" "Grep" "Bash" ];
-  };
 
-  opencode.agents.tenken = /* markdown */ ''
-    ---
+  opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
     description: ${sharedDescription}
     mode: subagent
     model: opencode/gpt-5.4-mini
@@ -57,7 +47,6 @@ in {
       grep: allow
       list: allow
       bash:
-        "*": deny
         "nix flake check": allow
         "nix build .#*":   allow
         "nix eval *":      allow
@@ -69,14 +58,27 @@ in {
         "nixos-rebuild build-vm --flake .#*":     allow
         "nixos-rebuild switch --flake .#*":       ask
       skill:
-        "*":                     deny
         "nixos-verify-workflow": allow
         "safe-rebuild-apply":    allow
       task:
-        "*":    deny
         sensei: allow
-      "nixos*":  allow
-      "devenv*": allow
+      "compress*": ask
+      "nixos*":    allow
+      "devenv*":   allow
+  '';
+in {
+  claude.code.agents.tenken = {
+    description = sharedDescription;
+    prompt = sharedPrompt;
+    proactive = false;
+    permissionMode = "default";
+    model = "sonnet";
+    tools = [ "Read" "Glob" "Grep" "Bash" ];
+  };
+
+  opencode.agents.tenken = ''
+    ---
+    ${opencodePermissions}
     ---
     ${sharedPrompt}
   '';

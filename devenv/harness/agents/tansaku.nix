@@ -1,11 +1,11 @@
 # ./modules/automation/agents/tansaku.nix
 
-{ ... }:
+{ lib, ... }:
 let
   sharedDescription =
     "Reconnaissance agent for a NixOS configuration repository that gathers evidence, context, and relevant module, option, and file locations.";
 
-  sharedPrompt = /* markdown */ ''
+  sharedPrompt = ''
     You are Tansaku, a reconnaissance subagent for a NixOS configuration repository.
 
     Your job is to gather the minimum context needed for another agent to proceed.
@@ -31,18 +31,8 @@ let
     3. Recommended handoff
     4. Verification
   '';
-in {
-  claude.code.agents.tansaku = {
-    description = sharedDescription;
-    prompt = sharedPrompt;
-    proactive = false;
-    permissionMode = "default";
-    model = "sonnet";
-    tools = [ "Read" "Glob" "Grep" "Bash" ];
-  };
 
-  opencode.agents.tansaku = /* markdown */ ''
-    ---
+  opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
     description: ${sharedDescription}
     mode: subagent
     model: opencode/gpt-5.4-mini
@@ -57,7 +47,6 @@ in {
       grep: allow
       list: allow
       bash:
-        "*": deny
         "nix flake show *":     allow
         "nix flake metadata *": allow
         "nix flake info *":     allow
@@ -70,13 +59,26 @@ in {
       webfetch: allow
       websearch: allow
       skill:
-        "*":                      deny
         "nixos-module-placement": allow
       task:
-        "*":    deny
         sensei: allow
-      "nixos*":  allow
-      "devenv*": allow
+      "compress*": ask
+      "nixos*":    allow
+      "devenv*":   allow
+  '';
+in {
+  claude.code.agents.tansaku = {
+    description = sharedDescription;
+    prompt = sharedPrompt;
+    proactive = false;
+    permissionMode = "default";
+    model = "sonnet";
+    tools = [ "Read" "Glob" "Grep" "Bash" ];
+  };
+
+  opencode.agents.tansaku = ''
+    ---
+    ${opencodePermissions}
     ---
     ${sharedPrompt}
   '';

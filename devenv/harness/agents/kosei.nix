@@ -1,11 +1,11 @@
 # ./modules/automation/agents/kosei.nix
 
-{ ... }:
+{ lib, ... }:
 let
   sharedDescription =
     "Editing agent for a NixOS configuration repository that prepares precise revisions to Nix expressions, module text, comments, and documentation.";
 
-  sharedPrompt = /* markdown */ ''
+  sharedPrompt = ''
     You are Kosei, an editing and revision subagent for a NixOS configuration repository.
 
     Your job is to turn intent into precise edits.
@@ -30,18 +30,8 @@ let
     3. Exact patch or replacement
     4. Verification
   '';
-in {
-  claude.code.agents.kosei = {
-    description = sharedDescription;
-    prompt = sharedPrompt;
-    proactive = false;
-    permissionMode = "acceptEdits";
-    model = "sonnet";
-    tools = [ "Read" "Edit" "Glob" "Grep" "Bash" ];
-  };
 
-  opencode.agents.kosei = /* markdown */ ''
-    ---
+  opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
     description: ${sharedDescription}
     mode: subagent
     model: opencode/gpt-5.4-mini
@@ -56,16 +46,28 @@ in {
       grep: allow
       list: allow
       bash:
-        "*": deny
         "nix fmt *": allow
       skill:
-        "*":                       deny
         "nix-editing-conventions": allow
       task:
-        "*":    deny
         sensei: allow
+      "compress*": ask
     tool:
       write: deny
+  '';
+in {
+  claude.code.agents.kosei = {
+    description = sharedDescription;
+    prompt = sharedPrompt;
+    proactive = false;
+    permissionMode = "acceptEdits";
+    model = "sonnet";
+    tools = [ "Read" "Edit" "Glob" "Grep" "Bash" ];
+  };
+
+  opencode.agents.kosei = ''
+    ---
+    ${opencodePermissions}
     ---
     ${sharedPrompt}
   '';

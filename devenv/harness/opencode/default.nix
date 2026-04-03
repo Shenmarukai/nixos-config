@@ -7,8 +7,9 @@
     settings = {
       provider = {
         lmstudio = {
-          npm = "@ai-sdk/openai-compatible";
+          npm  = "@ai-sdk/openai-compatible";
           name = "LM Studio";
+
           options = {
             baseURL = "http://127.0.0.1:1234/v1";
           };
@@ -16,7 +17,7 @@
       };
 
       compaction = {
-        auto = true;
+        auto  = true;
         prune = true;
       };
 
@@ -26,8 +27,10 @@
       ];
 
       agent = {
-        plan.disable  = true;
-        build.disable = true;
+        plan.disable     = true;
+        build.disable    = true;
+        general.disable  = true;
+        explore.disable  = true;
       };
     };
   };

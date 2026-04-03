@@ -1,11 +1,11 @@
 # ./modules/automation/agents/shirei.nix
 
-{ ... }:
+{ lib, ... }:
 let
   sharedDescription =
     "Orchestrator agent for a NixOS configuration repository that directs subordinate agents and consults sensei for expert guidance.";
 
-  sharedPrompt = /* markdown */ ''
+  sharedPrompt = ''
     You are Shirei, the orchestration agent for a NixOS configuration repository.
 
     Your job is to direct subordinate agents to complete tasks efficiently.
@@ -37,6 +37,25 @@ let
     3. Exact instruction
     4. Success condition
   '';
+
+  opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
+    description: ${sharedDescription}
+    mode: primary
+    model: opencode/gpt-5.4-mini
+    temperature: 0.2
+    reasoningEffort: low
+    textVerbosity: low
+    permission:
+      "*": deny
+      todowrite: allow
+      task:
+        sensei:  allow
+        kochiku: allow
+        kosei:   allow
+        tansaku: allow
+        tenken:  allow
+      "compress*": ask
+  '';
 in {
   claude.code.agents.shirei = {
     description = sharedDescription;
@@ -52,24 +71,9 @@ in {
     ];
   };
 
-  opencode.agents.shirei = /* markdown */ ''
+  opencode.agents.shirei = ''
     ---
-    description: ${sharedDescription}
-    mode: primary
-    model: opencode/gpt-5.4-mini
-    temperature: 0.2
-    reasoningEffort: low
-    textVerbosity: low
-    permission:
-      "*": deny
-      todowrite: allow
-      task:
-        "*":     deny
-        sensei:  allow
-        kochiku: allow
-        kosei:   allow
-        tansaku: allow
-        tenken:  allow
+    ${opencodePermissions}
     ---
     ${sharedPrompt}
   '';

@@ -1,11 +1,11 @@
 # ./modules/automation/agents/kochiku.nix
 
-{ ... }:
+{ lib, ... }:
 let
   sharedDescription =
     "Implementation agent for a NixOS configuration repository that makes concrete changes to modules, packages, services, hosts, and flake wiring.";
 
-  sharedPrompt = /* markdown */ ''
+  sharedPrompt = ''
     You are Kochiku, an implementation subagent for a NixOS configuration repository.
 
     Your job is to make concrete technical changes in Nix code and system configuration.
@@ -31,18 +31,8 @@ let
     3. Remaining risk or blocker
     4. Verification
   '';
-in {
-  claude.code.agents.kochiku = {
-    description = sharedDescription;
-    prompt = sharedPrompt;
-    proactive = false;
-    permissionMode = "acceptEdits";
-    model = "sonnet";
-    tools = [ "Read" "Edit" "Write" "Glob" "Grep" "Bash" ];
-  };
 
-  opencode.agents.kochiku = /* markdown */ ''
-    ---
+  opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
     description: ${sharedDescription}
     mode: subagent
     model: opencode/gpt-5.4
@@ -57,7 +47,6 @@ in {
       grep: allow
       list: allow
       bash:
-        "*": deny
         "nix build .#*":   allow
         "nix flake check": allow
         "nix eval *":      allow
@@ -67,12 +56,25 @@ in {
         "nixos-rebuild dry-activate --flake .#*": allow
         "nixos-rebuild build-vm --flake .#*":     allow
       skill:
-        "*":                      deny
         "nixos-module-placement": allow
         "nixos-verify-workflow":  allow
       task:
-        "*":    deny
         sensei: allow
+      "compress*": ask
+  '';
+in {
+  claude.code.agents.kochiku = {
+    description = sharedDescription;
+    prompt = sharedPrompt;
+    proactive = false;
+    permissionMode = "acceptEdits";
+    model = "sonnet";
+    tools = [ "Read" "Edit" "Write" "Glob" "Grep" "Bash" ];
+  };
+
+  opencode.agents.kochiku = ''
+    ---
+    ${opencodePermissions}
     ---
     ${sharedPrompt}
   '';
