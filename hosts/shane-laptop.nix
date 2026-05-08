@@ -16,6 +16,7 @@
     ../modules/system/core/time-nyc.nix
 
     ../modules/system/network/networkmanager.nix
+    ../modules/system/network/network-firewall.nix
 
     ../modules/system/audio/pipewire-core.nix
     ../modules/system/audio/microsoft-usb-link-microphone.nix
@@ -32,6 +33,7 @@
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/packages/direnv.nix
     ../modules/system/packages/devenv.nix
+    ../modules/system/apps/nix-output-monitor.nix
     ../modules/system/apps/zsh.nix
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
@@ -69,6 +71,15 @@
   networking.hostName = "shane-laptop";
 
   hardware.bluetooth.powerOnBoot = false;
+
+  systemd.tmpfiles.rules = [
+    "w /sys/devices/system/cpu/intel_pstate/no_turbo - - - - 1"
+  ];
+
+  nix.settings = {
+    cores    = 4;
+    max-jobs = 4;
+  };
 
   system.stateVersion = "25.11";
 }

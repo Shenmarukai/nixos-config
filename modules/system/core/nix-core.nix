@@ -3,9 +3,6 @@
   nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
-    cores    = 4;
-    max-jobs = 4;
-
     experimental-features = [
       "nix-command"
       "flakes"

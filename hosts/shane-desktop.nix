@@ -30,6 +30,7 @@
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/packages/direnv.nix
     ../modules/system/packages/devenv.nix
+    ../modules/system/apps/nix-output-monitor.nix
     ../modules/system/apps/zsh.nix
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
@@ -99,6 +100,11 @@
   networking.hostName = "shane-desktop";
 
   hardware.bluetooth.powerOnBoot = true;
+
+  nix.settings = {
+    cores    = 8;
+    max-jobs = 4;
+  };
 
   system.stateVersion = "25.11";
 }
