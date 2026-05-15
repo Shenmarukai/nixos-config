@@ -468,6 +468,7 @@ in
 
   xdg.configFile = {
     "nvim/lua/shenmarukai/init.lua".source = ../../neovim/lua/shenmarukai/init.lua;
+    "nvim/lua/shenmarukai/devenv.lua".source = ../../neovim/lua/shenmarukai/devenv.lua;
     "nvim/lua/shenmarukai/set.lua".source = ../../neovim/lua/shenmarukai/set.lua;
     "nvim/lua/shenmarukai/remap.lua".source = ../../neovim/lua/shenmarukai/remap.lua;
     "nvim/lua/shenmarukai/autocmds.lua".source = ../../neovim/lua/shenmarukai/autocmds.lua;

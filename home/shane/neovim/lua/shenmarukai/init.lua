@@ -1,3 +1,5 @@
+require('shenmarukai.devenv')
+
 local plugins = {
   '99',
   'colors',
@@ -12,7 +14,7 @@ local plugins = {
   'fugitive',
   'gh',
   'gp',
-  'idascope',
+  --'idascope',
   'luasnip',
   'dap',
   'lsp',
