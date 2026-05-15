@@ -13,10 +13,10 @@
     #  url = "github:catppuccin/nix";
     #};
     opencode = {
-      url = "github:nixos/nixpkgs/a075f1311ce40ae1b9008fdc43b38d0b2e53b961";
+      url = "github:nixos/nixpkgs/0cfbee581ddaf8cd90d45c7d7eb7c1ff93534971";
     };
     opencode-desktop = {
-      url = "github:nixos/nixpkgs/48ddd1b485b3b1203b98fe12e9a82ebe09ca5e52";
+      url = "github:nixos/nixpkgs/f6fc5010414d0f2c1facba0fb941cdfba2fb4666";
     };
     mcp-nixos = {
       url = "github:utensils/mcp-nixos";
@@ -51,7 +51,7 @@
 	#  url = "github:dfgHiatus/VRCFaceTracking.Avalonia?submodules=1";
 	#};
     devenv = {
-      url = "github:nixos/nixpkgs/f962f9d446110b36d617402641005542df1a011a";
+      url = "github:nixos/nixpkgs/5c9008c2b9e9778cb814afc0a579c35638201cc6";
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
