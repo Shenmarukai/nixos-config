@@ -2,6 +2,7 @@
 
 { ... }: {
   imports = [
+    ./github-mcp-server.nix
     ./mcp-nixos.nix
   ];
 }

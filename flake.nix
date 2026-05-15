@@ -13,7 +13,7 @@
     #  url = "github:catppuccin/nix";
     #};
     opencode = {
-      url = "github:nixos/nixpkgs/c3acb6001f1c42c4386f622bcb7e85a661d61539";
+      url = "github:nixos/nixpkgs/0cfbee581ddaf8cd90d45c7d7eb7c1ff93534971";
     };
     opencode-desktop = {
       url = "github:nixos/nixpkgs/48ddd1b485b3b1203b98fe12e9a82ebe09ca5e52";
@@ -49,7 +49,7 @@
     };
     devenv = {
       #url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
-      url = "github:domenkozar/nixpkgs/f962f9d446110b36d617402641005542df1a011a";
+      url = "github:domenkozar/nixpkgs/5c9008c2b9e9778cb814afc0a579c35638201cc6";
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";

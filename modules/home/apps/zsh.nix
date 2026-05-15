@@ -56,6 +56,10 @@
       PROMPT='%F{#89b4fa}❯%f '
     '';
 
+    initExtra = ''
+      eval "$(devenv hook zsh)"
+    '';
+
     plugins = [];
   };
 

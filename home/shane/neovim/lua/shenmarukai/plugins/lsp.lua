@@ -21,35 +21,28 @@ function M.setup()
         },
       },
     })
+
     local cmp = require('cmp')
     local cmp_lsp = require('cmp_nvim_lsp')
+
     local capabilities = vim.tbl_deep_extend(
       'force',
       {},
       vim.lsp.protocol.make_client_capabilities(),
       cmp_lsp.default_capabilities()
     )
+
     require('fidget').setup({})
-    vim.lsp.config('ts_ls', {
-      init_options = {
-        preferences = {
-          includeInlayParameterNameHints = 'all',
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-    })
+
     require('mason').setup({
       PATH = 'skip',
     })
+
     require('mason-lspconfig').setup({
       ensure_installed = {},
       automatic_enable = false,
     })
-    local lspconfig = require('lspconfig')
+
     local servers = {
       'lua_ls',
       'rust_analyzer',
@@ -61,48 +54,51 @@ function M.setup()
       'nixd',
       'nil_ls',
     }
+
     local server_configs = {
+      ts_ls = {
+        init_options = {
+          preferences = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+      },
+
       rust_analyzer = {
         cmd = { vim.fn.exepath('rust-analyzer') },
       },
-      clangd = {
-        cmd = (function()
-          local mason_clangd = vim.fn.stdpath('data') .. '/mason/bin/clangd'
-          local clangd_path = mason_clangd
-          if vim.fn.executable(clangd_path) ~= 1 then
-            clangd_path = vim.fn.exepath('clangd')
-          end
 
-          return {
-            clangd_path,
-            '--enable-config',
-            '--background-index',
-            '--clang-tidy',
-            '--query-driver=**/clang++,**/g++,**/gcc,**/i686-w64-mingw32-g++,**/i686-w64-mingw32-gcc',
-          }
-        end)(),
+      clangd = {
+        cmd = {
+          vim.fn.exepath('clangd'),
+          '--enable-config',
+          '--background-index',
+        },
       },
+
       nil_ls = {
-        cmd = (function()
-          local mason_nil = vim.fn.stdpath('data') .. '/mason/bin/nil'
-          local nil_path = mason_nil
-          if vim.fn.executable(mason_nil) ~= 1 then
-            nil_path = vim.fn.exepath('nil')
-          end
-          return { nil_path }
-        end)(),
+        cmd = { vim.fn.exepath('nil') },
         filetypes = { 'nix' },
+
         on_attach = function(client, bufnr)
           if vim.lsp.inlay_hint then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
           end
-          client.server_capabilities.inlayHint = true
-          client.server_capabilities.publishDiagnostics = true
+
+          client.server_capabilities.inlayHintProvider = true
+          client.server_capabilities.publishDiagnosticsProvider = true
         end,
+
         settings = {
-          ["nil"] = {
+          ['nil'] = {
             formatting = {
-              command = nil, -- You can change this to { "nixfmt" } if installed
+              command = nil,
+              -- Change to { "nixfmt" } if installed.
             },
             diagnostics = {
               ignored = {},
@@ -112,24 +108,32 @@ function M.setup()
               hints = true,
             },
             nix = {
-              binary = "nix",
+              binary = 'nix',
               maxMemoryMB = 32768,
               flake = {
                 autoArchive = nil,
                 autoEvalInputs = true,
-                nixpkgsInputName = "nixpkgs",
+                nixpkgsInputName = 'nixpkgs',
               },
             },
-          }
+          },
         },
-      }
+      },
     }
+
     for _, server in ipairs(servers) do
       local server_config = server_configs[server] or {}
-      server_config.capabilities = capabilities
-      lspconfig[server].setup(server_config)
+
+      server_config = vim.tbl_deep_extend('force', {
+        capabilities = capabilities,
+      }, server_config)
+
+      vim.lsp.config(server, server_config)
+      vim.lsp.enable(server)
     end
+
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
     cmp.setup({
       snippet = {
         expand = function(args)

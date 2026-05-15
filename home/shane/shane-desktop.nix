@@ -59,13 +59,13 @@
 
     ../../modules/home/dev/rust-analyzer.nix
 
-    ../../modules/home/dev/rust-toolchain.nix
-    ../../modules/home/dev/gopls.nix
-    ../../modules/home/dev/lua-language-server.nix
-    ../../modules/home/dev/typescript-language-server.nix
-    ../../modules/home/dev/nil.nix
-    ../../modules/home/dev/nixd.nix
-    ../../modules/home/dev/csharp-ls.nix
+    #../../modules/home/dev/rust-toolchain.nix
+    #../../modules/home/dev/gopls.nix
+    #../../modules/home/dev/lua-language-server.nix
+    #../../modules/home/dev/typescript-language-server.nix
+    #../../modules/home/dev/nil.nix
+    #../../modules/home/dev/nixd.nix
+    #../../modules/home/dev/csharp-ls.nix
 
     ../../modules/home/ui/fonts-jetbrainsmono.nix
     ../../modules/home/ui/vrr-status.nix
