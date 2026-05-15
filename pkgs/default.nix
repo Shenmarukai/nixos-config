@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
   f3demo = pkgs.callPackage ./f3demo { };
-  baballonia = pkgs.callPackage ./baballonia { };
+  #baballonia = pkgs.callPackage ./baballonia { };
 }

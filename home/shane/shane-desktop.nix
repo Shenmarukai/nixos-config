@@ -10,7 +10,7 @@
   home.stateVersion = "25.11";
 
   imports = [
-    inputs.catppuccin.homeModules.catppuccin
+    #inputs.catppuccin.homeModules.catppuccin
     inputs.nixvim.homeModules.nixvim
 
     ../../modules/home/apps/bash.nix
@@ -32,12 +32,14 @@
     ../../modules/home/apps/nodejs-22.nix
     ../../modules/home/apps/pulseaudio.nix
     ../../modules/home/apps/opencode.nix
+    #../../modules/home/apps/baballonia.nix
+    #../../modules/home/apps/vrcfacetracking.nix
+    ../../modules/home/apps/vrcfacetracking-avalonia.nix
     #../../modules/home/apps/opencode-desktop.nix
     ../../modules/home/apps/bitwarden-desktop.nix
     ../../modules/home/apps/bitwarden-cli.nix
     ../../modules/home/apps/jq.nix
     ../../modules/home/apps/yazi.nix
-    ../../modules/home/apps/steam.nix
     ../../modules/home/apps/f3demo.nix
     ../../modules/home/apps/github-desktop.nix
     ../../modules/home/apps/ida-pro.nix
@@ -53,8 +55,15 @@
     ../../modules/home/apps/lact.nix
     ../../modules/home/apps/k3s.nix
     ../../modules/home/apps/rnote.nix
-    ../../modules/home/apps/baballonia.nix
+    #../../modules/home/apps/baballonia.nix
     ../../modules/home/apps/blender.nix
+    ../../modules/home/apps/openmw.nix
+    ../../modules/home/apps/easyeffects.nix
+    ../../modules/home/apps/mpv.nix
+    ../../modules/home/apps/unity.nix
+    ../../modules/home/apps/alcom.nix
+    ../../modules/home/apps/go-bsb-cams-fast.nix
+    ../../modules/home/apps/vrcx.nix
 
     ../../modules/home/dev/rust-analyzer.nix
 
@@ -69,9 +78,10 @@
     ../../modules/home/ui/fonts-jetbrainsmono.nix
     ../../modules/home/ui/vrr-status.nix
     #../../modules/home/ui/dark-theme.nix
-    ../../modules/home/ui/catppuccin-theme.nix
+    #../../modules/home/ui/catppuccin-theme.nix
 
     ../../modules/home/services/polkit-agent.nix
+    ../../modules/home/services/easyeffects.nix
 
     ./common/optional/wm-sway.nix
     ./common/optional/ui-waybar.nix

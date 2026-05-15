@@ -37,7 +37,6 @@
     ../../modules/home/apps/bitwarden-cli.nix
     ../../modules/home/apps/jq.nix
     ../../modules/home/apps/yazi.nix
-    ../../modules/home/apps/steam.nix
     ../../modules/home/apps/f3demo.nix
     ../../modules/home/apps/github-desktop.nix
     ../../modules/home/apps/ida-pro.nix
@@ -54,6 +53,8 @@
     ../../modules/home/apps/rnote.nix
     ../../modules/home/apps/baballonia.nix
     ../../modules/home/apps/blender.nix
+    ../../modules/home/apps/easyeffects.nix
+    ../../modules/home/apps/mpv.nix
 
     ../../modules/home/dev/rust-analyzer.nix
 
@@ -71,6 +72,7 @@
     ../../modules/home/ui/catppuccin-theme.nix
 
     ../../modules/home/services/polkit-agent.nix
+    ../../modules/home/services/easyeffects.nix
 
     ./common/optional/wm-sway.nix
     ./common/optional/ui-waybar.nix

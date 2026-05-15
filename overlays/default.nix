@@ -85,8 +85,9 @@ let
   };
 in
 {
+  go-bsb-cams-fast = final.callPackage ../pkgs/go-bsb-cams-fast { };
   f3demo = final.callPackage ../pkgs/f3demo { };
-  baballonia = final.callPackage ../pkgs/baballonia { };
+  #baballonia = final.callPackage ../pkgs/baballonia { };
   idapro = idaproPkg;
   ida-pro-mcp = idaProMcpPkg;
   math-mcp = mathMcpPkg;

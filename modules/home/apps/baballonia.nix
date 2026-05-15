@@ -1,17 +1,13 @@
-{ pkgs, ... }:
-{
+{ pkgs, inputs, ... }: {
   home.packages = [
-    pkgs.baballonia
-    pkgs.v4l-utils
-    pkgs.psmisc
-  ];
+    inputs.baballonia.packages.${pkgs.system}.default
+  ] ++ (with pkgs; [
+    v4l-utils
+    psmisc
+  ]);
 
-  xdg.desktopEntries.baballonia = {
-    name = "Baballonia";
-    genericName = "Baballonia";
-    comment = "Utility application";
-    exec = "baballonia";
-    categories = [ "Utility" ];
-    terminal = false;
+  xdg.userDirs = {
+    enable = true;
+    documents = "$HOME/Documents";
   };
 }

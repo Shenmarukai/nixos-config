@@ -59,5 +59,5 @@
     plugins = [];
   };
 
-  catppuccin.zsh-syntax-highlighting.enable = true;
+  #catppuccin.zsh-syntax-highlighting.enable = true;
 }

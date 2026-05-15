@@ -13,6 +13,12 @@
           options = {
             baseURL = "http://127.0.0.1:1234/v1";
           };
+
+          models = {
+            "gemma-4-31b-it" = {
+              name = "Gemma 4 31B IT";
+            };
+          };
         };
       };
 

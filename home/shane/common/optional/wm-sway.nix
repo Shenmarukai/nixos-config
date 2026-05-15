@@ -37,7 +37,7 @@ in
   ];
 
   services.swayidle = {
-    enable = true;
+    enable = false;
     extraArgs = [ "-w" ];
     events = [
       {

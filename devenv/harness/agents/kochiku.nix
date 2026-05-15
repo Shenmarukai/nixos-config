@@ -35,7 +35,7 @@ let
   opencodePermissions = lib.strings.removeSuffix "\n" /* yaml */ ''
     description: ${sharedDescription}
     mode: subagent
-    model: opencode/gpt-5.4
+    model: lmstudio/gemma-4-31b-it
     temperature: 0.1
     reasoningEffort: medium
     textVerbosity: low

@@ -30,6 +30,8 @@
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/packages/direnv.nix
     ../modules/system/packages/devenv.nix
+    ../modules/system/packages/gamemode.nix
+    ../modules/system/apps/gst-plugin-bigeye.nix
     ../modules/system/apps/zsh.nix
     ../modules/system/apps/appimage.nix
     ../modules/system/apps/docker-rootless.nix
@@ -43,6 +45,8 @@
     ../modules/system/apps/liquidctl.nix
     #../modules/system/apps/ssh.nix
     ../modules/system/apps/sops.nix
+    ../modules/system/apps/steam.nix
+    ../modules/system/apps/wlx-overlay-s.nix
 
     ../modules/system/services/udev.nix
     ../modules/system/services/dbus.nix
@@ -65,6 +69,9 @@
     ../modules/system/users/users.nix
     ../modules/system/users/shane.nix
   ];
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   services.uniSync = {
     enable = true;

@@ -44,6 +44,7 @@
     ../modules/system/apps/liquidctl.nix
     #../modules/system/apps/ssh.nix
     ../modules/system/apps/sops.nix
+    ../modules/system/apps/steam.nix
 
     ../modules/system/services/dbus.nix
     ../modules/system/services/dconf.nix

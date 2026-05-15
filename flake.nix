@@ -9,11 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
+    #catppuccin = {
+    #url = "github:catppuccin/nix";
+    #};
     opencode = {
-      url = "github:anomalyco/opencode?ref=v1.3.6";
+      url = "github:nixos/nixpkgs/a075f1311ce40ae1b9008fdc43b38d0b2e53b961";
     };
     #opencode-desktop = {
     #  url = "github:tomsch/opencode-desktop-nix?ref=v1.1.39";
@@ -44,15 +44,24 @@
     llama-cpp = {
       url = "github:ggml-org/llama.cpp?ref=b7875";
     };
-    baballonia = {
-      url = "github:ZenIsBestWolf/nixpkgs?ref=pkgs/baballonia";
-    };
+	#baballonia = {
+	#  url = "github:Shenmarukai/Baballonia?submodules=1";
+	#};
+	#vrcfacetracking = {
+	#  url = "github:dfgHiatus/VRCFaceTracking.Avalonia?submodules=1";
+	#};
     devenv = {
       #url = "github:Shenmarukai/nixpkgs?ref=feat/devenv-opencode";
-      url = "github:domenkozar/nixpkgs?ref=devenv-2.0.6";
+      url = "github:nixos/nixpkgs/f962f9d446110b36d617402641005542df1a011a";
     };
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
+    };
+    lmstudio = {
+      url = "github:nixos/nixpkgs/0478817a4dc82a8905c2867c8a92aadfc8ded51d";
+    };
+    vrcx = {
+      url = "github:nixos/nixpkgs/3502e198593ef6f6cc536d831fab0380073ea490";
     };
   };
 

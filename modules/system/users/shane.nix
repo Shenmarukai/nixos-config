@@ -31,5 +31,7 @@
 
   environment.variables = {
     NIX_IDADIR = "${pkgs.ida-pro}/opt";
+    NVD_BACKEND = "direct";
+    LIBVA_DRIVER_NAME = "nvidia";
   };
 }
