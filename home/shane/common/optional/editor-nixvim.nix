@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   buildPlugin =
@@ -172,6 +172,34 @@ let
     require('shenmarukai')
   '';
 
+  tree-sitter-hexpat = pkgs.tree-sitter.buildGrammar {
+    language = "hexpat";
+    version = "unstable";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "NathanSnail";
+      repo = "tree-sitter-hexpat";
+      rev = "main";
+      hash = "sha256-BLtcS1l3gbwls6fgMDaJFPl4CUQUxHPPwQP7j5rMDf8=";
+    };
+
+    nativeBuildInputs = [
+      pkgs.tree-sitter
+      pkgs.nodejs
+    ];
+
+    postPatch = ''
+      tree-sitter generate
+    '';
+
+    meta = with lib; {
+      description = "Tree-sitter grammar for ImHex Pattern Language";
+      homepage = "https://github.com/NathanSnail/tree-sitter-hexpat";
+      license = licenses.mit;
+      platforms = platforms.linux;
+    };
+  };
+
 in
 {
 
@@ -227,7 +255,7 @@ in
 
     plugins.treesitter = {
       enable = true;
-      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      grammarPackages = (with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         bash
         c
         html
@@ -247,6 +275,8 @@ in
         vimdoc
         xml
         yaml
+      ]) ++ [
+        tree-sitter-hexpat
       ];
     };
 

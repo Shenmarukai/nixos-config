@@ -2,6 +2,25 @@ local M = {}
 
 function M.setup()
   pcall(function()
+    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+
+    parser_config.templ = {
+      install_info = {
+        url = 'https://github.com/vrischmann/tree-sitter-templ.git',
+        files = { 'src/parser.c', 'src/scanner.c' },
+        branch = 'master',
+      },
+    }
+
+    parser_config.hexpat = {
+      install_info = {
+        url = 'https://github.com/Calcoph/tree-sitter-hexpat',
+        files = { 'src/parser.c' },
+        branch = 'main',
+      },
+      filetype = 'hexpat',
+    }
+
     require('nvim-treesitter.configs').setup({
       ensure_installed = {},
       sync_install = false,
@@ -20,15 +39,10 @@ function M.setup()
         additional_vim_regex_highlighting = { 'markdown' },
       },
     })
-    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-    parser_config.templ = {
-      install_info = {
-        url = 'https://github.com/vrischmann/tree-sitter-templ.git',
-        files = { 'src/parser.c', 'src/scanner.c' },
-        branch = 'master',
-      },
-    }
+
     vim.treesitter.language.register('templ', 'templ')
+    vim.treesitter.language.register('hexpat', 'hexpat')
+
     require('treesitter-context').setup({
       enable = true,
       multiwindow = false,

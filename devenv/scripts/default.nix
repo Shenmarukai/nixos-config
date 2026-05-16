@@ -1,5 +1,7 @@
 # ./modules/scripts/default.nix
 
 { ... }: {
-  imports = [];
+  imports = [
+    ./nix-store-add-files.nix
+  ];
 }

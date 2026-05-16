@@ -62,6 +62,9 @@
     vrcx = {
       url = "github:nixos/nixpkgs/3502e198593ef6f6cc536d831fab0380073ea490";
     };
+    imhex = {
+      url = "github:nixos/nixpkgs/f2642a9101a8bedccbc9b7870f3cb9eda657f1a9";
+    };
   };
 
   outputs =

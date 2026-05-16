@@ -51,6 +51,7 @@
     ../modules/system/services/dbus.nix
     ../modules/system/services/dconf.nix
     ../modules/system/services/gnome-keyring.nix
+    ../modules/system/services/xdg-portal.nix
     ../modules/system/services/polkit.nix
     ../modules/system/security/pam-swaylock.nix
     ../modules/system/services/greetd-tuigreet.nix

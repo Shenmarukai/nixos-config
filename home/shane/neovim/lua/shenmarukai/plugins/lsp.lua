@@ -1,6 +1,13 @@
 local M = {}
 
 function M.setup()
+  vim.filetype.add({
+    extension = {
+      hexpat = 'hexpat',
+      pat = 'hexpat',
+    },
+  })
+
   pcall(function()
     require('conform').setup({
       formatters_by_ft = {
@@ -53,6 +60,7 @@ function M.setup()
       'csharp_ls',
       'nixd',
       'nil_ls',
+      'hexpat',
     }
 
     local server_configs = {
@@ -86,12 +94,9 @@ function M.setup()
         filetypes = { 'nix' },
 
         on_attach = function(client, bufnr)
-          if vim.lsp.inlay_hint then
+          if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
           end
-
-          client.server_capabilities.inlayHintProvider = true
-          client.server_capabilities.publishDiagnosticsProvider = true
         end,
 
         settings = {
@@ -104,9 +109,6 @@ function M.setup()
               ignored = {},
               excludedFiles = {},
             },
-            inlay = {
-              hints = true,
-            },
             nix = {
               binary = 'nix',
               maxMemoryMB = 32768,
@@ -116,6 +118,22 @@ function M.setup()
                 nixpkgsInputName = 'nixpkgs',
               },
             },
+          },
+        },
+      },
+
+      hexpat = {
+        cmd = { vim.fn.exepath('hexpat-language-server') },
+        filetypes = { 'hexpat' },
+        root_markers = { 'includes', '.git' },
+        settings = {
+          ['hexpat-language-server'] = {
+            imhexBaseFolders = {
+              vim.fn.fnamemodify(vim.fn.resolve(vim.fn.exepath('imhex')), ':h:h') .. '/share/imhex',
+              vim.fs.root(0, { 'includes' }) or vim.fs.root(0, { '.git' }) or vim.fn.getcwd(),
+              vim.fn.expand('~/.local/share/imhex'),
+            },
+            imhexPort = 31337,
           },
         },
       },

@@ -173,11 +173,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778770210,
-        "narHash": "sha256-1eEvxe586XJlDtjDO7pgCQtWCNkcupek+hyfb7mIBTw=",
+        "lastModified": 1778859604,
+        "narHash": "sha256-6LPbKc85n31Uxvq6zR7HVJVT2Te5cSCPgjuQFZtiMhU=",
         "owner": "JPyke3",
         "repo": "hytale-launcher-nix",
-        "rev": "1ae541162e1aebbc4ba1845952b2f04a004e11b3",
+        "rev": "2da1f197bb747729ea3bcbd2d38f8a12b1fec236",
         "type": "github"
       },
       "original": {
@@ -203,6 +203,22 @@
       "original": {
         "owner": "msanft",
         "repo": "ida-pro-overlay",
+        "type": "github"
+      }
+    },
+    "imhex": {
+      "locked": {
+        "lastModified": 1766419912,
+        "narHash": "sha256-QKvcerYVmFMs5N2723dTFTUdYp+Hb3s9fEt+L+7yKz8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f2642a9101a8bedccbc9b7870f3cb9eda657f1a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f2642a9101a8bedccbc9b7870f3cb9eda657f1a9",
         "type": "github"
       }
     },
@@ -419,11 +435,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1778771304,
-        "narHash": "sha256-NsVJioJxUMXdcKXahOejEqa5LYxUB+fBh4wv63ozSuA=",
+        "lastModified": 1778859470,
+        "narHash": "sha256-sY27YhF4tG/PbclBYkzNbCQ0ZbC7neHOIzz4IYVWAe0=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "861525f2eb3b5ca229bc1d50c48d7454ab41e01a",
+        "rev": "1f8b17b0be801d0d89cc1865cc3dede82c764b3b",
         "type": "github"
       },
       "original": {
@@ -434,11 +450,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1778430510,
-        "narHash": "sha256-Ti+ZBvW6yrWWAg2szExVTwCd4qOJ3KlVr1tFHfyfi8Q=",
+        "lastModified": 1778737229,
+        "narHash": "sha256-6xWoytx8jFW4PF1GjRm/i/53trbpKGfz6zjzQGBr4cI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8fd9daa3db09ced9700431c5b7ad0e8ba199b575",
+        "rev": "d7a713c0b7e47c908258e71cba7a2d77cc8d71d5",
         "type": "github"
       },
       "original": {
@@ -564,6 +580,7 @@
         "home-manager": "home-manager",
         "hytale-launcher": "hytale-launcher",
         "ida-pro-overlay": "ida-pro-overlay",
+        "imhex": "imhex",
         "librewolf": "librewolf",
         "llama-cpp": "llama-cpp",
         "lmstudio": "lmstudio",

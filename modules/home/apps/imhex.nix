@@ -1,10 +1,5 @@
-{ pkgs, inputs, ... }:
-
-let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
-{
+{ pkgs, inputs, ... }: {
   home.packages = [
-    unstable.imhex
+    inputs.imhex.legacyPackages.${pkgs.stdenv.hostPlatform.system}.imhex
   ];
 }
