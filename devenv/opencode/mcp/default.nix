@@ -6,5 +6,6 @@
     ./devenv.nix
     ./nixos.nix
     ./github.nix
+    ./codegraph.nix
   ];
 }

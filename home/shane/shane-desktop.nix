@@ -64,6 +64,9 @@
     ../../modules/home/apps/alcom.nix
     ../../modules/home/apps/go-bsb-cams-fast.nix
     ../../modules/home/apps/vrcx.nix
+    ../../modules/home/apps/grim.nix
+    ../../modules/home/apps/slurp.nix
+    ../../modules/home/apps/wl-clipboard.nix
 
     #../../modules/home/dev/rust-analyzer.nix
     #../../modules/home/dev/rust-toolchain.nix

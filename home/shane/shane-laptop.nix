@@ -56,6 +56,9 @@
     ../../modules/home/apps/easyeffects.nix
     ../../modules/home/apps/mpv.nix
     ../../modules/home/apps/ptzo-cmp.nix
+    ../../modules/home/apps/grim.nix
+    ../../modules/home/apps/slurp.nix
+    ../../modules/home/apps/wl-clipboard.nix
 
     #../../modules/home/dev/rust-analyzer.nix
     #../../modules/home/dev/rust-toolchain.nix

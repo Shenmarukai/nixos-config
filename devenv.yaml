@@ -5,3 +5,5 @@
 inputs:
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
+  codegraph:
+    url: github:Shenmarukai/codegraph/2c1a48dd9857c4af52394ad1f7e8372bd9e1c18d

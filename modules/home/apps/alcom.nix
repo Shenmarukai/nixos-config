@@ -21,9 +21,11 @@ in {
     })
   ];
 
-  home.file.".local/share/VRChatCreatorCompanion/settings.json".text =
-    builtins.toJSON {
+  home.file.".local/share/VRChatCreatorCompanion/settings.json" = {
+    force = true;
+    text = builtins.toJSON {
       pathToUnityHub = "${pkgs.unityhub}/bin/unityhub";
       unityEditorsFolder = "/home/shane/Unity/Hub/Editor";
     };
+  };
 }

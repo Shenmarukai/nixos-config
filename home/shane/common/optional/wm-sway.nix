@@ -92,6 +92,16 @@ in
         "${modifier}+Shift+v" = "output DP-3 adaptive_sync toggle";
         "${modifier}+l" = "exec ${lockCommand}";
 
+        # Select area and copy screenshot to clipboard.
+        "${modifier}+Shift+s" =
+          "exec grim -g \"$(slurp)\" - | wl-copy";
+        # Screenshot the focused/output screen and copy to clipboard.
+        "${modifier}+Shift+a" =
+          "exec grim -o \"$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')\" - | wl-copy";
+        # Select area and save screenshot to ~/Pictures/Screenshots.
+        "Print" =
+          "exec mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png";
+
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
 
