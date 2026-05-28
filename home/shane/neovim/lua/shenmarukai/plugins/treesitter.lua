@@ -14,7 +14,7 @@ function M.setup()
 
     parser_config.hexpat = {
       install_info = {
-        url = 'https://github.com/Calcoph/tree-sitter-hexpat',
+        url = 'https://github.com/Daniel-Esteban/tree-sitter-imhex',
         files = { 'src/parser.c' },
         branch = 'main',
       },
