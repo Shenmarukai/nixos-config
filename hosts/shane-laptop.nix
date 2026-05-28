@@ -33,6 +33,7 @@
     ../modules/system/packages/wayland-desktop.nix
     ../modules/system/packages/direnv.nix
     ../modules/system/packages/devenv.nix
+    ../modules/system/packages/gamemode.nix
     ../modules/system/apps/nix-output-monitor.nix
     ../modules/system/apps/zsh.nix
     ../modules/system/apps/appimage.nix
